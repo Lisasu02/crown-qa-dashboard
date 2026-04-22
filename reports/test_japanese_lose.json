@@ -1,0 +1,98 @@
+{
+  "platform": "https://app.crown-procurement.com",
+  "date": "2026-04-17",
+  "auctionType": "Japanese",
+  "auctionUrl": "https://app.crown-procurement.com/auctions/ab3aca6c-c8d2-4f03-a749-f47b783fbb6d",
+  "phase": "japanese-lose",
+  "runLabel": "Japanese — Lose at pre-bid (single lot)",
+  "runOrder": 30,
+  "summary": {
+    "total": 9,
+    "ok": 9,
+    "minor": 0,
+    "blocking": 0
+  },
+  "tests": [
+    {
+      "id": "JPL-prebid",
+      "status": "ok",
+      "description": "S1 submits pre-bid at 90,000",
+      "expected": "Pre-bid submitted",
+      "observed": "Submit: true",
+      "screenshot": "screenshots/jpl_s1_prebid.png",
+      "timestamp": "2026-04-17T09:56:23.545Z"
+    },
+    {
+      "id": "JPL-buttons-enabled",
+      "status": "ok",
+      "description": "Action buttons become ENABLED when round <= S1 pre-bid",
+      "expected": "Leave/Accept buttons enabled at pre-bid level",
+      "observed": "leave=true, accept=true",
+      "screenshot": "screenshots/jpl_buttons_enabled.png",
+      "timestamp": "2026-04-17T09:57:25.444Z"
+    },
+    {
+      "id": "JPL-first-modal",
+      "status": "ok",
+      "description": "First modal appears with S1 rank",
+      "expected": "Modal with rank + Back to event button",
+      "observed": "firstModal={\"rank\":2,\"dialogText\":\"You left the competition for \\\"Lot 1\\\".\\nYou finished rank 2 bidding\\nat the price of 100,000 EUR\\nLINE ITEM\\tUNIT\\tQUANTITY\\tPRICE PER UNIT\\tTOTAL\\nItem 1\\tTon\\t1\\t100,000\\t100,000 EUR\\nBack to eAuction\",\"time\":66439}",
+      "screenshot": "screenshots/jpl_first_modal.png",
+      "timestamp": "2026-04-17T09:58:55.161Z"
+    },
+    {
+      "id": "JPL-second-modal",
+      "status": "ok",
+      "description": "Second modal appears at auction end",
+      "expected": "Modal with same rank (event ended)",
+      "observed": "secondModal={\"rank\":2,\"dialogText\":\"The eAuction has ended!\\nYou have finished with rank 2 bidding at the price of 100,000 EUR\\nThank you for taking part in this event.\\nBack to eAuction\",\"time\":125915}",
+      "screenshot": "screenshots/jpl_second_modal.png",
+      "timestamp": "2026-04-17T09:58:55.161Z"
+    },
+    {
+      "id": "JPL-same-rank",
+      "status": "ok",
+      "description": "Both modals show SAME rank",
+      "expected": "First and second modal show identical rank",
+      "observed": "first=2, second=2, match=true",
+      "screenshot": "screenshots/jpl_second_modal.png",
+      "timestamp": "2026-04-17T09:58:55.161Z"
+    },
+    {
+      "id": "JPL-not-first",
+      "status": "ok",
+      "description": "S1 is NOT rank #1 (bot wins)",
+      "expected": "S1 rank > 1",
+      "observed": "rank=2",
+      "screenshot": "screenshots/jpl_first_modal.png",
+      "timestamp": "2026-04-17T09:58:55.161Z"
+    },
+    {
+      "id": "JPL-winner-activity-log",
+      "status": "ok",
+      "description": "Winner identified via admin activity log (not leaderboard — Japanese has no leaderboard)",
+      "expected": "Activity log contains 'Bot 1 finished with rank 1'",
+      "observed": "Admin activity log: 'BOT 1 finished with rank 1' at 11:42:50. Graph shows BOT 1 with crown (👑) at winning price 93,000 EUR.",
+      "screenshot": "screenshots/jpl_admin_final.png",
+      "timestamp": "2026-04-17T09:59:00.488Z"
+    },
+    {
+      "id": "JPL-coherence-admin-supplier",
+      "status": "ok",
+      "description": "Admin activity log matches supplier side (S1 rank 2, BOT 1 rank 1)",
+      "expected": "S1 sees rank 2 on supplier page + admin log says BOT 1 rank 1 (no contradiction)",
+      "observed": "Supplier: 'You finished rank 2 bidding at 100,000 EUR' + Admin: 'BOT 1 finished with rank 1'. Cross-view coherent.",
+      "screenshot": "screenshots/jpl_admin_final.png",
+      "timestamp": "2026-04-17T09:59:00.488Z"
+    },
+    {
+      "id": "JPL-coherence-graph",
+      "status": "ok",
+      "description": "Graph visible on admin",
+      "expected": "Graph present",
+      "observed": "SVG count=3",
+      "screenshot": "screenshots/jpl_admin_final.png",
+      "timestamp": "2026-04-17T09:59:00.488Z"
+    }
+  ]
+}

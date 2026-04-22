@@ -1,0 +1,107 @@
+{
+  "platform": "https://dev.crown.ovh",
+  "date": "2026-04-16",
+  "auctionType": "Dutch",
+  "auctionUrl": "https://dev.crown.ovh/auctions/7e826457-01d1-4b00-9d40-c0ce091b513d",
+  "phase": "dutch-4-usecases-full",
+  "runLabel": "Dutch — 4 Use Cases Full (Win/Live/Tie/Lose)",
+  "runOrder": 13,
+  "summary": {
+    "total": 10,
+    "ok": 8,
+    "minor": 2,
+    "blocking": 0
+  },
+  "tests": [
+    {
+      "id": "D-prebids",
+      "status": "ok",
+      "description": "All pre-bids submitted",
+      "expected": "12 pre-bids",
+      "observed": "12 pre-bids configured",
+      "screenshot": null,
+      "timestamp": "2026-04-16T13:27:05.175Z"
+    },
+    {
+      "id": "D-UC1-rank",
+      "status": "ok",
+      "description": "Lot 1: S1 rank #1 (lowest pre-bid)",
+      "expected": "S1 rank #1",
+      "observed": "rank=1, noRank=false",
+      "screenshot": "screenshots/dutch_lot1_supplier_end.png",
+      "timestamp": "2026-04-16T13:27:45.982Z"
+    },
+    {
+      "id": "D-UC1-log",
+      "status": "ok",
+      "description": "Lot 1: Activity log visible",
+      "expected": "Log present",
+      "observed": "found=true, 10 entries",
+      "screenshot": "screenshots/dutch_lot1_admin_end.png",
+      "timestamp": "2026-04-16T13:27:45.982Z"
+    },
+    {
+      "id": "D-UC2-rank",
+      "status": "ok",
+      "description": "Lot 2: S1 rank #1 (won in live)",
+      "expected": "S1 rank #1",
+      "observed": "rank=1, noRank=false",
+      "screenshot": "screenshots/dutch_lot2_supplier_end.png",
+      "timestamp": "2026-04-16T13:28:30.481Z"
+    },
+    {
+      "id": "D-UC2-log",
+      "status": "ok",
+      "description": "Lot 2: Activity log visible",
+      "expected": "Log present",
+      "observed": "found=true, 10 entries",
+      "screenshot": "screenshots/dutch_lot2_admin_end.png",
+      "timestamp": "2026-04-16T13:28:30.481Z"
+    },
+    {
+      "id": "D-UC3-rank",
+      "status": "ok",
+      "description": "Lot 3: S1 rank #1 (first to submit tie)",
+      "expected": "S1 rank #1",
+      "observed": "rank=1, noRank=false",
+      "screenshot": "screenshots/dutch_lot3_supplier_end.png",
+      "timestamp": "2026-04-16T13:29:15.055Z"
+    },
+    {
+      "id": "D-UC3-log",
+      "status": "ok",
+      "description": "Lot 3: Activity log visible",
+      "expected": "Log present",
+      "observed": "found=true, 10 entries",
+      "screenshot": "screenshots/dutch_lot3_admin_end.png",
+      "timestamp": "2026-04-16T13:29:15.055Z"
+    },
+    {
+      "id": "D-UC4-rank",
+      "status": "minor_bug",
+      "description": "Lot 4: S1 NOT #1 (S2 wins)",
+      "expected": "S1 no rank or >1",
+      "observed": "rank=1, noRank=false",
+      "screenshot": "screenshots/dutch_lot4_supplier_end.png",
+      "timestamp": "2026-04-16T13:29:59.592Z"
+    },
+    {
+      "id": "D-UC4-log",
+      "status": "ok",
+      "description": "Lot 4: Activity log visible",
+      "expected": "Log present",
+      "observed": "found=true, 10 entries",
+      "screenshot": "screenshots/dutch_lot4_admin_end.png",
+      "timestamp": "2026-04-16T13:29:59.592Z"
+    },
+    {
+      "id": "D-final",
+      "status": "minor_bug",
+      "description": "All 4 lots closed",
+      "expected": "4x Closed",
+      "observed": "Closed count: 1",
+      "screenshot": "screenshots/dutch_full_admin_final.png",
+      "timestamp": "2026-04-16T13:30:07.008Z"
+    }
+  ]
+}

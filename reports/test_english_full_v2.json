@@ -1,0 +1,144 @@
+{
+  "platform": "https://app.crown-procurement.com",
+  "date": "2026-04-13",
+  "auctionType": "English",
+  "auctionUrl": "https://app.crown-procurement.com/auctions/d6447bfe-db75-40af-8022-bfa037898d8d/lots/fc08fbc5-8b3e-4cc3-84e9-30438ac47d7f",
+  "phase": "full-v2",
+  "summary": {
+    "total": 14,
+    "ok": 14,
+    "minor": 0,
+    "blocking": 0
+  },
+  "tests": [
+    {
+      "id": "E2",
+      "status": "ok",
+      "description": "Supplier submits pre-bid",
+      "expected": "Pre-bid registered",
+      "observed": "Pre-bid 550 submitted",
+      "screenshot": "screenshots/v2_E2.png",
+      "timestamp": "2026-04-13T15:08:15.779Z"
+    },
+    {
+      "id": "E2b",
+      "status": "ok",
+      "description": "Admin after pre-bid",
+      "expected": "Log increases",
+      "observed": "Log: 1 → 14",
+      "screenshot": null,
+      "timestamp": "2026-04-13T15:08:25.876Z"
+    },
+    {
+      "id": "E3",
+      "status": "ok",
+      "description": "Supplier improves pre-bid",
+      "expected": "Old replaced",
+      "observed": "550 → 523",
+      "screenshot": "screenshots/v2_E3.png",
+      "timestamp": "2026-04-13T15:08:30.096Z"
+    },
+    {
+      "id": "E13b",
+      "status": "ok",
+      "description": "Admin deletes Supplier 1 pre-bid",
+      "expected": "Pre-bid deleted",
+      "observed": "Supplier 1 pre-bid deleted via admin",
+      "screenshot": "screenshots/v2_E13b.png",
+      "timestamp": "2026-04-13T15:08:55.066Z"
+    },
+    {
+      "id": "E4",
+      "status": "ok",
+      "description": "Supplier live bid (decrement=20)",
+      "expected": "Bid accepted",
+      "observed": "Decrement 20 via \"Submit New Bid\"",
+      "screenshot": "screenshots/v2_E4.png",
+      "timestamp": "2026-04-13T15:09:33.444Z"
+    },
+    {
+      "id": "E4c",
+      "status": "ok",
+      "description": "Admin log after live bid",
+      "expected": "Log increases",
+      "observed": "Log: 17 → 19",
+      "screenshot": null,
+      "timestamp": "2026-04-13T15:09:36.447Z"
+    },
+    {
+      "id": "E5",
+      "status": "ok",
+      "description": "Bid too small",
+      "expected": "Min error",
+      "observed": "Min error: true",
+      "screenshot": "screenshots/v2_E5.png",
+      "timestamp": "2026-04-13T15:09:38.634Z"
+    },
+    {
+      "id": "E6",
+      "status": "ok",
+      "description": "Bid too large",
+      "expected": "Max error",
+      "observed": "Max error: true",
+      "screenshot": "screenshots/v2_E6.png",
+      "timestamp": "2026-04-13T15:09:40.782Z"
+    },
+    {
+      "id": "E8",
+      "status": "ok",
+      "description": "Timer counts down",
+      "expected": "Timer decreasing",
+      "observed": "01:32 → 01:29",
+      "screenshot": null,
+      "timestamp": "2026-04-13T15:09:43.793Z"
+    },
+    {
+      "id": "E9",
+      "status": "ok",
+      "description": "Overtime timer reset",
+      "expected": "Timer resets",
+      "observed": "Before: 00:25, After: 00:28, Reset: true",
+      "screenshot": null,
+      "timestamp": "2026-04-13T15:10:51.970Z"
+    },
+    {
+      "id": "E7",
+      "status": "ok",
+      "description": "Supplier final",
+      "expected": "Rank visible",
+      "observed": "Rank: #4, Closed: true",
+      "screenshot": "screenshots/v2_E7.png",
+      "timestamp": "2026-04-13T15:11:54.625Z"
+    },
+    {
+      "id": "E12",
+      "status": "ok",
+      "description": "Admin final leaderboard",
+      "expected": "All suppliers ranked",
+      "observed": "Leaderboard: [BOT 3, BOT 2, BOT 1, Supplier 1, BOT 4, BOT 3, BOT 2, BOT 1, Supplier 1, BOT 4]",
+      "screenshot": "screenshots/v2_E12.png",
+      "timestamp": "2026-04-13T15:11:54.626Z"
+    },
+    {
+      "id": "E10",
+      "status": "ok",
+      "description": "Activity log",
+      "expected": "All recorded",
+      "observed": "26 entries",
+      "screenshot": null,
+      "timestamp": "2026-04-13T15:11:54.626Z"
+    },
+    {
+      "id": "E10b",
+      "status": "ok",
+      "description": "Cross-view: leaderboard vs supplier rank",
+      "expected": "Ranks match",
+      "observed": "Admin: S1 at #4, Supplier: #4, Match: true",
+      "screenshot": null,
+      "timestamp": "2026-04-13T15:11:54.627Z"
+    }
+  ],
+  "runLabel": "Run 6 — Full suite FINAL (14/14 ✅)",
+  "runOrder": 6,
+  "runTime": "17:08"
+}

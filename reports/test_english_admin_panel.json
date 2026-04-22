@@ -1,0 +1,72 @@
+{
+  "platform": "https://app.crown-procurement.com",
+  "date": "2026-04-13",
+  "auctionType": "English",
+  "auctionUrl": "https://app.crown-procurement.com/auctions/d6447bfe-db75-40af-8022-bfa037898d8d/lots/fc08fbc5-8b3e-4cc3-84e9-30438ac47d7f",
+  "phase": "admin-panel",
+  "summary": {
+    "total": 6,
+    "ok": 5,
+    "minor": 1,
+    "blocking": 0
+  },
+  "tests": [
+    {
+      "id": "E16",
+      "status": "ok",
+      "description": "Remove bot (BOT 4) before start",
+      "expected": "BOT 4 removed from leaderboard + bids table",
+      "observed": "BOT 4 still visible: false, Confirmed: true",
+      "screenshot": "screenshots/ap_E16_removed.png",
+      "timestamp": "2026-04-13T14:55:50.687Z"
+    },
+    {
+      "id": "E13a",
+      "status": "ok",
+      "description": "Admin submit pre-bid for Supplier 1",
+      "expected": "Pre-bid submitted",
+      "observed": "Pre-bid 550 submitted for Supplier 1 via admin",
+      "screenshot": "screenshots/ap_E13_submitted.png",
+      "timestamp": "2026-04-13T14:56:09.950Z"
+    },
+    {
+      "id": "E13b",
+      "status": "ok",
+      "description": "Admin delete pre-bid for Supplier 1",
+      "expected": "Pre-bid deleted",
+      "observed": "Pre-bid deleted for Supplier 1 via admin",
+      "screenshot": "screenshots/ap_E13_deleted.png",
+      "timestamp": "2026-04-13T14:56:14.737Z"
+    },
+    {
+      "id": "E15",
+      "status": "ok",
+      "description": "Admin places bid for BOT 1 during live",
+      "expected": "Bid submitted on behalf of BOT 1",
+      "observed": "Decrement 30 submitted for BOT 1 via \"Submit pre-bid\"",
+      "screenshot": "screenshots/ap_E15_bid.png",
+      "timestamp": "2026-04-13T14:57:21.304Z"
+    },
+    {
+      "id": "E14",
+      "status": "ok",
+      "description": "Admin deletes live bid for BOT 1",
+      "expected": "Bid deleted",
+      "observed": "Last bid deleted for BOT 1",
+      "screenshot": "screenshots/ap_E14.png",
+      "timestamp": "2026-04-13T14:57:25.586Z"
+    },
+    {
+      "id": "E10b",
+      "status": "minor_bug",
+      "description": "Cross-view consistency: leaderboard vs supplier rank",
+      "expected": "Admin leaderboard rank = supplier final rank",
+      "observed": "Admin Leaderboard: S1 at #?, Supplier sees: #?, Match: null",
+      "screenshot": "screenshots/ap_final_admin.png",
+      "timestamp": "2026-04-13T14:59:27.296Z"
+    }
+  ],
+  "runLabel": "Run 5 — Admin panel (E13-E16)",
+  "runOrder": 5,
+  "runTime": "16:55"
+}

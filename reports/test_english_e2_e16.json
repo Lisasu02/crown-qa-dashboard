@@ -1,0 +1,152 @@
+{
+  "platform": "https://app.crown-procurement.com",
+  "date": "2026-04-13",
+  "auctionType": "English",
+  "auctionUrl": "https://app.crown-procurement.com/auctions/d6447bfe-db75-40af-8022-bfa037898d8d/lots/fc08fbc5-8b3e-4cc3-84e9-30438ac47d7f",
+  "summary": {
+    "total": 15,
+    "ok": 13,
+    "minor": 2,
+    "blocking": 0
+  },
+  "tests": [
+    {
+      "id": "E2",
+      "status": "ok",
+      "description": "Submit pre-bid",
+      "expected": "Pre-bid registered",
+      "observed": "Pre-bid 550 submitted",
+      "screenshot": "screenshots/t_E2.png",
+      "timestamp": "2026-04-13T12:43:57.272Z"
+    },
+    {
+      "id": "E2b",
+      "status": "ok",
+      "description": "Admin after pre-bid",
+      "expected": "Log increases",
+      "observed": "Log: 1 → 6",
+      "screenshot": "screenshots/t_E2b.png",
+      "timestamp": "2026-04-13T12:44:06.738Z"
+    },
+    {
+      "id": "E3",
+      "status": "ok",
+      "description": "Improve pre-bid",
+      "expected": "Old replaced",
+      "observed": "550 → 523",
+      "screenshot": "screenshots/t_E3.png",
+      "timestamp": "2026-04-13T12:44:10.988Z"
+    },
+    {
+      "id": "E4",
+      "status": "ok",
+      "description": "Submit live bid (decrement=20)",
+      "expected": "Bid accepted",
+      "observed": "\"Submit New Bid\" clicked, decrement 20",
+      "screenshot": "screenshots/t_E4.png",
+      "timestamp": "2026-04-13T12:45:00.656Z"
+    },
+    {
+      "id": "E4c",
+      "status": "ok",
+      "description": "Admin log after live bid",
+      "expected": "Log increases",
+      "observed": "Log: 10 → 13",
+      "screenshot": "screenshots/t_E4b.png",
+      "timestamp": "2026-04-13T12:45:03.725Z"
+    },
+    {
+      "id": "E5",
+      "status": "ok",
+      "description": "Bid too small",
+      "expected": "Min error",
+      "observed": "Min error: true",
+      "screenshot": "screenshots/t_E5.png",
+      "timestamp": "2026-04-13T12:45:05.908Z"
+    },
+    {
+      "id": "E6",
+      "status": "ok",
+      "description": "Bid too large",
+      "expected": "Max error",
+      "observed": "Max error: true",
+      "screenshot": "screenshots/t_E6.png",
+      "timestamp": "2026-04-13T12:45:08.079Z"
+    },
+    {
+      "id": "E8",
+      "status": "ok",
+      "description": "Timer counts down",
+      "expected": "Timer decreasing",
+      "observed": "01:29 → 01:26",
+      "screenshot": null,
+      "timestamp": "2026-04-13T12:45:11.083Z"
+    },
+    {
+      "id": "E9",
+      "status": "ok",
+      "description": "Overtime timer reset",
+      "expected": "Timer resets to overtime value",
+      "observed": "Before: 00:25, After: 00:28, Reset: true",
+      "screenshot": null,
+      "timestamp": "2026-04-13T12:46:16.202Z"
+    },
+    {
+      "id": "E7",
+      "status": "ok",
+      "description": "Supplier final",
+      "expected": "Rank + closed",
+      "observed": "Rank: #4, Closed: true",
+      "screenshot": "screenshots/t_E7.png",
+      "timestamp": "2026-04-13T12:47:17.081Z"
+    },
+    {
+      "id": "E12",
+      "status": "ok",
+      "description": "Admin final",
+      "expected": "Leaderboard with all suppliers",
+      "observed": "Leaderboard: [Supplier 1\tOnline, Supplier 1], Closed: true",
+      "screenshot": "screenshots/t_E12.png",
+      "timestamp": "2026-04-13T12:47:17.083Z"
+    },
+    {
+      "id": "E10",
+      "status": "ok",
+      "description": "Activity log",
+      "expected": "All actions recorded",
+      "observed": "20 entries",
+      "screenshot": null,
+      "timestamp": "2026-04-13T12:47:17.083Z"
+    },
+    {
+      "id": "E10b",
+      "status": "minor_bug",
+      "description": "Cross-view consistency",
+      "expected": "Admin rank matches supplier rank",
+      "observed": "Admin Leaderboard: S1 at #1, Supplier sees: #4",
+      "screenshot": null,
+      "timestamp": "2026-04-13T12:47:17.083Z"
+    },
+    {
+      "id": "E13",
+      "status": "ok",
+      "description": "Admin panel — supplier visibility",
+      "expected": "Suppliers visible in admin panel",
+      "observed": "Suppliers visible: true",
+      "screenshot": "screenshots/t_E13.png",
+      "timestamp": "2026-04-13T12:47:32.012Z"
+    },
+    {
+      "id": "E16",
+      "status": "minor_bug",
+      "description": "Admin remove supplier (bot)",
+      "expected": "Bot removed from auction",
+      "observed": "Admin panel structure needs investigation for delete actions — noted for manual test",
+      "screenshot": "screenshots/t_E16.png",
+      "timestamp": "2026-04-13T12:47:32.059Z"
+    }
+  ],
+  "runLabel": "Run 4 — E2-E16 with admin panel",
+  "runOrder": 4,
+  "runTime": "14:43"
+}

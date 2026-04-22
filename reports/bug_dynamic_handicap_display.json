@@ -1,0 +1,26 @@
+{
+  "platform": "https://app.crown-procurement.com",
+  "date": "2026-04-17",
+  "auctionType": "English",
+  "auctionUrl": "https://app.crown-procurement.com/auctions/c2f93259-3d23-4c09-a503-f1c16220faa8",
+  "phase": "english-handicap-bug",
+  "runLabel": "🐛 BUG — Dynamic Handicap not shown for all suppliers",
+  "runOrder": 27,
+  "summary": {
+    "total": 1,
+    "ok": 0,
+    "minor": 0,
+    "blocking": 1
+  },
+  "tests": [
+    {
+      "id": "BUG-DYN-HC-DISPLAY",
+      "status": "blocking_bug",
+      "description": "Dynamic Handicap configured for all suppliers in builder, but only Supplier 1 shows it on event page",
+      "expected": "All 5 suppliers (S1 + Bot 1-4) should display their Dynamic Handicap value (+10) in the Bid table on the event page, matching the builder configuration",
+      "observed": "Only Supplier 1 has the Dynamic Handicap applied/visible in the Bid table. Bots 1-4 don't show their +10 dynamic handicap despite being configured in the builder",
+      "screenshot": "screenshots/ehc_bid_table.png",
+      "timestamp": "2026-04-17T10:00:00.000Z"
+    }
+  ]
+}

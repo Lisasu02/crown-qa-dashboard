@@ -1,0 +1,177 @@
+We use cookies for audience measurement to understand how visitors interact with our website. You can learn more and manage your preferences on our Privacy Policy page.
+Refuse
+Accept
+All Companies
+Dashboard
+eAuctions
+Users
+Architect
+Crown GPT
+Clients
+Trainings
+0/52
+Lisa Su
+lisa@crown-procurement.com
+Summary
+ 	Lots 	Status 	eAuction Time 	Round 	Leader 	Current price 	Savings 
+	
+Lot 1 - Win Pre-bid
+Closed
+	
+00:00 / 5 min
+	
+1
+	Supplier 1	81,000 EUR	
+19,000 EUR
+19 %
+
+
+1 / 2
+	
+Lot 2 - Win Live
+Upcoming
+	
+00:00 / 5 min
+	
+0
+	Supplier 1	81,000 EUR	
+-
+0%
+
+
+1 / 2
+	
+Lot 3 - Tie Pre-bid
+Upcoming
+	
+00:00 / 5 min
+	
+0
+	Supplier 1	81,000 EUR	
+-
+0%
+
+
+1 / 2
+	
+Lot 4 - Lose
+Upcoming
+	
+00:00 / 5 min
+	
+0
+	Supplier 2	81,000 EUR	
+-
+0%
+Lot 1 - Win Pre-bid
+Terms
+Status
+Admin
+Health Check
+Timer
+Closed
+00:00
+eAuction time
+Total price
+Price per unit
+Baseline
+100,000EUR
+Current Price
+81,000 EUR
+Price Saving
+19,000
+EUR
+19 %
+Activity Log
+	ROUND	TIME
+
+Supplier 1 accepted the price of 81,000 EUR
+	
+1
+	18:38:38
+
+Supplier 1 placed a pre-bid of 81,000 EUR on Apr 17
+	
+	18:36:57
+
+eAuction starts at the price of 81,000 EUR
+	
+	
+
+eAuction date is set to Apr 17 2026 at 18:38, CEST
+	
+	
+Round: 1 /20
+LINE ITEM	UNIT	QUANTITY	PRICE PER UNIT	TOTAL
+Item 1	Ton	1	81,000	81,000 EUR
+Next price in
+Round time 15 sec
+Participants
+NAME	STATUS	PRE-BID	BEST BID
+
+Supplier 1
+	Online	81,000 EUR	
+81,000 EUR
+
+
+Supplier 2
+	Offline	-	-
+1
+81,000
+2
+82,000
+3
+83,000
+4
+84,000
+5
+85,000
+6
+86,000
+7
+87,000
+8
+88,000
+9
+89,000
+10
+90,000
+11
+91,000
+12
+92,000
+13
+93,000
+14
+94,000
+15
+95,000
+16
+96,000
+17
+97,000
+18
+98,000
+19
+99,000
+20
+100,000
+1
+81,000
+Supplier 2
+Supplier 1
+Round
+Price
+Ceiling price
+All rounds
+Graph
+Blocks
+Restart Training
+Start eAuction
+The competition for Lot 1 - Win Pre-bid has ended!
+Supplier 1 has finished with rank 1 bidding
+at the price of 81,000 EUR
+LINE ITEM	UNIT	QUANTITY	PRICE PER UNIT	TOTAL
+Item 1	Ton	1	81,000	81,000 EUR
+Please, contact the winner to discuss further details and finalize the agreement.
+Next lot

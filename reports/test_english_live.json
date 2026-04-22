@@ -1,0 +1,90 @@
+{
+  "platform": "app.crown-procurement.com",
+  "date": "2026-04-13",
+  "auctionType": "English",
+  "auctionUrl": "https://app.crown-procurement.com/auctions/d6447bfe-db75-40af-8022-bfa037898d8d/lots/fc08fbc5-8b3e-4cc3-84e9-30438ac47d7f",
+  "phase": "live",
+  "summary": {
+    "total": 8,
+    "ok": 7,
+    "minor": 1,
+    "blocking": 0
+  },
+  "tests": [
+    {
+      "id": "E4",
+      "status": "ok",
+      "description": "Submit live bid",
+      "expected": "Bid accepted, rank updated",
+      "observed": "Bid 500 submitted, rank: #pending",
+      "screenshot": "screenshots/live_E4_bid_submitted.png",
+      "timestamp": "2026-04-13T10:19:25.201Z"
+    },
+    {
+      "id": "E4b",
+      "status": "ok",
+      "description": "Admin graph update after live bid",
+      "expected": "Graph updates in real time",
+      "observed": "Admin page shows bid data, Supplier 1 visible: true",
+      "screenshot": "screenshots/live_E4b_admin_after_bid.png",
+      "timestamp": "2026-04-13T10:19:28.274Z"
+    },
+    {
+      "id": "E4c",
+      "status": "ok",
+      "description": "Admin activity log update during live",
+      "expected": "Activity log increases after supplier bid",
+      "observed": "Activity log: 7 → 9 (increased ✓)",
+      "screenshot": "screenshots/live_E4b_admin_after_bid.png",
+      "timestamp": "2026-04-13T10:19:28.274Z"
+    },
+    {
+      "id": "E5",
+      "status": "ok",
+      "description": "Bid too small (< min decrement)",
+      "expected": "Red alert \"min bid decrement\"",
+      "observed": "Error detected: yes. Alerts: \" | \"",
+      "screenshot": "screenshots/live_E5_min_error.png",
+      "timestamp": "2026-04-13T10:19:30.481Z"
+    },
+    {
+      "id": "E6",
+      "status": "ok",
+      "description": "Bid too large (> max decrement)",
+      "expected": "Red alert \"max bid decrement\"",
+      "observed": "Error detected: yes. Alerts: \"-\nMax value 499.99 EUR | - |  |  |  |  | Max value 499.99 EUR | Max value 499.99 EUR | Max value 499.99 EUR |  |  | Max bid decrement: 100000 EUR\"",
+      "screenshot": "screenshots/live_E6_max_error.png",
+      "timestamp": "2026-04-13T10:19:32.635Z"
+    },
+    {
+      "id": "E8",
+      "status": "ok",
+      "description": "Observe auction flow",
+      "expected": "Timer visible and counting down",
+      "observed": "Timer: 01:50",
+      "screenshot": "screenshots/live_E8_timer.png",
+      "timestamp": "2026-04-13T10:19:32.680Z"
+    },
+    {
+      "id": "E7",
+      "status": "minor_bug",
+      "description": "Supplier final modal",
+      "expected": "Modal with rank and recap after auction ends",
+      "observed": "Auction still running — E7 needs to be tested after auction ends",
+      "screenshot": "screenshots/live_E8_timer.png",
+      "timestamp": "2026-04-13T10:19:32.680Z"
+    },
+    {
+      "id": "E10b-live",
+      "status": "ok",
+      "description": "Cross-view consistency (live phase)",
+      "expected": "Both admin and supplier see timer and auction data",
+      "observed": "Admin timer: 01:51, Supplier timer: 01:50, Admin sees Supplier 1: true",
+      "screenshot": "screenshots/live_E4b_admin_after_bid.png",
+      "timestamp": "2026-04-13T10:19:32.681Z"
+    }
+  ],
+  "runLabel": "Run 2 — Live bidding (E4-E9)",
+  "runOrder": 2,
+  "runTime": "12:19"
+}

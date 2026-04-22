@@ -1,0 +1,62 @@
+{
+  "platform": "app.crown-procurement.com",
+  "date": "2026-04-13",
+  "auctionType": "English",
+  "auctionUrl": "https://app.crown-procurement.com/auctions/d6447bfe-db75-40af-8022-bfa037898d8d/lots/fc08fbc5-8b3e-4cc3-84e9-30438ac47d7f/buyer?status=upcoming&usage=test&type=reverse",
+  "summary": {
+    "total": 5,
+    "ok": 3,
+    "minor": 1,
+    "blocking": 1
+  },
+  "tests": [
+    {
+      "id": "E2",
+      "status": "blocking_bug",
+      "description": "Submit pre-bid",
+      "expected": "Submit pre-bid button visible",
+      "observed": "Submit pre-bid button not found",
+      "screenshot": "screenshots/test_supplier_auction.png",
+      "timestamp": "2026-04-13T10:12:08.060Z"
+    },
+    {
+      "id": "E2b",
+      "status": "minor_bug",
+      "description": "Admin graph + activity log update after pre-bid",
+      "expected": "Activity log increases, graph updates after supplier pre-bid",
+      "observed": "Activity log: 6 → 6 (no change), Graph: 16 → 16 (no change)",
+      "screenshot": "screenshots/test_E2b_admin_after_prebid.png",
+      "timestamp": "2026-04-13T10:12:17.248Z"
+    },
+    {
+      "id": "E3",
+      "status": "ok",
+      "description": "Improve pre-bid",
+      "expected": "Old pre-bid replaced by new one on graph",
+      "observed": "Pre-bid improved from 550 to 523",
+      "screenshot": "screenshots/test_E3_prebid_improved.png",
+      "timestamp": "2026-04-13T10:12:21.260Z"
+    },
+    {
+      "id": "E3b",
+      "status": "ok",
+      "description": "Admin activity log update after pre-bid improvement",
+      "expected": "Activity log increases after pre-bid change",
+      "observed": "Activity log: 6 → 7 (increased ✓)",
+      "screenshot": "screenshots/test_E3b_admin_after_improve.png",
+      "timestamp": "2026-04-13T10:12:30.484Z"
+    },
+    {
+      "id": "E10b-prebid",
+      "status": "ok",
+      "description": "Cross-view consistency (pre-bid phase)",
+      "expected": "Supplier sees \"Change pre-bid\", admin activity log mentions pre-bid",
+      "observed": "Supplier has \"Change pre-bid\": true, Admin log mentions pre-bid: true",
+      "screenshot": "screenshots/test_E3b_admin_after_improve.png",
+      "timestamp": "2026-04-13T10:12:30.485Z"
+    }
+  ],
+  "runLabel": "Run 1 — Pre-bid (E2-E3)",
+  "runOrder": 1,
+  "runTime": "12:12"
+}

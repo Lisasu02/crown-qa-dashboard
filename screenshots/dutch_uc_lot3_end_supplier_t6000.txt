@@ -1,0 +1,131 @@
+Dashboard
+eAuctions
+Trainings
+14/46
+John Doe
+supplier+1@crown.ovh
+Summary
+Lots 	Status 	eAuction Time 	Round 	Current price 
+
+Lot 1 - Win Pre-bid
+	
+Closed
+	
+00:00 / 5 min
+	
+1
+	81,000 EUR
+
+Lot 2 - Win Live
+	
+Upcoming
+	
+00:00 / 5 min
+	
+0
+	81,000 EUR
+
+Lot 3 - Tie Pre-bid
+	
+Upcoming
+	
+00:00 / 5 min
+	
+0
+	81,000 EUR
+
+Lot 4 - Lose
+	
+Upcoming
+	
+00:00 / 5 min
+	
+0
+	81,000 EUR
+Lot 3 - Tie Pre-bid
+Terms
+Start in
+Upcoming
+06:28
+minutes
+Your Pre-bid
+Total price
+Price per unit
+85,000 EUR
+Activity Log
+	ROUND	TIME
+
+You placed a pre-bid of 85,000 EUR on Apr 17
+	
+	18:00:18
+
+You now participate in Lot 3 - Tie Pre-bid eAuction !
+	
+	
+
+Your ceiling price is 100,000 EUR
+	
+	
+
+eAuction starts at the price of 81,000 EUR
+	
+	
+
+eAuction date is set to Apr 17 2026 at 18:11, CEST
+	
+	
+Round: 1 /20
+LINE ITEM	UNIT	QUANTITY	PRICE PER UNIT	TOTAL
+Item 1	Ton	1	85,000	
+85,000
+Submit pre-bid
+1
+81,000
+2
+82,000
+3
+83,000
+4
+84,000
+5
+85,000
+6
+86,000
+7
+87,000
+8
+88,000
+9
+89,000
+10
+90,000
+11
+91,000
+12
+92,000
+13
+93,000
+14
+94,000
+15
+95,000
+16
+96,000
+17
+97,000
+18
+98,000
+19
+99,000
+20
+100,000
+1
+81,000
+Supplier 1
+Supplier 1
+Round
+Price
+Ceiling price
+All rounds
+Graph
+Blocks

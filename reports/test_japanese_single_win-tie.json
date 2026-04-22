@@ -1,0 +1,63 @@
+{
+  "platform": "https://app.crown-procurement.com",
+  "date": "2026-04-17",
+  "auctionType": "Japanese",
+  "auctionUrl": "https://app.crown-procurement.com/auctions/796eb22e-9103-4a9e-8d60-305139606be9",
+  "phase": "japanese-single-win-tie",
+  "runLabel": "Japanese single lot — win-tie",
+  "runOrder": 50,
+  "reportFile": "test_japanese_single_win-tie.json",
+  "summary": {
+    "total": 5,
+    "ok": 5,
+    "minor": 0,
+    "blocking": 0
+  },
+  "tests": [
+    {
+      "id": "PRE-S1",
+      "status": "ok",
+      "description": "S1 pre-bid",
+      "expected": 100000,
+      "observed": true,
+      "screenshot": null,
+      "timestamp": "2026-04-17T13:41:14.791Z"
+    },
+    {
+      "id": "PRE-S2",
+      "status": "ok",
+      "description": "Supplier 2 pre-bid via admin",
+      "expected": 100000,
+      "observed": true,
+      "screenshot": null,
+      "timestamp": "2026-04-17T13:41:27.871Z"
+    },
+    {
+      "id": "MODAL-SUPPLIER",
+      "status": "ok",
+      "description": "Supplier end modal detected",
+      "expected": "Modal visible",
+      "observed": "rank=1, btn=",
+      "screenshot": null,
+      "timestamp": "2026-04-17T13:42:19.842Z"
+    },
+    {
+      "id": "RANK",
+      "status": "ok",
+      "description": "S1 expected rank 1 (win-tie)",
+      "expected": "rank=1",
+      "observed": "got rank=1",
+      "screenshot": null,
+      "timestamp": "2026-04-17T13:42:19.842Z"
+    },
+    {
+      "id": "COHERENCE",
+      "status": "ok",
+      "description": "Admin log confirms Supplier 1 as winner",
+      "expected": "Supplier 1 rank 1",
+      "observed": "admin winner: Supplier 1",
+      "screenshot": null,
+      "timestamp": "2026-04-17T13:42:26.742Z"
+    }
+  ]
+}

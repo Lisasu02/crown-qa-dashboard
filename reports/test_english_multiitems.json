@@ -1,0 +1,89 @@
+{
+  "platform": "https://app.crown-procurement.com",
+  "date": "2026-04-17",
+  "auctionType": "English",
+  "auctionUrl": "https://app.crown-procurement.com/auctions/02cb7281-b824-4751-a364-7a48a83a65a8",
+  "phase": "english-multiitems",
+  "runLabel": "English Multi Line Items — E18–E20",
+  "runOrder": 61,
+  "summary": {
+    "total": 8,
+    "ok": 7,
+    "minor": 1,
+    "blocking": 0
+  },
+  "tests": [
+    {
+      "id": "E-MI-prebid-submit",
+      "status": "ok",
+      "description": "S1 submits initial pre-bid",
+      "expected": "80k / 90k on items",
+      "observed": "Submit: true",
+      "screenshot": "screenshots/emi_s1_prebid_initial.png",
+      "timestamp": "2026-04-17T14:52:24.462Z"
+    },
+    {
+      "id": "E-MI-prebid-change",
+      "status": "ok",
+      "description": "S1 changes pre-bid",
+      "expected": "75k / 85k on items",
+      "observed": "Changed: true",
+      "screenshot": "screenshots/emi_s1_prebid_changed.png",
+      "timestamp": "2026-04-17T14:52:29.702Z"
+    },
+    {
+      "id": "E-MI-admin-delete",
+      "status": "ok",
+      "description": "Admin deletes S1 last pre-bid",
+      "expected": "Pre-bid deleted",
+      "observed": "Deleted: true",
+      "screenshot": "screenshots/emi_admin_deleted.png",
+      "timestamp": "2026-04-17T14:52:40.241Z"
+    },
+    {
+      "id": "E-MI-prebid-resubmit",
+      "status": "ok",
+      "description": "S1 re-submits pre-bid after admin delete",
+      "expected": "70k / 80k on items",
+      "observed": "Resubmit: true",
+      "screenshot": "screenshots/emi_s1_prebid_resubmit.png",
+      "timestamp": "2026-04-17T14:52:57.328Z"
+    },
+    {
+      "id": "E-MI-overtime-bid",
+      "status": "minor_bug",
+      "description": "Overtime bid resets timer",
+      "expected": "Timer resets to overtime value",
+      "observed": "Before: 00:30, After: 00:25",
+      "screenshot": "screenshots/emi_overtime.png",
+      "timestamp": "2026-04-17T14:55:03.522Z"
+    },
+    {
+      "id": "E-MI-admin-bid",
+      "status": "ok",
+      "description": "Admin improves S1 bid during overtime",
+      "expected": "Admin bid via panel",
+      "observed": "Submitted: true",
+      "screenshot": "screenshots/emi_admin_bid.png",
+      "timestamp": "2026-04-17T14:55:15.589Z"
+    },
+    {
+      "id": "E-MI-supplier-rank",
+      "status": "ok",
+      "description": "Supplier sees final rank",
+      "expected": "Rank visible on supplier page",
+      "observed": "globalRank=3, allRanks=[3]",
+      "screenshot": "screenshots/emi_supplier_final.png",
+      "timestamp": "2026-04-17T14:56:24.565Z"
+    },
+    {
+      "id": "E-MI-admin-leaderboard",
+      "status": "ok",
+      "description": "Admin sees leaderboard",
+      "expected": "Leaderboard visible with participants",
+      "observed": "10 entries: BOT 4\tOffline, BOT 3\tOffline, Supplier 1\tOnline, BOT 2\tOffline, BOT 1\tOffline",
+      "screenshot": "screenshots/emi_admin_final.png",
+      "timestamp": "2026-04-17T14:56:30.770Z"
+    }
+  ]
+}

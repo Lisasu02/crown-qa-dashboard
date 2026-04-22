@@ -1,0 +1,116 @@
+{
+  "platform": "https://dev.crown.ovh",
+  "date": "2026-04-16",
+  "auctionType": "Dutch",
+  "auctionUrl": "https://dev.crown.ovh/auctions/7e826457-01d1-4b00-9d40-c0ce091b513d",
+  "phase": "dutch-complete",
+  "runLabel": "Dutch — Complete (4 lots, all scenarios)",
+  "runOrder": 20,
+  "summary": {
+    "total": 11,
+    "ok": 11,
+    "minor": 0,
+    "blocking": 0
+  },
+  "tests": [
+    {
+      "id": "D-prebid-0-submit",
+      "status": "ok",
+      "description": "Lot 1: S1 initial pre-bid",
+      "expected": "90000",
+      "observed": "Submitted",
+      "screenshot": null,
+      "timestamp": "2026-04-16T16:38:51.690Z"
+    },
+    {
+      "id": "D-prebid-0-change",
+      "status": "ok",
+      "description": "Lot 1: S1 changed pre-bid",
+      "expected": "90000 → 81000",
+      "observed": "Changed",
+      "screenshot": null,
+      "timestamp": "2026-04-16T16:38:56.593Z"
+    },
+    {
+      "id": "D-prebids",
+      "status": "ok",
+      "description": "All pre-bids submitted",
+      "expected": "8+ pre-bids (2 suppliers x 4 lots + 1 change)",
+      "observed": "Configured",
+      "screenshot": null,
+      "timestamp": "2026-04-16T16:40:25.968Z"
+    },
+    {
+      "id": "D-UC1",
+      "status": "ok",
+      "description": "Lot 1: S1 rank #1 (pre-bid)",
+      "expected": "S1 #1",
+      "observed": "rank=1, price=81,000",
+      "screenshot": "screenshots/dc_lot1_supplier_end.png",
+      "timestamp": "2026-04-16T16:41:05.153Z"
+    },
+    {
+      "id": "D-UC2",
+      "status": "ok",
+      "description": "Lot 2: S1 rank #1 (live bid)",
+      "expected": "S1 #1",
+      "observed": "rank=1, price=100,000",
+      "screenshot": "screenshots/dc_lot2_supplier_end.png",
+      "timestamp": "2026-04-16T16:42:29.316Z"
+    },
+    {
+      "id": "D-UC3",
+      "status": "ok",
+      "description": "Lot 3: S1 rank #1 (tie)",
+      "expected": "S1 #1",
+      "observed": "rank=1, price=85,000",
+      "screenshot": "screenshots/dc_lot3_supplier_end.png",
+      "timestamp": "2026-04-16T16:44:09.789Z"
+    },
+    {
+      "id": "D-UC4",
+      "status": "ok",
+      "description": "Lot 4: S1 NOT #1 (S2 wins)",
+      "expected": "S1 no rank",
+      "observed": "rank=null, noRank=true, admin=undefined",
+      "screenshot": "screenshots/dc_lot4_supplier_end.png",
+      "timestamp": "2026-04-16T16:45:14.198Z"
+    },
+    {
+      "id": "D-XV-Lot1",
+      "status": "ok",
+      "description": "Lot 1: Cross-view S1 wins",
+      "expected": "Supplier #1 + log + admin confirms",
+      "observed": "S: rank=1 log=true | A: Supplier 1",
+      "screenshot": null,
+      "timestamp": "2026-04-16T16:45:44.632Z"
+    },
+    {
+      "id": "D-XV-Lot2",
+      "status": "ok",
+      "description": "Lot 2: Cross-view S1 wins",
+      "expected": "Supplier #1 + log + admin confirms",
+      "observed": "S: rank=1 log=true | A: Supplier 1",
+      "screenshot": null,
+      "timestamp": "2026-04-16T16:45:54.984Z"
+    },
+    {
+      "id": "D-XV-Lot3",
+      "status": "ok",
+      "description": "Lot 3: Cross-view S1 wins",
+      "expected": "Supplier #1 + log + admin confirms",
+      "observed": "S: rank=1 log=true | A: Supplier 1",
+      "screenshot": null,
+      "timestamp": "2026-04-16T16:46:05.150Z"
+    },
+    {
+      "id": "D-XV-Lot4",
+      "status": "ok",
+      "description": "Lot 4: Cross-view S1 loses",
+      "expected": "Supplier no rank + admin different winner",
+      "observed": "S: noRank=true log=false | A: Supplier 2",
+      "screenshot": null,
+      "timestamp": "2026-04-16T16:46:15.314Z"
+    }
+  ]
+}

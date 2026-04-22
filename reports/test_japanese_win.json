@@ -1,0 +1,125 @@
+{
+  "platform": "https://app.crown-procurement.com",
+  "date": "2026-04-17",
+  "auctionType": "Japanese",
+  "auctionUrl": "https://app.crown-procurement.com/auctions/27ae7cbd-0d38-4c6d-baa1-42ef5a6fd368",
+  "phase": "japanese-win-multilot",
+  "runLabel": "Japanese — Win multilot (3 lots, S1+S2)",
+  "runOrder": 35,
+  "summary": {
+    "total": 12,
+    "ok": 11,
+    "minor": 1,
+    "blocking": 0
+  },
+  "tests": [
+    {
+      "id": "JPW-L1-prebid-submit",
+      "status": "ok",
+      "description": "Lot 1: S1 submits pre-bid (99,000)",
+      "expected": "Submitted",
+      "observed": "true",
+      "screenshot": null,
+      "timestamp": "2026-04-17T13:04:30.156Z"
+    },
+    {
+      "id": "JPW-L1-prebid-improve",
+      "status": "ok",
+      "description": "Lot 1: S1 improves pre-bid (95,000)",
+      "expected": "Improved",
+      "observed": "true",
+      "screenshot": null,
+      "timestamp": "2026-04-17T13:04:35.573Z"
+    },
+    {
+      "id": "JPW-L1-admin-delete",
+      "status": "ok",
+      "description": "Lot 1: Admin deletes S1 last bid",
+      "expected": "Deleted",
+      "observed": "true",
+      "screenshot": null,
+      "timestamp": "2026-04-17T13:04:46.107Z"
+    },
+    {
+      "id": "JPW-L1-S2-prebid",
+      "status": "ok",
+      "description": "Lot 1: S2 pre-bid 100,000 via admin",
+      "expected": "Submitted",
+      "observed": "true",
+      "screenshot": null,
+      "timestamp": "2026-04-17T13:04:56.021Z"
+    },
+    {
+      "id": "JPW-L2-S1-prebid",
+      "status": "ok",
+      "description": "Lot 2: S1 pre-bid 100,000",
+      "expected": "Submitted",
+      "observed": "true",
+      "screenshot": null,
+      "timestamp": "2026-04-17T13:05:04.453Z"
+    },
+    {
+      "id": "JPW-L2-S2-prebid",
+      "status": "ok",
+      "description": "Lot 2: S2 pre-bid 100,000 via admin",
+      "expected": "Submitted",
+      "observed": "true",
+      "screenshot": null,
+      "timestamp": "2026-04-17T13:05:20.540Z"
+    },
+    {
+      "id": "JPW-L3-S1-prebid",
+      "status": "ok",
+      "description": "Lot 3: S1 pre-bid 100,000 (first)",
+      "expected": "Submitted first",
+      "observed": "true",
+      "screenshot": null,
+      "timestamp": "2026-04-17T13:05:28.970Z"
+    },
+    {
+      "id": "JPW-L3-S2-prebid",
+      "status": "ok",
+      "description": "Lot 3: S2 pre-bid 100,000 (after S1 — tie)",
+      "expected": "Submitted second",
+      "observed": "true",
+      "screenshot": null,
+      "timestamp": "2026-04-17T13:05:45.031Z"
+    },
+    {
+      "id": "JPW-L1-rank",
+      "status": "ok",
+      "description": "Lot 1: S1 rank #1 (win at pre-bid via Leave click)",
+      "expected": "S1 rank #1",
+      "observed": "rank=1, modal=",
+      "screenshot": "screenshots/jpw_l1_modal.png",
+      "timestamp": "2026-04-17T13:07:37.190Z"
+    },
+    {
+      "id": "JPW-L2-rank",
+      "status": "ok",
+      "description": "Lot 2: S1 rank #1 (win via live bid)",
+      "expected": "S1 rank #1",
+      "observed": "rank=1",
+      "screenshot": "screenshots/jpw_l2_modal.png",
+      "timestamp": "2026-04-17T13:07:52.276Z"
+    },
+    {
+      "id": "JPW-L3-rank",
+      "status": "ok",
+      "description": "Lot 3: S1 rank #1 (tie — first submitted)",
+      "expected": "S1 rank #1 (tie rule)",
+      "observed": "rank=1",
+      "screenshot": "screenshots/jpw_l3_modal.png",
+      "timestamp": "2026-04-17T13:07:54.360Z"
+    },
+    {
+      "id": "JPW-coherence",
+      "status": "minor_bug",
+      "description": "Admin log: S1 wins all 3 lots",
+      "expected": "3x \"Supplier 1 finished with rank 1\"",
+      "observed": "log winners: Supplier 1",
+      "screenshot": "screenshots/jpw_admin_final.png",
+      "timestamp": "2026-04-17T13:08:01.720Z"
+    }
+  ]
+}

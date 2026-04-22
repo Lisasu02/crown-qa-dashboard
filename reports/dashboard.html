@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CROWN QA Test Tracker</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif; background: #f8f9fa; color: #1a1a2e; display: flex; min-height: 100vh; }
+
+  /* Sidebar */
+  .sidebar { width: 220px; background: #1a1a2e; color: #fff; padding: 24px 0; flex-shrink: 0; position: fixed; height: 100vh; overflow-y: auto; }
+  .sidebar-logo { padding: 0 24px 32px; font-size: 22px; font-weight: 700; letter-spacing: 2px; }
+  .sidebar-logo .crown-w { color: #f0b429; }
+  .sidebar-section { padding: 24px 24px 8px; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #4a4e69; }
+  .sidebar-nav { list-style: none; }
+  .sidebar-nav li { padding: 10px 24px; font-size: 14px; color: #8b8fa3; cursor: pointer; display: flex; align-items: center; gap: 10px; border-left: 3px solid transparent; }
+  .sidebar-nav li.active { background: rgba(240,180,41,0.1); color: #f0b429; border-left-color: #f0b429; }
+
+  /* Main */
+  .main { margin-left: 220px; flex: 1; padding: 32px 40px; max-width: calc(100vw - 220px); }
+  .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+  .page-header h1 { font-size: 24px; font-weight: 600; }
+  .page-header .meta { font-size: 13px; color: #6c757d; }
+
+  /* Bugs Panel (top) */
+  .bugs-panel { background: #fff; border: 1px solid #ffcdd2; border-left: 4px solid #dc3545; border-radius: 12px; padding: 20px; margin-bottom: 24px; }
+  .bugs-panel.collapsed .bugs-panel-body { display: none; }
+  .bugs-panel-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+  .bugs-panel-header h2 { font-size: 16px; font-weight: 600; color: #1a1a2e; display: flex; align-items: center; gap: 10px; }
+  .bugs-panel-header .bug-counts { display: flex; gap: 8px; }
+  .bugs-panel-body { margin-top: 16px; }
+  .bug-card { display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: start; padding: 14px; background: #fafafa; border: 1px solid #e9ecef; border-radius: 8px; margin-bottom: 10px; }
+  .bug-card:last-child { margin-bottom: 0; }
+  .bug-card.severity-block { border-left: 3px solid #dc3545; }
+  .bug-card.severity-minor { border-left: 3px solid #ffc107; }
+  .bug-card .sev-tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+  .bug-card.severity-block .sev-tag { background: #ffebee; color: #c62828; }
+  .bug-card.severity-minor .sev-tag { background: #fff8e1; color: #f57f17; }
+  .bug-card .bug-title { font-weight: 600; font-size: 14px; margin-bottom: 6px; }
+  .bug-card .bug-meta { font-size: 12px; color: #6c757d; margin-bottom: 6px; }
+  .bug-card .bug-detail { font-size: 12px; color: #495057; line-height: 1.4; }
+  .bug-card .bug-detail strong { color: #1a1a2e; }
+  .bug-card .bug-jump { background: none; border: 1px solid #dee2e6; border-radius: 6px; padding: 4px 10px; font-size: 12px; cursor: pointer; color: #1565c0; white-space: nowrap; }
+  .bug-card .bug-jump:hover { background: #e3f2fd; }
+  .bug-thumb { width: 80px; height: 50px; object-fit: cover; border-radius: 4px; cursor: pointer; border: 1px solid #e9ecef; }
+  .toggle-arrow { font-size: 12px; color: #6c757d; transition: transform 0.2s; }
+  .bugs-panel.collapsed .toggle-arrow { transform: rotate(-90deg); }
+
+  /* Filters */
+  .filters { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; align-items: center; }
+  .filter-group { display: flex; align-items: center; gap: 6px; }
+  .filter-label { font-size: 12px; font-weight: 600; color: #6c757d; text-transform: uppercase; letter-spacing: 0.5px; }
+  .filter-chips { display: flex; gap: 4px; }
+  .chip { padding: 6px 14px; border-radius: 20px; border: 1px solid #dee2e6; background: #fff; cursor: pointer; font-size: 13px; color: #495057; user-select: none; }
+  .chip:hover { border-color: #f0b429; }
+  .chip.active { background: #1a1a2e; border-color: #1a1a2e; color: #fff; }
+  .filter-sep { width: 1px; height: 28px; background: #dee2e6; margin: 0 8px; }
+  select.filter-select { padding: 6px 12px; border-radius: 8px; border: 1px solid #dee2e6; background: #fff; font-size: 13px; color: #495057; cursor: pointer; }
+  .toggle-bugs { margin-left: auto; display: flex; align-items: center; gap: 6px; font-size: 13px; color: #495057; cursor: pointer; user-select: none; }
+  .toggle-bugs input { cursor: pointer; }
+
+  /* Summary */
+  .summary-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+  .scard { background: #fff; border: 1px solid #e9ecef; border-radius: 12px; padding: 20px; text-align: center; }
+  .scard .num { font-size: 32px; font-weight: 700; }
+  .scard .lbl { font-size: 12px; color: #6c757d; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+  .scard.s-total .num { color: #1a1a2e; }
+  .scard.s-pass .num { color: #28a745; }
+  .scard.s-minor .num { color: #ffc107; }
+  .scard.s-block .num { color: #dc3545; }
+  .progress-bar { height: 6px; background: #e9ecef; border-radius: 3px; margin-bottom: 24px; overflow: hidden; display: flex; }
+  .progress-bar .p-ok { background: #28a745; }
+  .progress-bar .p-minor { background: #ffc107; }
+  .progress-bar .p-block { background: #dc3545; }
+
+  /* Runs table */
+  .runs-table { width: 100%; border-collapse: separate; border-spacing: 0; background: #fff; border-radius: 12px; border: 1px solid #e9ecef; overflow: hidden; margin-bottom: 24px; }
+  .runs-table th { background: #f8f9fa; padding: 12px 16px; text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #6c757d; border-bottom: 1px solid #e9ecef; font-weight: 600; }
+  .runs-table td { padding: 14px 16px; border-bottom: 1px solid #f1f3f5; font-size: 14px; vertical-align: middle; }
+  .runs-table tr:last-child td { border-bottom: none; }
+  .runs-table tr { cursor: pointer; }
+  .runs-table tbody tr:hover { background: #f8f9fa; }
+  .runs-table tbody tr.selected { background: #fff8e1; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+  .badge-english { background: #e3f2fd; color: #1565c0; }
+  .badge-dutch { background: #fce4ec; color: #c62828; }
+  .score { font-weight: 700; font-size: 14px; }
+  .score-perfect { color: #2e7d32; }
+  .score-partial { color: #f57f17; }
+  .score-fail { color: #c62828; }
+
+  /* Detail panel */
+  .detail-panel { background: #fff; border: 1px solid #e9ecef; border-radius: 12px; padding: 24px; margin-bottom: 24px; display: none; }
+  .detail-panel.visible { display: block; }
+  .detail-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+  .detail-header h2 { font-size: 18px; font-weight: 600; }
+  .detail-header .close-btn { background: none; border: 1px solid #dee2e6; border-radius: 8px; padding: 6px 12px; cursor: pointer; font-size: 13px; color: #6c757d; }
+  .detail-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 20px; padding: 16px; background: #f8f9fa; border-radius: 8px; }
+  .detail-info dt { font-size: 11px; color: #6c757d; text-transform: uppercase; letter-spacing: 0.5px; }
+  .detail-info dd { font-size: 14px; font-weight: 500; margin-top: 2px; }
+
+  /* Test cards (enriched) */
+  .test-list { display: flex; flex-direction: column; gap: 8px; }
+  .test-card { background: #fff; border: 1px solid #e9ecef; border-radius: 8px; padding: 14px 16px; transition: border-color 0.15s; }
+  .test-card:hover { border-color: #dee2e6; }
+  .test-card.status-ok { border-left: 3px solid #28a745; }
+  .test-card.status-minor { border-left: 3px solid #ffc107; background: #fffdf5; }
+  .test-card.status-block { border-left: 3px solid #dc3545; background: #fff5f5; }
+  .test-card-header { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+  .test-card-id { font-weight: 700; font-size: 13px; color: #1a1a2e; font-family: ui-monospace, monospace; background: #f1f3f5; padding: 2px 6px; border-radius: 4px; }
+  .test-card-title { flex: 1; font-size: 14px; font-weight: 500; }
+  .test-card-status { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 3px 10px; border-radius: 12px; }
+  .status-ok .test-card-status { background: #e8f5e9; color: #2e7d32; }
+  .status-minor .test-card-status { background: #fff8e1; color: #f57f17; }
+  .status-block .test-card-status { background: #ffebee; color: #c62828; }
+  .test-card-toggle { font-size: 10px; color: #6c757d; transition: transform 0.2s; }
+  .test-card.expanded .test-card-toggle { transform: rotate(90deg); }
+  .test-card-body { display: none; margin-top: 14px; padding-top: 14px; border-top: 1px solid #f1f3f5; }
+  .test-card.expanded .test-card-body { display: block; }
+  .test-card-body .row { display: grid; grid-template-columns: 100px 1fr; gap: 12px; font-size: 13px; margin-bottom: 8px; }
+  .test-card-body .row .label { color: #6c757d; font-weight: 600; text-transform: uppercase; font-size: 10px; letter-spacing: 0.5px; padding-top: 2px; }
+  .test-card-body .row .value { color: #1a1a2e; line-height: 1.5; word-break: break-word; }
+  .test-card-body .row .value.obs { color: #c62828; }
+  .test-card.status-ok .test-card-body .row .value.obs { color: #2e7d32; }
+  .test-card-screenshot { margin-top: 12px; }
+  .test-card-screenshot img { max-width: 280px; max-height: 180px; border: 1px solid #e9ecef; border-radius: 6px; cursor: pointer; display: block; }
+  .test-card-screenshot .caption { font-size: 11px; color: #6c757d; margin-top: 4px; }
+
+  /* Screenshot modal */
+  .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center; padding: 40px; }
+  .modal-overlay.visible { display: flex; }
+  .modal-overlay img { max-width: 100%; max-height: 100%; border-radius: 8px; }
+  .modal-close { position: absolute; top: 20px; right: 30px; background: #fff; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 20px; font-weight: 700; color: #1a1a2e; }
+
+  .footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid #e9ecef; color: #adb5bd; font-size: 12px; text-align: center; }
+</style>
+</head>
+<body>
+
+<!-- Screenshot modal -->
+<div class="modal-overlay" id="screenshot-modal" onclick="closeModal()">
+  <button class="modal-close" onclick="closeModal()">×</button>
+  <img id="modal-img" src="" alt="">
+</div>
+
+<nav class="sidebar">
+  <div class="sidebar-logo">CR<span class="crown-w">O</span>WN</div>
+  <div class="sidebar-section">Navigation</div>
+  <ul class="sidebar-nav"><li class="active">Test Tracker</li></ul>
+</nav>
+
+<div class="main">
+  <div class="page-header">
+    <h1>QA Test Tracker</h1>
+    <div class="meta" id="header-meta"></div>
+  </div>
+
+  <!-- Bugs Panel -->
+  <div class="bugs-panel" id="bugs-panel">
+    <div class="bugs-panel-header" onclick="toggleBugsPanel()">
+      <h2>
+        <span>🐛</span>
+        <span>Active Bugs</span>
+        <span class="bug-counts" id="bug-counts"></span>
+      </h2>
+      <span class="toggle-arrow">▼</span>
+    </div>
+    <div class="bugs-panel-body" id="bugs-panel-body"></div>
+  </div>
+
+  <!-- Filters -->
+  <div class="filters">
+    <div class="filter-group"><span class="filter-label">Type</span><div class="filter-chips" id="filter-type"></div></div>
+    <div class="filter-sep"></div>
+    <div class="filter-group"><span class="filter-label">Date</span><div class="filter-chips" id="filter-date"></div></div>
+    <div class="filter-sep"></div>
+    <div class="filter-group"><span class="filter-label">Test</span><select class="filter-select" id="filter-test"><option value="">All tests</option></select></div>
+    <label class="toggle-bugs"><input type="checkbox" id="bugs-only" onchange="toggleBugsOnly(this)"> Show bugs only</label>
+  </div>
+
+  <!-- Summary -->
+  <div class="summary-cards" id="summary-cards"></div>
+  <div class="progress-bar" id="progress-bar"></div>
+
+  <!-- Runs table -->
+  <table class="runs-table">
+    <thead><tr><th>Run</th><th>Type</th><th>Platform</th><th>Auction</th><th>Date</th><th>Score</th><th>Pass</th><th>Minor</th><th>Blocking</th></tr></thead>
+    <tbody id="runs-tbody"></tbody>
+  </table>
+
+  <!-- Detail panel -->
+  <div class="detail-panel" id="detail-panel">
+    <div class="detail-header"><h2 id="detail-title"></h2><button class="close-btn" onclick="closeDetail()">Close</button></div>
+    <div class="detail-info" id="detail-info"></div>
+    <div class="test-list" id="detail-tests"></div>
+  </div>
+
+  <div class="footer">CROWN QA Test Tracker</div>
+</div>
+
+<script>
+const reports = [{"platform":"https://app.crown-procurement.com","date":"2026-04-17","auctionType":"English","auctionUrl":"https://app.crown-procurement.com/auctions/c2f93259-3d23-4c09-a503-f1c16220faa8","phase":"english-handicap-bug","runLabel":"🐛 BUG — Dynamic Handicap not shown for all suppliers","runOrder":27,"summary":{"total":1,"ok":0,"minor":0,"blocking":1},"tests":[{"id":"BUG-DYN-HC-DISPLAY","status":"blocking_bug","description":"Dynamic Handicap configured for all suppliers in builder, but only Supplier 1 shows it on event page","expected":"All 5 suppliers (S1 + Bot 1-4) should display their Dynamic Handicap value (+10) in the Bid table on the event page, matching the builder configuration","observed":"Only Supplier 1 has the Dynamic Handicap applied/visible in the Bid table. Bots 1-4 don't show their +10 dynamic handicap despite being configured in the builder","screenshot":"../screenshots/ehc_bid_table.png","timestamp":"2026-04-17T10:00:00.000Z"}],"_filename":"bug_dynamic_handicap_display.json"},{"platform":"https://dev.crown.ovh","date":"2026-04-17","auctionType":"Dutch","auctionUrl":"https://dev.crown.ovh/auctions/b5b5b3ba-312b-436a-bec7-4c2ac725584f","phase":"dutch-2lots","runLabel":"Dutch — 2 Lots (Win Live / Lose)","runOrder":14,"summary":{"total":8,"ok":8,"minor":0,"blocking":0},"tests":[{"id":"D-prebid-submit","status":"ok","description":"Lot 1: S1 initial pre-bid submitted","expected":"Pre-bid 90000","observed":"Submitted at 90000","screenshot":"../screenshots/dutch2_lot1_s1_initial_prebid.png","timestamp":"2026-04-17T16:26:51.649Z"},{"id":"D-prebid-change","status":"ok","description":"Lot 1: S1 changed pre-bid","expected":"Changed to 85000","observed":"Changed from 90000 to 85000","screenshot":"../screenshots/dutch2_lot1_s1_changed_prebid.png","timestamp":"2026-04-17T16:26:56.536Z"},{"id":"D-prebids","status":"ok","description":"All pre-bids submitted","expected":"4 pre-bids (incl. 1 change)","observed":"Configured","screenshot":null,"timestamp":"2026-04-17T16:27:32.582Z"},{"id":"D-UC1-rank","status":"ok","description":"Lot 1: S1 rank #1 (tie, first submitted)","expected":"S1 rank #1","observed":"rank=1, modal={\"rank\":1,\"price\":\"85,000\",\"lot\":\"\"}","screenshot":"../screenshots/dutch2_lot1_supplier_end.png","timestamp":"2026-04-17T16:29:10.645Z"},{"id":"D-UC2-rank","status":"ok","description":"Lot 2: S1 rank #1 (live bid)","expected":"S1 rank #1","observed":"rank=1, modal={\"rank\":1,\"price\":\"82,000\",\"lot\":\"\"}","screenshot":"../screenshots/dutch2_lot2_supplier_end.png","timestamp":"2026-04-17T16:32:11.009Z"},{"id":"D-XV-Lot1","status":"ok","description":"Lot 1: Cross-view — S1 wins","expected":"Supplier: rank #1 + log confirms | Admin: Supplier 1 rank 1","observed":"Supplier: rank=1, logRank=true | Admin winner: Supplier 1","screenshot":"../screenshots/dutch2_verify_Lot_1_supplier.png","timestamp":"2026-04-17T16:32:38.657Z"},{"id":"D-XV-Lot2","status":"ok","description":"Lot 2: Cross-view — S1 wins","expected":"Supplier: rank #1 + log confirms | Admin: Supplier 1 rank 1","observed":"Supplier: rank=1, logRank=true | Admin winner: Supplier 1","screenshot":"../screenshots/dutch2_verify_Lot_2_supplier.png","timestamp":"2026-04-17T16:32:48.972Z"},{"id":"D-final","status":"ok","description":"All lots closed","expected":"2x Closed","observed":"Closed count: 3","screenshot":"../screenshots/dutch2_admin_final.png","timestamp":"2026-04-17T16:32:49.020Z"}],"_filename":"test_dutch_2lots.json"},{"platform":"https://dev.crown.ovh","date":"2026-04-16","auctionType":"Dutch","auctionUrl":"https://dev.crown.ovh/auctions/7e826457-01d1-4b00-9d40-c0ce091b513d","phase":"dutch-4-usecases-full","runLabel":"Dutch — 4 Use Cases Full (Win/Live/Tie/Lose)","runOrder":13,"summary":{"total":10,"ok":8,"minor":2,"blocking":0},"tests":[{"id":"D-prebids","status":"ok","description":"All pre-bids submitted","expected":"12 pre-bids","observed":"12 pre-bids configured","screenshot":null,"timestamp":"2026-04-16T13:27:05.175Z"},{"id":"D-UC1-rank","status":"ok","description":"Lot 1: S1 rank #1 (lowest pre-bid)","expected":"S1 rank #1","observed":"rank=1, noRank=false","screenshot":"../screenshots/dutch_lot1_supplier_end.png","timestamp":"2026-04-16T13:27:45.982Z"},{"id":"D-UC1-log","status":"ok","description":"Lot 1: Activity log visible","expected":"Log present","observed":"found=true, 10 entries","screenshot":"../screenshots/dutch_lot1_admin_end.png","timestamp":"2026-04-16T13:27:45.982Z"},{"id":"D-UC2-rank","status":"ok","description":"Lot 2: S1 rank #1 (won in live)","expected":"S1 rank #1","observed":"rank=1, noRank=false","screenshot":"../screenshots/dutch_lot2_supplier_end.png","timestamp":"2026-04-16T13:28:30.481Z"},{"id":"D-UC2-log","status":"ok","description":"Lot 2: Activity log visible","expected":"Log present","observed":"found=true, 10 entries","screenshot":"../screenshots/dutch_lot2_admin_end.png","timestamp":"2026-04-16T13:28:30.481Z"},{"id":"D-UC3-rank","status":"ok","description":"Lot 3: S1 rank #1 (first to submit tie)","expected":"S1 rank #1","observed":"rank=1, noRank=false","screenshot":"../screenshots/dutch_lot3_supplier_end.png","timestamp":"2026-04-16T13:29:15.055Z"},{"id":"D-UC3-log","status":"ok","description":"Lot 3: Activity log visible","expected":"Log present","observed":"found=true, 10 entries","screenshot":"../screenshots/dutch_lot3_admin_end.png","timestamp":"2026-04-16T13:29:15.055Z"},{"id":"D-UC4-rank","status":"minor_bug","description":"Lot 4: S1 NOT #1 (S2 wins)","expected":"S1 no rank or >1","observed":"rank=1, noRank=false","screenshot":"../screenshots/dutch_lot4_supplier_end.png","timestamp":"2026-04-16T13:29:59.592Z"},{"id":"D-UC4-log","status":"ok","description":"Lot 4: Activity log visible","expected":"Log present","observed":"found=true, 10 entries","screenshot":"../screenshots/dutch_lot4_admin_end.png","timestamp":"2026-04-16T13:29:59.592Z"},{"id":"D-final","status":"minor_bug","description":"All 4 lots closed","expected":"4x Closed","observed":"Closed count: 1","screenshot":"../screenshots/dutch_full_admin_final.png","timestamp":"2026-04-16T13:30:07.008Z"}],"_filename":"test_dutch_4usecases_full.json"},{"platform":"https://dev.crown.ovh","date":"2026-04-16","auctionType":"Dutch","auctionUrl":"https://dev.crown.ovh/auctions/7e826457-01d1-4b00-9d40-c0ce091b513d","phase":"dutch-4-usecases-live","runLabel":"Dutch — 4 Use Cases Live (Win/Live/Tie/Lose)","runOrder":11,"summary":{"total":9,"ok":7,"minor":2,"blocking":0},"tests":[{"id":"D-UC1-rank","status":"ok","description":"Lot 1: S1 sees rank #1","expected":"S1 rank #1","observed":"S1 rank: #1, noRank: false","screenshot":"../screenshots/dutch_lot1_supplier_result.png","timestamp":"2026-04-16T12:22:59.652Z"},{"id":"D-UC1-log","status":"ok","description":"Lot 1: Activity log present on admin","expected":"Activity log visible","observed":"Log found: true, entries: 20","screenshot":"../screenshots/dutch_lot1_admin_result.png","timestamp":"2026-04-16T12:22:59.657Z"},{"id":"D-UC2-rank","status":"minor_bug","description":"Lot 2: S1 sees rank #1 after accepting in live","expected":"S1 rank #1","observed":"S1 rank: no rank, noRank: false","screenshot":"../screenshots/dutch_lot2_supplier_result.png","timestamp":"2026-04-16T12:23:38.389Z"},{"id":"D-UC2-log","status":"ok","description":"Lot 2: Activity log present on admin","expected":"Activity log visible","observed":"Log found: true, entries: 20","screenshot":"../screenshots/dutch_lot2_admin_result.png","timestamp":"2026-04-16T12:23:38.389Z"},{"id":"D-UC3-rank","status":"minor_bug","description":"Lot 3: S1 sees rank #1 (first to submit tied price)","expected":"S1 rank #1","observed":"S1 rank: no rank, noRank: false","screenshot":"../screenshots/dutch_lot3_supplier_result.png","timestamp":"2026-04-16T12:24:00.488Z"},{"id":"D-UC3-log","status":"ok","description":"Lot 3: Activity log present on admin","expected":"Activity log visible","observed":"Log found: true, entries: 20","screenshot":"../screenshots/dutch_lot3_admin_result.png","timestamp":"2026-04-16T12:24:00.488Z"},{"id":"D-UC4-rank","status":"ok","description":"Lot 4: S1 does NOT see rank #1 (S2 wins)","expected":"S1 sees \"rank not displayed\" or rank > 1","observed":"S1 rank: no rank displayed, noRank: false","screenshot":"../screenshots/dutch_lot4_supplier_result.png","timestamp":"2026-04-16T12:24:22.976Z"},{"id":"D-UC4-log","status":"ok","description":"Lot 4: Activity log present on admin","expected":"Activity log visible","observed":"Log found: true, entries: 20","screenshot":"../screenshots/dutch_lot4_admin_result.png","timestamp":"2026-04-16T12:24:22.976Z"},{"id":"D-final","status":"ok","description":"Auction fully closed","expected":"Status: closed","observed":"Closed: true","screenshot":"../screenshots/dutch_live_admin_final.png","timestamp":"2026-04-16T12:24:29.764Z"}],"_filename":"test_dutch_4usecases_live.json"},{"platform":"https://dev.crown.ovh","date":"2026-04-16","auctionType":"Dutch","auctionUrl":"https://dev.crown.ovh/auctions/7e826457-01d1-4b00-9d40-c0ce091b513d","phase":"dutch-complete","runLabel":"Dutch — Complete (4 lots, all scenarios)","runOrder":20,"summary":{"total":11,"ok":11,"minor":0,"blocking":0},"tests":[{"id":"D-prebid-0-submit","status":"ok","description":"Lot 1: S1 initial pre-bid","expected":"90000","observed":"Submitted","screenshot":null,"timestamp":"2026-04-16T16:38:51.690Z"},{"id":"D-prebid-0-change","status":"ok","description":"Lot 1: S1 changed pre-bid","expected":"90000 → 81000","observed":"Changed","screenshot":null,"timestamp":"2026-04-16T16:38:56.593Z"},{"id":"D-prebids","status":"ok","description":"All pre-bids submitted","expected":"8+ pre-bids (2 suppliers x 4 lots + 1 change)","observed":"Configured","screenshot":null,"timestamp":"2026-04-16T16:40:25.968Z"},{"id":"D-UC1","status":"ok","description":"Lot 1: S1 rank #1 (pre-bid)","expected":"S1 #1","observed":"rank=1, price=81,000","screenshot":"../screenshots/dc_lot1_supplier_end.png","timestamp":"2026-04-16T16:41:05.153Z"},{"id":"D-UC2","status":"ok","description":"Lot 2: S1 rank #1 (live bid)","expected":"S1 #1","observed":"rank=1, price=100,000","screenshot":"../screenshots/dc_lot2_supplier_end.png","timestamp":"2026-04-16T16:42:29.316Z"},{"id":"D-UC3","status":"ok","description":"Lot 3: S1 rank #1 (tie)","expected":"S1 #1","observed":"rank=1, price=85,000","screenshot":"../screenshots/dc_lot3_supplier_end.png","timestamp":"2026-04-16T16:44:09.789Z"},{"id":"D-UC4","status":"ok","description":"Lot 4: S1 NOT #1 (S2 wins)","expected":"S1 no rank","observed":"rank=null, noRank=true, admin=undefined","screenshot":"../screenshots/dc_lot4_supplier_end.png","timestamp":"2026-04-16T16:45:14.198Z"},{"id":"D-XV-Lot1","status":"ok","description":"Lot 1: Cross-view S1 wins","expected":"Supplier #1 + log + admin confirms","observed":"S: rank=1 log=true | A: Supplier 1","screenshot":null,"timestamp":"2026-04-16T16:45:44.632Z"},{"id":"D-XV-Lot2","status":"ok","description":"Lot 2: Cross-view S1 wins","expected":"Supplier #1 + log + admin confirms","observed":"S: rank=1 log=true | A: Supplier 1","screenshot":null,"timestamp":"2026-04-16T16:45:54.984Z"},{"id":"D-XV-Lot3","status":"ok","description":"Lot 3: Cross-view S1 wins","expected":"Supplier #1 + log + admin confirms","observed":"S: rank=1 log=true | A: Supplier 1","screenshot":null,"timestamp":"2026-04-16T16:46:05.150Z"},{"id":"D-XV-Lot4","status":"ok","description":"Lot 4: Cross-view S1 loses","expected":"Supplier no rank + admin different winner","observed":"S: noRank=true log=false | A: Supplier 2","screenshot":null,"timestamp":"2026-04-16T16:46:15.314Z"}],"_filename":"test_dutch_complete.json"},{"platform":"https://dev.crown.ovh","date":"2026-04-16","auctionType":"Dutch","auctionUrl":"https://dev.crown.ovh/auctions/3f88be2c-88f7-4b6f-a582-966be11ec711","phase":"dutch-no-winner","runLabel":"Dutch — No Winner (single lot)","runOrder":21,"summary":{"total":7,"ok":7,"minor":0,"blocking":0},"tests":[{"id":"D-NW-prebid-submit","status":"ok","description":"S1 submits pre-bid (90,000)","expected":"Pre-bid submitted","observed":"Submitted: true","screenshot":"../screenshots/dnw_s1_prebid.png","timestamp":"2026-04-16T16:57:49.536Z"},{"id":"D-NW-prebid-delete","status":"ok","description":"Admin deletes S1 pre-bid","expected":"Pre-bid deleted via admin","observed":"Deleted: true","screenshot":"../screenshots/dnw_s1_prebid_deleted.png","timestamp":"2026-04-16T16:58:00.019Z"},{"id":"D-NW-remove-s3","status":"ok","description":"Admin removes Supplier 3","expected":"Supplier 3 removed","observed":"Clicked: true, S3 gone: true, Remaining: Supplier 2, Supplier 1","screenshot":"../screenshots/dnw_s3_removed.png","timestamp":"2026-04-16T16:58:10.303Z"},{"id":"D-NW-supplier-rank","status":"ok","description":"No winner: Supplier sees no rank","expected":"\"rank not displayed\" or no rank info","observed":"rankNotDisplayed=true, rank=null","screenshot":"../screenshots/dnw_supplier_end.png","timestamp":"2026-04-16T17:03:42.418Z"},{"id":"D-NW-supplier-log","status":"ok","description":"No winner: Supplier log has no rank info","expected":"No \"finished with rank\" in log","observed":"logHasRank=false, lastAction=ended","screenshot":"../screenshots/dnw_supplier_end.png","timestamp":"2026-04-16T17:03:42.418Z"},{"id":"D-NW-admin","status":"ok","description":"No winner: Admin shows no winner","expected":"Auction ended, no supplier finished rank 1","observed":"ended=true, winner=null","screenshot":"../screenshots/dnw_admin_final.png","timestamp":"2026-04-16T17:03:48.832Z"},{"id":"D-NW-closed","status":"ok","description":"No winner: Auction ended properly","expected":"Lot closed","observed":"ended=true","screenshot":"../screenshots/dnw_admin_final.png","timestamp":"2026-04-16T17:03:48.832Z"}],"_filename":"test_dutch_nowinner.json"},{"platform":"https://dev.crown.ovh","date":"2026-04-16","auctionType":"Dutch","auctionUrl":"https://dev.crown.ovh/auctions/3f88be2c-88f7-4b6f-a582-966be11ec711","phase":"dutch-single-admin","runLabel":"Dutch — Single Lot Admin + No Winner","runOrder":15,"summary":{"total":6,"ok":4,"minor":2,"blocking":0},"tests":[{"id":"D-admin-remove","status":"minor_bug","description":"Admin: Remove Supplier 3","expected":"Supplier 3 removed from participants","observed":"Removed click: true, S3 still present: true, Before: Supplier 2,Supplier 3,Supplier 1, After: Supplier 2,Supplier 3,Supplier 1","screenshot":"../screenshots/dutch_admin_after_remove.png","timestamp":"2026-04-16T15:27:22.177Z"},{"id":"D-admin-prebid","status":"ok","description":"Admin: Submit pre-bid for S2","expected":"Pre-bid submitted via admin","observed":"Submitted: true, Visible: true","screenshot":"../screenshots/dutch_admin_s2_prebid.png","timestamp":"2026-04-16T15:27:29.615Z"},{"id":"D-admin-delete-prebid","status":"ok","description":"Admin: Delete pre-bid for S2","expected":"Pre-bid deleted","observed":"Deleted: true","screenshot":"../screenshots/dutch_admin_s2_prebid_deleted.png","timestamp":"2026-04-16T15:27:32.113Z"},{"id":"D-nowinner-supplier","status":"ok","description":"No winner: Supplier sees no rank","expected":"\"rank not displayed\" or no rank","observed":"rankNotDisplayed=false, modal={\"rank\":null,\"noRank\":true}","screenshot":"../screenshots/dutch_nowinner_supplier_end.png","timestamp":"2026-04-16T15:28:34.388Z"},{"id":"D-nowinner-admin","status":"minor_bug","description":"No winner: Admin shows no winner","expected":"Auction ended, no supplier finished rank 1","observed":"ended=true, winner=Supplier 1","screenshot":"../screenshots/dutch_nowinner_admin_final.png","timestamp":"2026-04-16T15:28:41.545Z"},{"id":"D-nowinner-log","status":"ok","description":"No winner: Activity log present","expected":"Log visible","observed":"found=true, 15 entries","screenshot":"../screenshots/dutch_nowinner_admin_final.png","timestamp":"2026-04-16T15:28:41.545Z"}],"_filename":"test_dutch_single_admin.json"},{"platform":"https://app.crown-procurement.com","date":"2026-04-13","auctionType":"English","auctionUrl":"https://app.crown-procurement.com/auctions/d6447bfe-db75-40af-8022-bfa037898d8d/lots/fc08fbc5-8b3e-4cc3-84e9-30438ac47d7f","phase":"admin-panel","summary":{"total":6,"ok":5,"minor":1,"blocking":0},"tests":[{"id":"E16","status":"ok","description":"Remove bot (BOT 4) before start","expected":"BOT 4 removed from leaderboard + bids table","observed":"BOT 4 still visible: false, Confirmed: true","screenshot":"../screenshots/ap_E16_removed.png","timestamp":"2026-04-13T14:55:50.687Z"},{"id":"E13a","status":"ok","description":"Admin submit pre-bid for Supplier 1","expected":"Pre-bid submitted","observed":"Pre-bid 550 submitted for Supplier 1 via admin","screenshot":"../screenshots/ap_E13_submitted.png","timestamp":"2026-04-13T14:56:09.950Z"},{"id":"E13b","status":"ok","description":"Admin delete pre-bid for Supplier 1","expected":"Pre-bid deleted","observed":"Pre-bid deleted for Supplier 1 via admin","screenshot":"../screenshots/ap_E13_deleted.png","timestamp":"2026-04-13T14:56:14.737Z"},{"id":"E15","status":"ok","description":"Admin places bid for BOT 1 during live","expected":"Bid submitted on behalf of BOT 1","observed":"Decrement 30 submitted for BOT 1 via \"Submit pre-bid\"","screenshot":"../screenshots/ap_E15_bid.png","timestamp":"2026-04-13T14:57:21.304Z"},{"id":"E14","status":"ok","description":"Admin deletes live bid for BOT 1","expected":"Bid deleted","observed":"Last bid deleted for BOT 1","screenshot":"../screenshots/ap_E14.png","timestamp":"2026-04-13T14:57:25.586Z"},{"id":"E10b","status":"minor_bug","description":"Cross-view consistency: leaderboard vs supplier rank","expected":"Admin leaderboard rank = supplier final rank","observed":"Admin Leaderboard: S1 at #?, Supplier sees: #?, Match: null","screenshot":"../screenshots/ap_final_admin.png","timestamp":"2026-04-13T14:59:27.296Z"}],"runLabel":"Run 5 — Admin panel (E13-E16)","runOrder":5,"runTime":"16:55","_filename":"test_english_admin_panel.json"},{"platform":"https://app.crown-procurement.com","date":"2026-04-13","auctionType":"English","auctionUrl":"https://app.crown-procurement.com/auctions/d6447bfe-db75-40af-8022-bfa037898d8d/lots/fc08fbc5-8b3e-4cc3-84e9-30438ac47d7f","summary":{"total":15,"ok":13,"minor":2,"blocking":0},"tests":[{"id":"E2","status":"ok","description":"Submit pre-bid","expected":"Pre-bid registered","observed":"Pre-bid 550 submitted","screenshot":"../screenshots/t_E2.png","timestamp":"2026-04-13T12:43:57.272Z"},{"id":"E2b","status":"ok","description":"Admin after pre-bid","expected":"Log increases","observed":"Log: 1 → 6","screenshot":"../screenshots/t_E2b.png","timestamp":"2026-04-13T12:44:06.738Z"},{"id":"E3","status":"ok","description":"Improve pre-bid","expected":"Old replaced","observed":"550 → 523","screenshot":"../screenshots/t_E3.png","timestamp":"2026-04-13T12:44:10.988Z"},{"id":"E4","status":"ok","description":"Submit live bid (decrement=20)","expected":"Bid accepted","observed":"\"Submit New Bid\" clicked, decrement 20","screenshot":"../screenshots/t_E4.png","timestamp":"2026-04-13T12:45:00.656Z"},{"id":"E4c","status":"ok","description":"Admin log after live bid","expected":"Log increases","observed":"Log: 10 → 13","screenshot":"../screenshots/t_E4b.png","timestamp":"2026-04-13T12:45:03.725Z"},{"id":"E5","status":"ok","description":"Bid too small","expected":"Min error","observed":"Min error: true","screenshot":"../screenshots/t_E5.png","timestamp":"2026-04-13T12:45:05.908Z"},{"id":"E6","status":"ok","description":"Bid too large","expected":"Max error","observed":"Max error: true","screenshot":"../screenshots/t_E6.png","timestamp":"2026-04-13T12:45:08.079Z"},{"id":"E8","status":"ok","description":"Timer counts down","expected":"Timer decreasing","observed":"01:29 → 01:26","screenshot":null,"timestamp":"2026-04-13T12:45:11.083Z"},{"id":"E9","status":"ok","description":"Overtime timer reset","expected":"Timer resets to overtime value","observed":"Before: 00:25, After: 00:28, Reset: true","screenshot":null,"timestamp":"2026-04-13T12:46:16.202Z"},{"id":"E7","status":"ok","description":"Supplier final","expected":"Rank + closed","observed":"Rank: #4, Closed: true","screenshot":"../screenshots/t_E7.png","timestamp":"2026-04-13T12:47:17.081Z"},{"id":"E12","status":"ok","description":"Admin final","expected":"Leaderboard with all suppliers","observed":"Leaderboard: [Supplier 1\tOnline, Supplier 1], Closed: true","screenshot":"../screenshots/t_E12.png","timestamp":"2026-04-13T12:47:17.083Z"},{"id":"E10","status":"ok","description":"Activity log","expected":"All actions recorded","observed":"20 entries","screenshot":null,"timestamp":"2026-04-13T12:47:17.083Z"},{"id":"E10b","status":"minor_bug","description":"Cross-view consistency","expected":"Admin rank matches supplier rank","observed":"Admin Leaderboard: S1 at #1, Supplier sees: #4","screenshot":null,"timestamp":"2026-04-13T12:47:17.083Z"},{"id":"E13","status":"ok","description":"Admin panel — supplier visibility","expected":"Suppliers visible in admin panel","observed":"Suppliers visible: true","screenshot":"../screenshots/t_E13.png","timestamp":"2026-04-13T12:47:32.012Z"},{"id":"E16","status":"minor_bug","description":"Admin remove supplier (bot)","expected":"Bot removed from auction","observed":"Admin panel structure needs investigation for delete actions — noted for manual test","screenshot":"../screenshots/t_E16.png","timestamp":"2026-04-13T12:47:32.059Z"}],"runLabel":"Run 4 — E2-E16 with admin panel","runOrder":4,"runTime":"14:43","_filename":"test_english_e2_e16.json"},{"platform":"https://app.crown-procurement.com","date":"2026-04-17","auctionType":"English","auctionUrl":"https://app.crown-procurement.com/auctions/9377e92e-c9d4-4242-be72-1cfebf495ad4/lots/c8e97881-ce03-479d-a37f-45827a099edc","summary":{"total":23,"ok":20,"minor":3,"blocking":0},"tests":[{"id":"E2","status":"ok","description":"Submit pre-bid","expected":"Pre-bid registered","observed":"Pre-bid 100000 submitted","screenshot":"../screenshots/full_E2.png","timestamp":"2026-04-17T14:38:18.131Z"},{"id":"E2b","status":"ok","description":"Admin update after pre-bid","expected":"Activity log increases","observed":"Log: 1 → 10","screenshot":"../screenshots/full_E2b.png","timestamp":"2026-04-17T14:38:28.001Z"},{"id":"E3","status":"ok","description":"Improve pre-bid","expected":"Old pre-bid replaced","observed":"Pre-bid improved: 100000 → 95000","screenshot":"../screenshots/full_E3.png","timestamp":"2026-04-17T14:38:32.285Z"},{"id":"E3b","status":"ok","description":"Admin update after improve","expected":"Activity log increases","observed":"Log: 10 → 11","screenshot":null,"timestamp":"2026-04-17T14:38:42.007Z"},{"id":"E17-prebid-L2","status":"ok","description":"Pre-bid submitted on Lot 2","expected":"Pre-bid registered","observed":"Pre-bid 100000 submitted on Lot 2","screenshot":null,"timestamp":"2026-04-17T14:38:48.929Z"},{"id":"E4","status":"ok","description":"Submit live bid (decrement)","expected":"Bid accepted, rank updated","observed":"Decrement 1000 submitted, rank: #2","screenshot":"../screenshots/full_E4.png","timestamp":"2026-04-17T14:39:27.698Z"},{"id":"E4b","status":"ok","description":"Admin graph update after live bid","expected":"Graph updates in real time","observed":"Admin page captured after supplier bid","screenshot":"../screenshots/full_E4b.png","timestamp":"2026-04-17T14:39:30.779Z"},{"id":"E4c","status":"ok","description":"Admin activity log during live","expected":"Log increases after bid","observed":"Log: 13 → 15","screenshot":"../screenshots/full_E4b.png","timestamp":"2026-04-17T14:39:30.779Z"},{"id":"E4-bid2","status":"ok","description":"Normal bid #2","expected":"Bid accepted","observed":"Decrement 1000 submitted (bid #2)","screenshot":null,"timestamp":"2026-04-17T14:39:52.915Z"},{"id":"E4-bid3","status":"ok","description":"Normal bid #3","expected":"Bid accepted","observed":"Decrement 1000 submitted (bid #3)","screenshot":null,"timestamp":"2026-04-17T14:40:15.059Z"},{"id":"E5","status":"ok","description":"Bid too small","expected":"Min decrement error","observed":"Min error: true","screenshot":"../screenshots/full_E5.png","timestamp":"2026-04-17T14:40:17.153Z"},{"id":"E6","status":"ok","description":"Bid too large","expected":"Max decrement error","observed":"Max error: true","screenshot":"../screenshots/full_E6.png","timestamp":"2026-04-17T14:40:19.221Z"},{"id":"E8","status":"ok","description":"Observe auction flow","expected":"Timer counts down","observed":"Timer: 00:54 → 00:51 (decreasing: true)","screenshot":null,"timestamp":"2026-04-17T14:40:22.225Z"},{"id":"E9","status":"minor_bug","description":"Overtime bid #1 (supplier) + timer reset","expected":"Timer resets on overtime bid","observed":"Before: 31s, After: 28s","screenshot":"../screenshots/full_E12_admin.png","timestamp":"2026-04-17T14:40:46.852Z"},{"id":"E15","status":"minor_bug","description":"Admin places bid (overtime)","expected":"Input visible","observed":"Admin bid input not found","screenshot":"../screenshots/full_E12_admin.png","timestamp":"2026-04-17T14:40:46.854Z"},{"id":"E7","status":"ok","description":"Supplier final modal","expected":"Rank + recap visible","observed":"Rank: #2, Closed: true","screenshot":"../screenshots/full_E7_supplier.png","timestamp":"2026-04-17T14:41:49.632Z"},{"id":"E12","status":"ok","description":"Admin final modal","expected":"Recap of all suppliers","observed":"Leaderboard: true, Closed: true, Suppliers: Supplier 1","screenshot":"../screenshots/full_E12_admin.png","timestamp":"2026-04-17T14:41:49.633Z"},{"id":"E10","status":"ok","description":"Activity log completeness","expected":"All actions recorded","observed":"Final activity log entries: 30","screenshot":"../screenshots/full_E12_admin.png","timestamp":"2026-04-17T14:41:49.634Z"},{"id":"E10b","status":"minor_bug","description":"Cross-view consistency","expected":"Admin and supplier ranks match","observed":"Admin sees S1 rank: #?, Supplier sees rank: #2","screenshot":"../screenshots/full_E12_admin.png","timestamp":"2026-04-17T14:41:49.635Z"},{"id":"L2-bid1","status":"ok","description":"Lot 2 live bid #1","expected":"Bid accepted","observed":"Decrement 1000 on Lot 2 (bid #1)","screenshot":null,"timestamp":"2026-04-17T14:41:59.542Z"},{"id":"L2-bid2","status":"ok","description":"Lot 2 live bid #2","expected":"Bid accepted","observed":"Decrement 1000 on Lot 2 (bid #2)","screenshot":null,"timestamp":"2026-04-17T14:42:21.665Z"},{"id":"L2-bid3","status":"ok","description":"Lot 2 live bid #3","expected":"Bid accepted","observed":"Decrement 1000 on Lot 2 (bid #3)","screenshot":null,"timestamp":"2026-04-17T14:42:43.797Z"},{"id":"L2-END","status":"ok","description":"Lot 2 ended","expected":"Lot 2 end state reached","observed":"Closed: true","screenshot":null,"timestamp":"2026-04-17T14:45:14.804Z"}],"phase":"english-full-multilot","runLabel":"English Multilot 2 Lots (default) — Full E1–E17","runOrder":60,"_filename":"test_english_full.json"},{"platform":"https://app.crown-procurement.com","date":"2026-04-13","auctionType":"English","auctionUrl":"https://app.crown-procurement.com/auctions/d6447bfe-db75-40af-8022-bfa037898d8d/lots/fc08fbc5-8b3e-4cc3-84e9-30438ac47d7f","phase":"full-v2","summary":{"total":14,"ok":14,"minor":0,"blocking":0},"tests":[{"id":"E2","status":"ok","description":"Supplier submits pre-bid","expected":"Pre-bid registered","observed":"Pre-bid 550 submitted","screenshot":"../screenshots/v2_E2.png","timestamp":"2026-04-13T15:08:15.779Z"},{"id":"E2b","status":"ok","description":"Admin after pre-bid","expected":"Log increases","observed":"Log: 1 → 14","screenshot":null,"timestamp":"2026-04-13T15:08:25.876Z"},{"id":"E3","status":"ok","description":"Supplier improves pre-bid","expected":"Old replaced","observed":"550 → 523","screenshot":"../screenshots/v2_E3.png","timestamp":"2026-04-13T15:08:30.096Z"},{"id":"E13b","status":"ok","description":"Admin deletes Supplier 1 pre-bid","expected":"Pre-bid deleted","observed":"Supplier 1 pre-bid deleted via admin","screenshot":"../screenshots/v2_E13b.png","timestamp":"2026-04-13T15:08:55.066Z"},{"id":"E4","status":"ok","description":"Supplier live bid (decrement=20)","expected":"Bid accepted","observed":"Decrement 20 via \"Submit New Bid\"","screenshot":"../screenshots/v2_E4.png","timestamp":"2026-04-13T15:09:33.444Z"},{"id":"E4c","status":"ok","description":"Admin log after live bid","expected":"Log increases","observed":"Log: 17 → 19","screenshot":null,"timestamp":"2026-04-13T15:09:36.447Z"},{"id":"E5","status":"ok","description":"Bid too small","expected":"Min error","observed":"Min error: true","screenshot":"../screenshots/v2_E5.png","timestamp":"2026-04-13T15:09:38.634Z"},{"id":"E6","status":"ok","description":"Bid too large","expected":"Max error","observed":"Max error: true","screenshot":"../screenshots/v2_E6.png","timestamp":"2026-04-13T15:09:40.782Z"},{"id":"E8","status":"ok","description":"Timer counts down","expected":"Timer decreasing","observed":"01:32 → 01:29","screenshot":null,"timestamp":"2026-04-13T15:09:43.793Z"},{"id":"E9","status":"ok","description":"Overtime timer reset","expected":"Timer resets","observed":"Before: 00:25, After: 00:28, Reset: true","screenshot":null,"timestamp":"2026-04-13T15:10:51.970Z"},{"id":"E7","status":"ok","description":"Supplier final","expected":"Rank visible","observed":"Rank: #4, Closed: true","screenshot":"../screenshots/v2_E7.png","timestamp":"2026-04-13T15:11:54.625Z"},{"id":"E12","status":"ok","description":"Admin final leaderboard","expected":"All suppliers ranked","observed":"Leaderboard: [BOT 3, BOT 2, BOT 1, Supplier 1, BOT 4, BOT 3, BOT 2, BOT 1, Supplier 1, BOT 4]","screenshot":"../screenshots/v2_E12.png","timestamp":"2026-04-13T15:11:54.626Z"},{"id":"E10","status":"ok","description":"Activity log","expected":"All recorded","observed":"26 entries","screenshot":null,"timestamp":"2026-04-13T15:11:54.626Z"},{"id":"E10b","status":"ok","description":"Cross-view: leaderboard vs supplier rank","expected":"Ranks match","observed":"Admin: S1 at #4, Supplier: #4, Match: true","screenshot":null,"timestamp":"2026-04-13T15:11:54.627Z"}],"runLabel":"Run 6 — Full suite FINAL (14/14 ✅)","runOrder":6,"runTime":"17:08","_filename":"test_english_full_v2.json"},{"platform":"https://app.crown-procurement.com","date":"2026-04-17","auctionType":"English","auctionUrl":"https://app.crown-procurement.com/auctions/6ac5b89d-801e-4cb0-81ab-8a89e6c25f58","phase":"english-handicap-combo","runLabel":"English Fixed + Dynamic Handicap — E21–E30","runOrder":62,"summary":{"total":19,"ok":14,"minor":4,"blocking":1},"tests":[{"id":"E-HC-coherence-dynamic","status":"blocking_bug","description":"Bid table coherence: Dynamic handicap shown for ALL suppliers","expected":"All 5 suppliers show dynamic handicap in Bid table","observed":"Missing dynamic HC for: Supplier 1 | State: {\"Supplier 1\":false,\"Bot 1\":null,\"Bot 2\":null,\"Bot 3\":null,\"Bot 4\":null}","screenshot":"../screenshots/ehc_bid_table.png","timestamp":"2026-04-17T15:06:34.526Z"},{"id":"E-HC-fixed-hidden","status":"ok","description":"Supplier does NOT see Fixed handicap","expected":"Fixed handicap hidden from supplier","observed":"supplierSeesFixed=false","screenshot":null,"timestamp":"2026-04-17T15:06:34.600Z"},{"id":"E-HC-dynamic-visible-supplier","status":"minor_bug","description":"Supplier DOES see Dynamic handicap","expected":"Dynamic handicap visible to supplier","observed":"supplierSeesDynamic=false","screenshot":"../screenshots/ehc_bid_table.png","timestamp":"2026-04-17T15:06:34.600Z"},{"id":"E-HC-prebid-submit","status":"ok","description":"S1 submits pre-bid","expected":"90000 submitted","observed":"Submit: true","screenshot":"../screenshots/ehc_s1_prebid.png","timestamp":"2026-04-17T15:06:39.184Z"},{"id":"E-HC-prebid-change","status":"ok","description":"S1 changes pre-bid","expected":"85000 changed","observed":"Changed: true","screenshot":"../screenshots/ehc_s1_prebid_changed.png","timestamp":"2026-04-17T15:06:43.702Z"},{"id":"E-HC-admin-sees-fixed","status":"ok","description":"Admin sees Fixed handicap info","expected":"Fixed handicap visible to admin","observed":"adminSeesFixed=true","screenshot":null,"timestamp":"2026-04-17T15:06:50.446Z"},{"id":"E-HC-admin-delete","status":"ok","description":"Admin deletes S1 last pre-bid","expected":"Pre-bid deleted","observed":"Deleted: true","screenshot":"../screenshots/ehc_admin_deleted.png","timestamp":"2026-04-17T15:06:54.093Z"},{"id":"E-HC-live-bid-1","status":"ok","description":"Live bid 1/3 submitted","expected":"Bid accepted + log increases","observed":"Bid: true, Log: 6→10","screenshot":null,"timestamp":"2026-04-17T15:07:56.242Z"},{"id":"E-HC-live-bid-2","status":"ok","description":"Live bid 2/3 submitted","expected":"Bid accepted + log increases","observed":"Bid: true, Log: 6→15","screenshot":null,"timestamp":"2026-04-17T15:08:15.718Z"},{"id":"E-HC-live-bid-3","status":"ok","description":"Live bid 3/3 submitted","expected":"Bid accepted + log increases","observed":"Bid: true, Log: 6→19","screenshot":null,"timestamp":"2026-04-17T15:08:35.233Z"},{"id":"E-HC-graph-updates","status":"ok","description":"Graph visible on admin side","expected":"Graph updates after bids","observed":"graphPresent=true","screenshot":null,"timestamp":"2026-04-17T15:08:35.287Z"},{"id":"E-HC-overtime-reset","status":"minor_bug","description":"Overtime reset on bid","expected":"Timer resets","observed":"Before: 00:30, After: 00:24","screenshot":"../screenshots/ehc_bid_table.png","timestamp":"2026-04-17T15:09:08.784Z"},{"id":"E-HC-admin-bid","status":"ok","description":"Admin improves S1 bid during overtime","expected":"Admin bid via panel","observed":"Submitted: true","screenshot":"../screenshots/ehc_admin_bid.png","timestamp":"2026-04-17T15:09:20.097Z"},{"id":"E-HC-supplier-rank","status":"minor_bug","description":"Supplier sees final rank","expected":"Rank visible","observed":"rank=null, closed=false","screenshot":"../screenshots/ehc_supplier_final.png","timestamp":"2026-04-17T15:10:20.449Z"},{"id":"E-HC-supplier-no-fixed","status":"ok","description":"Supplier still NO see Fixed handicap at end","expected":"Hidden","observed":"hasFixed=false","screenshot":"../screenshots/ehc_supplier_final.png","timestamp":"2026-04-17T15:10:20.449Z"},{"id":"E-HC-admin-leaderboard","status":"ok","description":"Admin sees leaderboard","expected":"Leaderboard visible","observed":"10 entries","screenshot":"../screenshots/ehc_admin_final.png","timestamp":"2026-04-17T15:10:23.772Z"},{"id":"E-HC-coherence-bid-table","status":"minor_bug","description":"Coherence: All suppliers in Bid table","expected":"All 5 suppliers have rows in bid table","observed":"bidTable: [\"Supplier 1=true\",\"Bot 1=false\",\"Bot 2=false\",\"Bot 3=false\",\"Bot 4=false\"]","screenshot":"../screenshots/ehc_coherence.png","timestamp":"2026-04-17T15:10:23.818Z"},{"id":"E-HC-coherence-leaderboard","status":"ok","description":"Coherence: Leaderboard has all 5 participants","expected":"Leaderboard shows S1 + 4 bots","observed":"10 entries, winner=BOT 3\tOffline","screenshot":"../screenshots/ehc_coherence.png","timestamp":"2026-04-17T15:10:23.818Z"},{"id":"E-HC-coherence-graph","status":"ok","description":"Coherence: Graph is present","expected":"Graph visualizes bids","observed":"hasGraph=true (SVG=2, Canvas=1)","screenshot":"../screenshots/ehc_coherence.png","timestamp":"2026-04-17T15:10:23.818Z"}],"_filename":"test_english_handicap.json"},{"platform":"app.crown-procurement.com","date":"2026-04-13","auctionType":"English","auctionUrl":"https://app.crown-procurement.com/auctions/d6447bfe-db75-40af-8022-bfa037898d8d/lots/fc08fbc5-8b3e-4cc3-84e9-30438ac47d7f","phase":"live","summary":{"total":8,"ok":7,"minor":1,"blocking":0},"tests":[{"id":"E4","status":"ok","description":"Submit live bid","expected":"Bid accepted, rank updated","observed":"Bid 500 submitted, rank: #pending","screenshot":"../screenshots/live_E4_bid_submitted.png","timestamp":"2026-04-13T10:19:25.201Z"},{"id":"E4b","status":"ok","description":"Admin graph update after live bid","expected":"Graph updates in real time","observed":"Admin page shows bid data, Supplier 1 visible: true","screenshot":"../screenshots/live_E4b_admin_after_bid.png","timestamp":"2026-04-13T10:19:28.274Z"},{"id":"E4c","status":"ok","description":"Admin activity log update during live","expected":"Activity log increases after supplier bid","observed":"Activity log: 7 → 9 (increased ✓)","screenshot":"../screenshots/live_E4b_admin_after_bid.png","timestamp":"2026-04-13T10:19:28.274Z"},{"id":"E5","status":"ok","description":"Bid too small (< min decrement)","expected":"Red alert \"min bid decrement\"","observed":"Error detected: yes. Alerts: \" | \"","screenshot":"../screenshots/live_E5_min_error.png","timestamp":"2026-04-13T10:19:30.481Z"},{"id":"E6","status":"ok","description":"Bid too large (> max decrement)","expected":"Red alert \"max bid decrement\"","observed":"Error detected: yes. Alerts: \"-\nMax value 499.99 EUR | - |  |  |  |  | Max value 499.99 EUR | Max value 499.99 EUR | Max value 499.99 EUR |  |  | Max bid decrement: 100000 EUR\"","screenshot":"../screenshots/live_E6_max_error.png","timestamp":"2026-04-13T10:19:32.635Z"},{"id":"E8","status":"ok","description":"Observe auction flow","expected":"Timer visible and counting down","observed":"Timer: 01:50","screenshot":"../screenshots/live_E8_timer.png","timestamp":"2026-04-13T10:19:32.680Z"},{"id":"E7","status":"minor_bug","description":"Supplier final modal","expected":"Modal with rank and recap after auction ends","observed":"Auction still running — E7 needs to be tested after auction ends","screenshot":"../screenshots/live_E8_timer.png","timestamp":"2026-04-13T10:19:32.680Z"},{"id":"E10b-live","status":"ok","description":"Cross-view consistency (live phase)","expected":"Both admin and supplier see timer and auction data","observed":"Admin timer: 01:51, Supplier timer: 01:50, Admin sees Supplier 1: true","screenshot":"../screenshots/live_E4b_admin_after_bid.png","timestamp":"2026-04-13T10:19:32.681Z"}],"runLabel":"Run 2 — Live bidding (E4-E9)","runOrder":2,"runTime":"12:19","_filename":"test_english_live.json"},{"platform":"https://app.crown-procurement.com","date":"2026-04-17","auctionType":"English","auctionUrl":"https://app.crown-procurement.com/auctions/02cb7281-b824-4751-a364-7a48a83a65a8","phase":"english-multiitems","runLabel":"English Multi Line Items — E18–E20","runOrder":61,"summary":{"total":8,"ok":7,"minor":1,"blocking":0},"tests":[{"id":"E-MI-prebid-submit","status":"ok","description":"S1 submits initial pre-bid","expected":"80k / 90k on items","observed":"Submit: true","screenshot":"../screenshots/emi_s1_prebid_initial.png","timestamp":"2026-04-17T14:52:24.462Z"},{"id":"E-MI-prebid-change","status":"ok","description":"S1 changes pre-bid","expected":"75k / 85k on items","observed":"Changed: true","screenshot":"../screenshots/emi_s1_prebid_changed.png","timestamp":"2026-04-17T14:52:29.702Z"},{"id":"E-MI-admin-delete","status":"ok","description":"Admin deletes S1 last pre-bid","expected":"Pre-bid deleted","observed":"Deleted: true","screenshot":"../screenshots/emi_admin_deleted.png","timestamp":"2026-04-17T14:52:40.241Z"},{"id":"E-MI-prebid-resubmit","status":"ok","description":"S1 re-submits pre-bid after admin delete","expected":"70k / 80k on items","observed":"Resubmit: true","screenshot":"../screenshots/emi_s1_prebid_resubmit.png","timestamp":"2026-04-17T14:52:57.328Z"},{"id":"E-MI-overtime-bid","status":"minor_bug","description":"Overtime bid resets timer","expected":"Timer resets to overtime value","observed":"Before: 00:30, After: 00:25","screenshot":"../screenshots/emi_overtime.png","timestamp":"2026-04-17T14:55:03.522Z"},{"id":"E-MI-admin-bid","status":"ok","description":"Admin improves S1 bid during overtime","expected":"Admin bid via panel","observed":"Submitted: true","screenshot":"../screenshots/emi_admin_bid.png","timestamp":"2026-04-17T14:55:15.589Z"},{"id":"E-MI-supplier-rank","status":"ok","description":"Supplier sees final rank","expected":"Rank visible on supplier page","observed":"globalRank=3, allRanks=[3]","screenshot":"../screenshots/emi_supplier_final.png","timestamp":"2026-04-17T14:56:24.565Z"},{"id":"E-MI-admin-leaderboard","status":"ok","description":"Admin sees leaderboard","expected":"Leaderboard visible with participants","observed":"10 entries: BOT 4\tOffline, BOT 3\tOffline, Supplier 1\tOnline, BOT 2\tOffline, BOT 1\tOffline","screenshot":"../screenshots/emi_admin_final.png","timestamp":"2026-04-17T14:56:30.770Z"}],"_filename":"test_english_multiitems.json"},{"platform":"app.crown-procurement.com","date":"2026-04-13","auctionType":"English","auctionUrl":"https://app.crown-procurement.com/auctions/d6447bfe-db75-40af-8022-bfa037898d8d/lots/fc08fbc5-8b3e-4cc3-84e9-30438ac47d7f/buyer?status=upcoming&usage=test&type=reverse","summary":{"total":5,"ok":3,"minor":1,"blocking":1},"tests":[{"id":"E2","status":"blocking_bug","description":"Submit pre-bid","expected":"Submit pre-bid button visible","observed":"Submit pre-bid button not found","screenshot":"../screenshots/test_supplier_auction.png","timestamp":"2026-04-13T10:12:08.060Z"},{"id":"E2b","status":"minor_bug","description":"Admin graph + activity log update after pre-bid","expected":"Activity log increases, graph updates after supplier pre-bid","observed":"Activity log: 6 → 6 (no change), Graph: 16 → 16 (no change)","screenshot":"../screenshots/test_E2b_admin_after_prebid.png","timestamp":"2026-04-13T10:12:17.248Z"},{"id":"E3","status":"ok","description":"Improve pre-bid","expected":"Old pre-bid replaced by new one on graph","observed":"Pre-bid improved from 550 to 523","screenshot":"../screenshots/test_E3_prebid_improved.png","timestamp":"2026-04-13T10:12:21.260Z"},{"id":"E3b","status":"ok","description":"Admin activity log update after pre-bid improvement","expected":"Activity log increases after pre-bid change","observed":"Activity log: 6 → 7 (increased ✓)","screenshot":"../screenshots/test_E3b_admin_after_improve.png","timestamp":"2026-04-13T10:12:30.484Z"},{"id":"E10b-prebid","status":"ok","description":"Cross-view consistency (pre-bid phase)","expected":"Supplier sees \"Change pre-bid\", admin activity log mentions pre-bid","observed":"Supplier has \"Change pre-bid\": true, Admin log mentions pre-bid: true","screenshot":"../screenshots/test_E3b_admin_after_improve.png","timestamp":"2026-04-13T10:12:30.485Z"}],"runLabel":"Run 1 — Pre-bid (E2-E3)","runOrder":1,"runTime":"12:12","_filename":"test_english_prebid.json"},{"platform":"https://app.crown-procurement.com","date":"2026-04-17","auctionType":"Japanese","auctionUrl":"https://app.crown-procurement.com/auctions/ab3aca6c-c8d2-4f03-a749-f47b783fbb6d","phase":"japanese-lose","runLabel":"Japanese — Lose at pre-bid (single lot)","runOrder":30,"summary":{"total":9,"ok":9,"minor":0,"blocking":0},"tests":[{"id":"JPL-prebid","status":"ok","description":"S1 submits pre-bid at 90,000","expected":"Pre-bid submitted","observed":"Submit: true","screenshot":"../screenshots/jpl_s1_prebid.png","timestamp":"2026-04-17T09:56:23.545Z"},{"id":"JPL-buttons-enabled","status":"ok","description":"Action buttons become ENABLED when round <= S1 pre-bid","expected":"Leave/Accept buttons enabled at pre-bid level","observed":"leave=true, accept=true","screenshot":"../screenshots/jpl_buttons_enabled.png","timestamp":"2026-04-17T09:57:25.444Z"},{"id":"JPL-first-modal","status":"ok","description":"First modal appears with S1 rank","expected":"Modal with rank + Back to event button","observed":"firstModal={\"rank\":2,\"dialogText\":\"You left the competition for \\\"Lot 1\\\".\\nYou finished rank 2 bidding\\nat the price of 100,000 EUR\\nLINE ITEM\\tUNIT\\tQUANTITY\\tPRICE PER UNIT\\tTOTAL\\nItem 1\\tTon\\t1\\t100,000\\t100,000 EUR\\nBack to eAuction\",\"time\":66439}","screenshot":"../screenshots/jpl_first_modal.png","timestamp":"2026-04-17T09:58:55.161Z"},{"id":"JPL-second-modal","status":"ok","description":"Second modal appears at auction end","expected":"Modal with same rank (event ended)","observed":"secondModal={\"rank\":2,\"dialogText\":\"The eAuction has ended!\\nYou have finished with rank 2 bidding at the price of 100,000 EUR\\nThank you for taking part in this event.\\nBack to eAuction\",\"time\":125915}","screenshot":"../screenshots/jpl_second_modal.png","timestamp":"2026-04-17T09:58:55.161Z"},{"id":"JPL-same-rank","status":"ok","description":"Both modals show SAME rank","expected":"First and second modal show identical rank","observed":"first=2, second=2, match=true","screenshot":"../screenshots/jpl_second_modal.png","timestamp":"2026-04-17T09:58:55.161Z"},{"id":"JPL-not-first","status":"ok","description":"S1 is NOT rank #1 (bot wins)","expected":"S1 rank > 1","observed":"rank=2","screenshot":"../screenshots/jpl_first_modal.png","timestamp":"2026-04-17T09:58:55.161Z"},{"id":"JPL-winner-activity-log","status":"ok","description":"Winner identified via admin activity log (not leaderboard — Japanese has no leaderboard)","expected":"Activity log contains 'Bot 1 finished with rank 1'","observed":"Admin activity log: 'BOT 1 finished with rank 1' at 11:42:50. Graph shows BOT 1 with crown (👑) at winning price 93,000 EUR.","screenshot":"../screenshots/jpl_admin_final.png","timestamp":"2026-04-17T09:59:00.488Z"},{"id":"JPL-coherence-admin-supplier","status":"ok","description":"Admin activity log matches supplier side (S1 rank 2, BOT 1 rank 1)","expected":"S1 sees rank 2 on supplier page + admin log says BOT 1 rank 1 (no contradiction)","observed":"Supplier: 'You finished rank 2 bidding at 100,000 EUR' + Admin: 'BOT 1 finished with rank 1'. Cross-view coherent.","screenshot":"../screenshots/jpl_admin_final.png","timestamp":"2026-04-17T09:59:00.488Z"},{"id":"JPL-coherence-graph","status":"ok","description":"Graph visible on admin","expected":"Graph present","observed":"SVG count=3","screenshot":"../screenshots/jpl_admin_final.png","timestamp":"2026-04-17T09:59:00.488Z"}],"_filename":"test_japanese_lose.json"},{"platform":"https://app.crown-procurement.com","date":"2026-04-17","auctionType":"Japanese","auctionUrl":"https://app.crown-procurement.com/auctions/796eb22e-9103-4a9e-8d60-305139606be9","phase":"japanese-single-win-tie","runLabel":"Japanese single lot — win-tie","runOrder":50,"reportFile":"test_japanese_single_win-tie.json","summary":{"total":5,"ok":5,"minor":0,"blocking":0},"tests":[{"id":"PRE-S1","status":"ok","description":"S1 pre-bid","expected":100000,"observed":true,"screenshot":null,"timestamp":"2026-04-17T13:41:14.791Z"},{"id":"PRE-S2","status":"ok","description":"Supplier 2 pre-bid via admin","expected":100000,"observed":true,"screenshot":null,"timestamp":"2026-04-17T13:41:27.871Z"},{"id":"MODAL-SUPPLIER","status":"ok","description":"Supplier end modal detected","expected":"Modal visible","observed":"rank=1, btn=","screenshot":null,"timestamp":"2026-04-17T13:42:19.842Z"},{"id":"RANK","status":"ok","description":"S1 expected rank 1 (win-tie)","expected":"rank=1","observed":"got rank=1","screenshot":null,"timestamp":"2026-04-17T13:42:19.842Z"},{"id":"COHERENCE","status":"ok","description":"Admin log confirms Supplier 1 as winner","expected":"Supplier 1 rank 1","observed":"admin winner: Supplier 1","screenshot":null,"timestamp":"2026-04-17T13:42:26.742Z"}],"_filename":"test_japanese_single_win-tie.json"},{"platform":"https://app.crown-procurement.com","date":"2026-04-17","auctionType":"Japanese","auctionUrl":"https://app.crown-procurement.com/auctions/27ae7cbd-0d38-4c6d-baa1-42ef5a6fd368","phase":"japanese-win-multilot","runLabel":"Japanese — Win multilot (3 lots, S1+S2)","runOrder":35,"summary":{"total":12,"ok":11,"minor":1,"blocking":0},"tests":[{"id":"JPW-L1-prebid-submit","status":"ok","description":"Lot 1: S1 submits pre-bid (99,000)","expected":"Submitted","observed":"true","screenshot":null,"timestamp":"2026-04-17T13:04:30.156Z"},{"id":"JPW-L1-prebid-improve","status":"ok","description":"Lot 1: S1 improves pre-bid (95,000)","expected":"Improved","observed":"true","screenshot":null,"timestamp":"2026-04-17T13:04:35.573Z"},{"id":"JPW-L1-admin-delete","status":"ok","description":"Lot 1: Admin deletes S1 last bid","expected":"Deleted","observed":"true","screenshot":null,"timestamp":"2026-04-17T13:04:46.107Z"},{"id":"JPW-L1-S2-prebid","status":"ok","description":"Lot 1: S2 pre-bid 100,000 via admin","expected":"Submitted","observed":"true","screenshot":null,"timestamp":"2026-04-17T13:04:56.021Z"},{"id":"JPW-L2-S1-prebid","status":"ok","description":"Lot 2: S1 pre-bid 100,000","expected":"Submitted","observed":"true","screenshot":null,"timestamp":"2026-04-17T13:05:04.453Z"},{"id":"JPW-L2-S2-prebid","status":"ok","description":"Lot 2: S2 pre-bid 100,000 via admin","expected":"Submitted","observed":"true","screenshot":null,"timestamp":"2026-04-17T13:05:20.540Z"},{"id":"JPW-L3-S1-prebid","status":"ok","description":"Lot 3: S1 pre-bid 100,000 (first)","expected":"Submitted first","observed":"true","screenshot":null,"timestamp":"2026-04-17T13:05:28.970Z"},{"id":"JPW-L3-S2-prebid","status":"ok","description":"Lot 3: S2 pre-bid 100,000 (after S1 — tie)","expected":"Submitted second","observed":"true","screenshot":null,"timestamp":"2026-04-17T13:05:45.031Z"},{"id":"JPW-L1-rank","status":"ok","description":"Lot 1: S1 rank #1 (win at pre-bid via Leave click)","expected":"S1 rank #1","observed":"rank=1, modal=","screenshot":"../screenshots/jpw_l1_modal.png","timestamp":"2026-04-17T13:07:37.190Z"},{"id":"JPW-L2-rank","status":"ok","description":"Lot 2: S1 rank #1 (win via live bid)","expected":"S1 rank #1","observed":"rank=1","screenshot":"../screenshots/jpw_l2_modal.png","timestamp":"2026-04-17T13:07:52.276Z"},{"id":"JPW-L3-rank","status":"ok","description":"Lot 3: S1 rank #1 (tie — first submitted)","expected":"S1 rank #1 (tie rule)","observed":"rank=1","screenshot":"../screenshots/jpw_l3_modal.png","timestamp":"2026-04-17T13:07:54.360Z"},{"id":"JPW-coherence","status":"minor_bug","description":"Admin log: S1 wins all 3 lots","expected":"3x \"Supplier 1 finished with rank 1\"","observed":"log winners: Supplier 1","screenshot":"../screenshots/jpw_admin_final.png","timestamp":"2026-04-17T13:08:01.720Z"}],"_filename":"test_japanese_win.json"}];
+reports.sort((a, b) => (a.runOrder || 99) - (b.runOrder || 99));
+
+let activeType = '', activeDate = '', activeTest = '', selectedRun = -1, bugsOnly = false;
+
+// Collect all unique types, dates, test IDs
+const types = [...new Set(reports.map(r => r.auctionType))].sort();
+const dates = [...new Set(reports.map(r => r.date))].sort().reverse();
+const allTestIds = [...new Set(reports.flatMap(r => r.tests.map(t => t.id)))].sort();
+
+// Build filter chips
+document.getElementById('filter-type').innerHTML = '<div class="chip active" data-val="" onclick="setType(this)">All</div>' +
+  types.map(t => '<div class="chip" data-val="' + t + '" onclick="setType(this)">' + t + '</div>').join('');
+document.getElementById('filter-date').innerHTML = '<div class="chip active" data-val="" onclick="setDate(this)">All</div>' +
+  dates.map(d => '<div class="chip" data-val="' + d + '" onclick="setDate(this)">' + d + '</div>').join('');
+const testSel = document.getElementById('filter-test');
+allTestIds.forEach(id => { const o = document.createElement('option'); o.value = id; o.textContent = id; testSel.appendChild(o); });
+testSel.addEventListener('change', () => { activeTest = testSel.value; render(); });
+
+function setType(el) { activeType = el.dataset.val; el.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('active')); el.classList.add('active'); render(); }
+function setDate(el) { activeDate = el.dataset.val; el.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('active')); el.classList.add('active'); render(); }
+function toggleBugsOnly(cb) { bugsOnly = cb.checked; render(); }
+function toggleBugsPanel() { document.getElementById('bugs-panel').classList.toggle('collapsed'); }
+
+function openModal(src) {
+  document.getElementById('modal-img').src = src;
+  document.getElementById('screenshot-modal').classList.add('visible');
+}
+function closeModal() { document.getElementById('screenshot-modal').classList.remove('visible'); }
+
+function renderBugsPanel(filtered) {
+  const allBugs = [];
+  filtered.forEach(r => {
+    r.tests.forEach(t => {
+      if (t.status !== 'ok') {
+        allBugs.push({ ...t, runLabel: r.runLabel, runIdx: reports.indexOf(r) });
+      }
+    });
+  });
+
+  const blocking = allBugs.filter(b => b.status === 'blocking_bug').length;
+  const minor = allBugs.filter(b => b.status === 'minor_bug').length;
+
+  document.getElementById('bug-counts').innerHTML =
+    (blocking > 0 ? '<span class="badge" style="background:#ffebee;color:#c62828">' + blocking + ' blocking</span>' : '') +
+    (minor > 0 ? '<span class="badge" style="background:#fff8e1;color:#f57f17">' + minor + ' minor</span>' : '') +
+    (allBugs.length === 0 ? '<span class="badge" style="background:#e8f5e9;color:#2e7d32">0 bugs</span>' : '');
+
+  const body = document.getElementById('bugs-panel-body');
+  if (allBugs.length === 0) {
+    body.innerHTML = '<div style="padding:20px;text-align:center;color:#6c757d;font-size:13px">No active bugs. All tests pass!</div>';
+    return;
+  }
+
+  // Sort: blocking first, then minor
+  allBugs.sort((a, b) => (a.status === 'blocking_bug' ? 0 : 1) - (b.status === 'blocking_bug' ? 0 : 1));
+
+  body.innerHTML = allBugs.map(b => {
+    const sev = b.status === 'blocking_bug' ? 'block' : 'minor';
+    const sevLabel = b.status === 'blocking_bug' ? 'BLOCKING' : 'MINOR';
+    const thumb = b.screenshot ? '<img class="bug-thumb" src="' + b.screenshot + '" onclick="event.stopPropagation();openModal(\'' + b.screenshot + '\')" alt="">' : '<div style="width:80px"></div>';
+    return '<div class="bug-card severity-' + sev + '" onclick="jumpToRun(' + b.runIdx + ', \'' + b.id + '\')">' +
+      thumb +
+      '<div>' +
+        '<div class="bug-title"><span class="sev-tag">' + sevLabel + '</span> ' + escapeHtml(b.description || b.id) + '</div>' +
+        '<div class="bug-meta">In run: <strong>' + escapeHtml(b.runLabel || '') + '</strong> · Test ID: <code>' + b.id + '</code></div>' +
+        '<div class="bug-detail"><strong>Expected:</strong> ' + escapeHtml(b.expected || '-') + '<br><strong>Observed:</strong> ' + escapeHtml(b.observed || '-') + '</div>' +
+      '</div>' +
+      '<button class="bug-jump" onclick="event.stopPropagation();jumpToRun(' + b.runIdx + ', \'' + b.id + '\')">View run →</button>' +
+    '</div>';
+  }).join('');
+}
+
+function escapeHtml(s) { return String(s || '').replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c])); }
+
+function jumpToRun(idx, testId) {
+  selectedRun = idx;
+  render();
+  setTimeout(() => {
+    const panel = document.getElementById('detail-panel');
+    if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Expand the specific test card
+    if (testId) {
+      setTimeout(() => {
+        const card = document.querySelector('[data-test-id="' + testId + '"]');
+        if (card) {
+          card.classList.add('expanded');
+          card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 400);
+    }
+  }, 100);
+}
+
+function toggleTestCard(el) { el.closest('.test-card').classList.toggle('expanded'); }
+
+function render() {
+  let filtered = reports;
+  if (activeType) filtered = filtered.filter(r => r.auctionType === activeType);
+  if (activeDate) filtered = filtered.filter(r => r.date === activeDate);
+  if (activeTest) filtered = filtered.filter(r => r.tests.some(t => t.id === activeTest));
+  if (bugsOnly) filtered = filtered.filter(r => r.summary.minor > 0 || r.summary.blocking > 0);
+
+  // Summary
+  let tot = 0, ok = 0, minor = 0, block = 0;
+  filtered.forEach(r => { tot += r.summary.total; ok += r.summary.ok; minor += r.summary.minor; block += r.summary.blocking; });
+  document.getElementById('summary-cards').innerHTML =
+    '<div class="scard s-total"><div class="num">' + tot + '</div><div class="lbl">Total Tests</div></div>' +
+    '<div class="scard s-pass"><div class="num">' + ok + '</div><div class="lbl">Passed</div></div>' +
+    '<div class="scard s-minor"><div class="num">' + minor + '</div><div class="lbl">Minor Bugs</div></div>' +
+    '<div class="scard s-block"><div class="num">' + block + '</div><div class="lbl">Blocking</div></div>';
+  const pct = n => tot > 0 ? (n / tot * 100).toFixed(1) : 0;
+  document.getElementById('progress-bar').innerHTML = '<div class="p-ok" style="width:' + pct(ok) + '%"></div><div class="p-minor" style="width:' + pct(minor) + '%"></div><div class="p-block" style="width:' + pct(block) + '%"></div>';
+  document.getElementById('header-meta').textContent = filtered.length + ' runs \u2022 ' + tot + ' tests';
+
+  // Bugs panel (based on filtered)
+  renderBugsPanel(filtered);
+
+  // Runs table
+  const tbody = document.getElementById('runs-tbody');
+  tbody.innerHTML = filtered.map(r => {
+    const origIdx = reports.indexOf(r);
+    const scoreClass = r.summary.ok === r.summary.total ? 'score-perfect' : r.summary.blocking > 0 ? 'score-fail' : 'score-partial';
+    const typeBadge = r.auctionType === 'Dutch' ? 'badge-dutch' : 'badge-english';
+    const platform = (r.platform || '').replace('https://','').replace('http://','');
+    const auctionId = r.auctionUrl ? (r.auctionUrl.split('/auctions/')[1] || '-').substring(0,8) : '-';
+    const auctionCell = r.auctionUrl ? '<a href="' + r.auctionUrl + '" target="_blank" style="color:#1565c0;text-decoration:none;font-size:12px" onclick="event.stopPropagation()">' + auctionId + '...</a>' : '-';
+    return '<tr onclick="selectRun(' + origIdx + ')" class="' + (selectedRun === origIdx ? 'selected' : '') + '">' +
+      '<td><strong>' + escapeHtml(r.runLabel || '') + '</strong></td>' +
+      '<td><span class="badge ' + typeBadge + '">' + r.auctionType + '</span></td>' +
+      '<td style="color:#6c757d;font-size:13px">' + platform + '</td>' +
+      '<td>' + auctionCell + '</td>' +
+      '<td>' + r.date + '</td>' +
+      '<td><span class="score ' + scoreClass + '">' + r.summary.ok + '/' + r.summary.total + '</span></td>' +
+      '<td style="color:#2e7d32;font-weight:600">' + r.summary.ok + '</td>' +
+      '<td style="color:#f57f17;font-weight:600">' + (r.summary.minor || '-') + '</td>' +
+      '<td style="color:#c62828;font-weight:600">' + (r.summary.blocking || '-') + '</td>' +
+    '</tr>';
+  }).join('');
+
+  // Detail
+  if (selectedRun >= 0 && filtered.includes(reports[selectedRun])) showDetail(reports[selectedRun]);
+  else document.getElementById('detail-panel').classList.remove('visible');
+}
+
+function selectRun(idx) { selectedRun = selectedRun === idx ? -1 : idx; render(); }
+function closeDetail() { selectedRun = -1; render(); }
+
+function showDetail(r) {
+  const panel = document.getElementById('detail-panel'); panel.classList.add('visible');
+  document.getElementById('detail-title').textContent = r.runLabel || '';
+  const platform = (r.platform || '').replace('https://','').replace('http://','');
+  const auctionId = r.auctionUrl ? (r.auctionUrl.split('/auctions/')[1] || '-').substring(0,8) : '-';
+  const auctionLink = r.auctionUrl ? '<a href="' + r.auctionUrl + '" target="_blank" style="color:#1565c0;text-decoration:none">' + auctionId + '...</a>' : '-';
+  document.getElementById('detail-info').innerHTML =
+    '<div><dt>Platform</dt><dd>' + platform + '</dd></div>' +
+    '<div><dt>Type</dt><dd>' + r.auctionType + '</dd></div>' +
+    '<div><dt>Date</dt><dd>' + r.date + '</dd></div>' +
+    '<div><dt>Phase</dt><dd>' + escapeHtml(r.phase || '-') + '</dd></div>' +
+    '<div><dt>Auction</dt><dd>' + auctionLink + '</dd></div>';
+
+  let tests = r.tests;
+  if (activeTest) tests = tests.filter(t => t.id === activeTest);
+
+  const stCls = { ok: 'status-ok', minor_bug: 'status-minor', blocking_bug: 'status-block' };
+  const stLbl = { ok: 'Pass', minor_bug: 'Minor Bug', blocking_bug: 'Blocking' };
+
+  document.getElementById('detail-tests').innerHTML = tests.map(t => {
+    const cls = stCls[t.status];
+    const screenshot = t.screenshot ? '<div class="test-card-screenshot"><img src="' + t.screenshot + '" onclick="openModal(\'' + t.screenshot + '\')" alt="screenshot"><div class="caption">Click to enlarge</div></div>' : '';
+    const openClass = t.status !== 'ok' ? ' expanded' : '';
+    return '<div class="test-card ' + cls + openClass + '" data-test-id="' + t.id + '">' +
+      '<div class="test-card-header" onclick="toggleTestCard(this)">' +
+        '<span class="test-card-id">' + t.id + '</span>' +
+        '<span class="test-card-title">' + escapeHtml(t.description || '') + '</span>' +
+        '<span class="test-card-status">' + stLbl[t.status] + '</span>' +
+        '<span class="test-card-toggle">▶</span>' +
+      '</div>' +
+      '<div class="test-card-body">' +
+        '<div class="row"><div class="label">Expected</div><div class="value">' + escapeHtml(t.expected || '-') + '</div></div>' +
+        '<div class="row"><div class="label">Observed</div><div class="value obs">' + escapeHtml(t.observed || '-') + '</div></div>' +
+        (t.timestamp ? '<div class="row"><div class="label">Time</div><div class="value" style="color:#6c757d;font-size:12px">' + new Date(t.timestamp).toLocaleString('fr-FR') + '</div></div>' : '') +
+        screenshot +
+      '</div>' +
+    '</div>';
+  }).join('');
+
+  panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+render();
+</script>
+</body>
+</html>

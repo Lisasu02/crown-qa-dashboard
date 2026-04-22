@@ -1,0 +1,80 @@
+{
+  "platform": "https://dev.crown.ovh",
+  "date": "2026-04-16",
+  "auctionType": "Dutch",
+  "auctionUrl": "https://dev.crown.ovh/auctions/3f88be2c-88f7-4b6f-a582-966be11ec711",
+  "phase": "dutch-no-winner",
+  "runLabel": "Dutch — No Winner (single lot)",
+  "runOrder": 21,
+  "summary": {
+    "total": 7,
+    "ok": 7,
+    "minor": 0,
+    "blocking": 0
+  },
+  "tests": [
+    {
+      "id": "D-NW-prebid-submit",
+      "status": "ok",
+      "description": "S1 submits pre-bid (90,000)",
+      "expected": "Pre-bid submitted",
+      "observed": "Submitted: true",
+      "screenshot": "screenshots/dnw_s1_prebid.png",
+      "timestamp": "2026-04-16T16:57:49.536Z"
+    },
+    {
+      "id": "D-NW-prebid-delete",
+      "status": "ok",
+      "description": "Admin deletes S1 pre-bid",
+      "expected": "Pre-bid deleted via admin",
+      "observed": "Deleted: true",
+      "screenshot": "screenshots/dnw_s1_prebid_deleted.png",
+      "timestamp": "2026-04-16T16:58:00.019Z"
+    },
+    {
+      "id": "D-NW-remove-s3",
+      "status": "ok",
+      "description": "Admin removes Supplier 3",
+      "expected": "Supplier 3 removed",
+      "observed": "Clicked: true, S3 gone: true, Remaining: Supplier 2, Supplier 1",
+      "screenshot": "screenshots/dnw_s3_removed.png",
+      "timestamp": "2026-04-16T16:58:10.303Z"
+    },
+    {
+      "id": "D-NW-supplier-rank",
+      "status": "ok",
+      "description": "No winner: Supplier sees no rank",
+      "expected": "\"rank not displayed\" or no rank info",
+      "observed": "rankNotDisplayed=true, rank=null",
+      "screenshot": "screenshots/dnw_supplier_end.png",
+      "timestamp": "2026-04-16T17:03:42.418Z"
+    },
+    {
+      "id": "D-NW-supplier-log",
+      "status": "ok",
+      "description": "No winner: Supplier log has no rank info",
+      "expected": "No \"finished with rank\" in log",
+      "observed": "logHasRank=false, lastAction=ended",
+      "screenshot": "screenshots/dnw_supplier_end.png",
+      "timestamp": "2026-04-16T17:03:42.418Z"
+    },
+    {
+      "id": "D-NW-admin",
+      "status": "ok",
+      "description": "No winner: Admin shows no winner",
+      "expected": "Auction ended, no supplier finished rank 1",
+      "observed": "ended=true, winner=null",
+      "screenshot": "screenshots/dnw_admin_final.png",
+      "timestamp": "2026-04-16T17:03:48.832Z"
+    },
+    {
+      "id": "D-NW-closed",
+      "status": "ok",
+      "description": "No winner: Auction ended properly",
+      "expected": "Lot closed",
+      "observed": "ended=true",
+      "screenshot": "screenshots/dnw_admin_final.png",
+      "timestamp": "2026-04-16T17:03:48.832Z"
+    }
+  ]
+}

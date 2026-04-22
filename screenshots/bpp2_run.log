@@ -1,0 +1,787 @@
+=== Login (PROD) ===
+Logged in.
+
+--- Step 1: Basics ---
+Usage: Test
+Published switch (leaving as-is): false
+Name: Banana Puree 2026-2027 (Phase 2)
+Type: Dutch
+Date: Apr 23
+Hour: 7
+Min: 00
+AM/PM: PM
+Timezone: CEST
+Currency: USD
+
+--- Step 2: Suppliers ---
+
+[ALCA] ALCA TRADING CORP
+  + SALES@ALCACORP.COM (found in DB)
+
+[ONE] ONE BANANA NORTH AMERICA
+  + fer@agroamerica.com (found in DB)
+
+[MERC] MERCANTUM US CORP
+  + JCHRISTOVAO@MERCANTUM.COM (found in DB)
+
+[CITRUS] CITRUS PRODUCTS INC
+  + rosner@cutrale.com (found in DB)
+
+[FERR] FERREIRO COMPANY CORP
+  + lucas.girotti@sflmail.com (found in DB)
+
+[ANTIGUA] ANTIGUA PROCESSORS S.A.
+  + felipe.gomez@antigua-processors.com (found in DB)
+
+--- Step 3: Lots ---
+
+========== Lot 1 - Ontario, CA - Banana Puree - 5M Pounds ==========
+  Lot name: Lot 1 - Ontario, CA - Banana Puree - 5M Pounds
+  Baseline: 1355000 OK
+  Round increment: 10000 OK
+  Competition duration: 15 min OK
+  Round duration: 30 sec OK
+  Ending price: 1495000 OK
+  Participants: ALCA, ONE, MERC
+  Checkbox dump:
+    [checkbox-631] checked=false wrap="Alca Corp" row=""
+    [checkbox-634] checked=false wrap="One Banana Ingredients" row=""
+    [checkbox-637] checked=false wrap="Mercantum" row=""
+    [checkbox-640] checked=false wrap="Citrus Products Inc - Chiquita Tropical Ingredients" row=""
+    [checkbox-643] checked=false wrap="Ferreiro Company Corp" row=""
+    [checkbox-646] checked=false wrap="Antigua Processors - Klaus Bocker gmbh" row=""
+    + ALCA
+    + ONE
+    + MERC
+  All number inputs (8):
+    #input-609 ph="Enter baseline price" val="1355000" dis=false vis=true
+    #input-611 ph="Enter bid decrement" val="10000" dis=false vis=true
+    #input-619 ph="Enter ending price" val="1495000" dis=false vis=true
+    #input-621 ph="" val="1205000" dis=true vis=true
+    #input-699 ph="" val="1" dis=false vis=true
+    #input-701 ph="" val="" dis=false vis=true
+    #input-704 ph="" val="" dis=false vis=true
+    #input-707 ph="" val="" dis=false vis=true
+  Line item: Ontario, CA - Banana Puree - 5M Pounds
+  Unit: 1000 Lbs
+  Quantity: 5000
+  Empty ceiling inputs: 3, participants: 3
+    ceiling [ALCA]: 266 (#input-701)
+    ceiling [ONE]: 266 (#input-704)
+    ceiling [MERC]: 266 (#input-707)
+  Quill editors: 3
+    Awarding: OK
+    Commercial: OK
+    General: OK
+Lot 2 added: true
+
+========== Lot 2 - Ontario, CA - Banana Puree - 2M Pounds ==========
+  Lot name: Lot 2 - Ontario, CA - Banana Puree - 2M Pounds
+  Baseline: 542000 OK
+  Round increment: 4000 OK
+  Competition duration: 15 min OK
+  Round duration: 30 sec OK
+  Ending price: 598000 OK
+  Participants: ALCA, ONE, MERC, CITRUS, ANTIGUA
+  Checkbox dump:
+    [checkbox-749] checked=false wrap="Alca Corp" row=""
+    [checkbox-752] checked=false wrap="One Banana Ingredients" row=""
+    [checkbox-755] checked=false wrap="Mercantum" row=""
+    [checkbox-758] checked=false wrap="Citrus Products Inc - Chiquita Tropical Ingredients" row=""
+    [checkbox-761] checked=false wrap="Ferreiro Company Corp" row=""
+    [checkbox-764] checked=false wrap="Antigua Processors - Klaus Bocker gmbh" row=""
+    + ALCA
+    + ONE
+    + MERC
+    + CITRUS
+    + ANTIGUA
+  All number inputs (18):
+    #input-609 ph="Enter baseline price" val="1355000" dis=false vis=false
+    #input-611 ph="Enter bid decrement" val="10000" dis=false vis=false
+    #input-619 ph="Enter ending price" val="1495000" dis=false vis=false
+    #input-621 ph="" val="1205000" dis=true vis=false
+    #input-699 ph="" val="5000" dis=false vis=false
+    #input-701 ph="" val="266" dis=false vis=false
+    #input-704 ph="" val="266" dis=false vis=false
+    #input-707 ph="" val="266" dis=false vis=false
+    #input-727 ph="Enter baseline price" val="542000" dis=false vis=true
+    #input-729 ph="Enter bid decrement" val="4000" dis=false vis=true
+    #input-737 ph="Enter ending price" val="598000" dis=false vis=true
+    #input-739 ph="" val="482000" dis=true vis=true
+    #input-817 ph="" val="1" dis=false vis=true
+    #input-819 ph="" val="" dis=false vis=true
+    #input-822 ph="" val="" dis=false vis=true
+    #input-825 ph="" val="" dis=false vis=true
+    #input-828 ph="" val="" dis=false vis=true
+    #input-831 ph="" val="" dis=false vis=true
+  Line item: Ontario, CA - Banana Puree - 2M Pounds
+  Unit: 1000 Lbs
+  Quantity: 2000
+  Empty ceiling inputs: 5, participants: 5
+    ceiling [ALCA]: 266 (#input-819)
+    ceiling [ONE]: 266 (#input-822)
+    ceiling [MERC]: 266 (#input-825)
+    ceiling [CITRUS]: 266 (#input-828)
+    ceiling [ANTIGUA]: 266 (#input-831)
+  Quill editors: 3
+    Awarding: OK
+    Commercial: OK
+    General: OK
+Lot 3 added: true
+
+========== Lot 3 - Ontario, CA - Banana Puree - 1M Pounds ==========
+  Lot name: Lot 3 - Ontario, CA - Banana Puree - 1M Pounds
+  Baseline: 271000 OK
+  Round increment: 2000 OK
+  Competition duration: 15 min OK
+  Round duration: 30 sec OK
+  Ending price: 299000 OK
+  Participants: ALCA, ONE, MERC, CITRUS, ANTIGUA
+  Checkbox dump:
+    [checkbox-861] checked=false wrap="Alca Corp" row=""
+    [checkbox-864] checked=false wrap="One Banana Ingredients" row=""
+    [checkbox-867] checked=false wrap="Mercantum" row=""
+    [checkbox-870] checked=false wrap="Citrus Products Inc - Chiquita Tropical Ingredients" row=""
+    [checkbox-873] checked=false wrap="Ferreiro Company Corp" row=""
+    [checkbox-876] checked=false wrap="Antigua Processors - Klaus Bocker gmbh" row=""
+    + ALCA
+    + ONE
+    + MERC
+    + CITRUS
+    + ANTIGUA
+  All number inputs (28):
+    #input-609 ph="Enter baseline price" val="1355000" dis=false vis=false
+    #input-611 ph="Enter bid decrement" val="10000" dis=false vis=false
+    #input-619 ph="Enter ending price" val="1495000" dis=false vis=false
+    #input-621 ph="" val="1205000" dis=true vis=false
+    #input-699 ph="" val="5000" dis=false vis=false
+    #input-701 ph="" val="266" dis=false vis=false
+    #input-704 ph="" val="266" dis=false vis=false
+    #input-707 ph="" val="266" dis=false vis=false
+    #input-727 ph="Enter baseline price" val="542000" dis=false vis=false
+    #input-729 ph="Enter bid decrement" val="4000" dis=false vis=false
+    #input-737 ph="Enter ending price" val="598000" dis=false vis=false
+    #input-739 ph="" val="482000" dis=true vis=false
+    #input-817 ph="" val="2000" dis=false vis=false
+    #input-819 ph="" val="266" dis=false vis=false
+    #input-822 ph="" val="266" dis=false vis=false
+    #input-825 ph="" val="266" dis=false vis=false
+    #input-828 ph="" val="266" dis=false vis=false
+    #input-831 ph="" val="266" dis=false vis=false
+    #input-839 ph="Enter baseline price" val="271000" dis=false vis=true
+    #input-841 ph="Enter bid decrement" val="2000" dis=false vis=true
+    #input-849 ph="Enter ending price" val="299000" dis=false vis=true
+    #input-851 ph="" val="241000" dis=true vis=true
+    #input-929 ph="" val="1" dis=false vis=true
+    #input-931 ph="" val="" dis=false vis=true
+    #input-934 ph="" val="" dis=false vis=true
+    #input-937 ph="" val="" dis=false vis=true
+    #input-940 ph="" val="" dis=false vis=true
+    #input-943 ph="" val="" dis=false vis=true
+  Line item: Ontario, CA - Banana Puree - 1M Pounds
+  Unit: 1000 Lbs
+  Quantity: 1000
+  Empty ceiling inputs: 5, participants: 5
+    ceiling [ALCA]: 266 (#input-931)
+    ceiling [ONE]: 266 (#input-934)
+    ceiling [MERC]: 266 (#input-937)
+    ceiling [CITRUS]: 266 (#input-940)
+    ceiling [ANTIGUA]: 266 (#input-943)
+  Quill editors: 3
+    Awarding: OK
+    Commercial: OK
+    General: OK
+Lot 4 added: true
+
+========== Lot 4 - Banana Puree - 4M Pounds - Bradenton, FL ==========
+  Lot name: Lot 4 - Banana Puree - 4M Pounds - Bradenton, FL
+  Baseline: 1136000 OK
+  Round increment: 8000 OK
+  Competition duration: 15 min OK
+  Round duration: 30 sec OK
+  Ending price: 1196000 OK
+  Participants: ALCA, ONE, MERC, FERR
+  Checkbox dump:
+    [checkbox-973] checked=false wrap="Alca Corp" row=""
+    [checkbox-976] checked=false wrap="One Banana Ingredients" row=""
+    [checkbox-979] checked=false wrap="Mercantum" row=""
+    [checkbox-982] checked=false wrap="Citrus Products Inc - Chiquita Tropical Ingredients" row=""
+    [checkbox-985] checked=false wrap="Ferreiro Company Corp" row=""
+    [checkbox-988] checked=false wrap="Antigua Processors - Klaus Bocker gmbh" row=""
+    + ALCA
+    + ONE
+    + MERC
+    + FERR
+  All number inputs (37):
+    #input-609 ph="Enter baseline price" val="1355000" dis=false vis=false
+    #input-611 ph="Enter bid decrement" val="10000" dis=false vis=false
+    #input-619 ph="Enter ending price" val="1495000" dis=false vis=false
+    #input-621 ph="" val="1205000" dis=true vis=false
+    #input-699 ph="" val="5000" dis=false vis=false
+    #input-701 ph="" val="266" dis=false vis=false
+    #input-704 ph="" val="266" dis=false vis=false
+    #input-707 ph="" val="266" dis=false vis=false
+    #input-727 ph="Enter baseline price" val="542000" dis=false vis=false
+    #input-729 ph="Enter bid decrement" val="4000" dis=false vis=false
+    #input-737 ph="Enter ending price" val="598000" dis=false vis=false
+    #input-739 ph="" val="482000" dis=true vis=false
+    #input-817 ph="" val="2000" dis=false vis=false
+    #input-819 ph="" val="266" dis=false vis=false
+    #input-822 ph="" val="266" dis=false vis=false
+    #input-825 ph="" val="266" dis=false vis=false
+    #input-828 ph="" val="266" dis=false vis=false
+    #input-831 ph="" val="266" dis=false vis=false
+    #input-839 ph="Enter baseline price" val="271000" dis=false vis=false
+    #input-841 ph="Enter bid decrement" val="2000" dis=false vis=false
+    #input-849 ph="Enter ending price" val="299000" dis=false vis=false
+    #input-851 ph="" val="241000" dis=true vis=false
+    #input-929 ph="" val="1000" dis=false vis=false
+    #input-931 ph="" val="266" dis=false vis=false
+    #input-934 ph="" val="266" dis=false vis=false
+    #input-937 ph="" val="266" dis=false vis=false
+    #input-940 ph="" val="266" dis=false vis=false
+    #input-943 ph="" val="266" dis=false vis=false
+    #input-951 ph="Enter baseline price" val="1136000" dis=false vis=true
+    #input-953 ph="Enter bid decrement" val="8000" dis=false vis=true
+    #input-961 ph="Enter ending price" val="1196000" dis=false vis=true
+    #input-963 ph="" val="964000" dis=true vis=true
+    #input-1041 ph="" val="1" dis=false vis=true
+    #input-1043 ph="" val="" dis=false vis=true
+    #input-1046 ph="" val="" dis=false vis=true
+    #input-1049 ph="" val="" dis=false vis=true
+    #input-1052 ph="" val="" dis=false vis=true
+  Line item: Banana Puree - 4M Pounds - Bradenton, FL
+  Unit: 1000 Lbs
+  Quantity: 4000
+  Empty ceiling inputs: 4, participants: 4
+    ceiling [ALCA]: 279 (#input-1043)
+    ceiling [ONE]: 279 (#input-1046)
+    ceiling [MERC]: 275 (#input-1049)
+    ceiling [FERR]: 279 (#input-1052)
+  Quill editors: 3
+    Awarding: OK
+    Commercial: OK
+    General: OK
+Lot 5 added: true
+
+========== Lot 5 - Banana Puree - 1M Pounds - Bradenton, FL ==========
+  Lot name: Lot 5 - Banana Puree - 1M Pounds - Bradenton, FL
+  Baseline: 284000 OK
+  Round increment: 2000 OK
+  Competition duration: 15 min OK
+  Round duration: 30 sec OK
+  Ending price: 299000 OK
+  Participants: ALCA, ONE, MERC, CITRUS, FERR, ANTIGUA
+  Checkbox dump:
+    [checkbox-1082] checked=false wrap="Alca Corp" row=""
+    [checkbox-1085] checked=false wrap="One Banana Ingredients" row=""
+    [checkbox-1088] checked=false wrap="Mercantum" row=""
+    [checkbox-1091] checked=false wrap="Citrus Products Inc - Chiquita Tropical Ingredients" row=""
+    [checkbox-1094] checked=false wrap="Ferreiro Company Corp" row=""
+    [checkbox-1097] checked=false wrap="Antigua Processors - Klaus Bocker gmbh" row=""
+    + ALCA
+    + ONE
+    + MERC
+    + CITRUS
+    + FERR
+    + ANTIGUA
+  All number inputs (48):
+    #input-609 ph="Enter baseline price" val="1355000" dis=false vis=false
+    #input-611 ph="Enter bid decrement" val="10000" dis=false vis=false
+    #input-619 ph="Enter ending price" val="1495000" dis=false vis=false
+    #input-621 ph="" val="1205000" dis=true vis=false
+    #input-699 ph="" val="5000" dis=false vis=false
+    #input-701 ph="" val="266" dis=false vis=false
+    #input-704 ph="" val="266" dis=false vis=false
+    #input-707 ph="" val="266" dis=false vis=false
+    #input-727 ph="Enter baseline price" val="542000" dis=false vis=false
+    #input-729 ph="Enter bid decrement" val="4000" dis=false vis=false
+    #input-737 ph="Enter ending price" val="598000" dis=false vis=false
+    #input-739 ph="" val="482000" dis=true vis=false
+    #input-817 ph="" val="2000" dis=false vis=false
+    #input-819 ph="" val="266" dis=false vis=false
+    #input-822 ph="" val="266" dis=false vis=false
+    #input-825 ph="" val="266" dis=false vis=false
+    #input-828 ph="" val="266" dis=false vis=false
+    #input-831 ph="" val="266" dis=false vis=false
+    #input-839 ph="Enter baseline price" val="271000" dis=false vis=false
+    #input-841 ph="Enter bid decrement" val="2000" dis=false vis=false
+    #input-849 ph="Enter ending price" val="299000" dis=false vis=false
+    #input-851 ph="" val="241000" dis=true vis=false
+    #input-929 ph="" val="1000" dis=false vis=false
+    #input-931 ph="" val="266" dis=false vis=false
+    #input-934 ph="" val="266" dis=false vis=false
+    #input-937 ph="" val="266" dis=false vis=false
+    #input-940 ph="" val="266" dis=false vis=false
+    #input-943 ph="" val="266" dis=false vis=false
+    #input-951 ph="Enter baseline price" val="1136000" dis=false vis=false
+    #input-953 ph="Enter bid decrement" val="8000" dis=false vis=false
+    #input-961 ph="Enter ending price" val="1196000" dis=false vis=false
+    #input-963 ph="" val="964000" dis=true vis=false
+    #input-1041 ph="" val="4000" dis=false vis=false
+    #input-1043 ph="" val="279" dis=false vis=false
+    #input-1046 ph="" val="279" dis=false vis=false
+    #input-1049 ph="" val="275" dis=false vis=false
+    #input-1052 ph="" val="279" dis=false vis=false
+    #input-1060 ph="Enter baseline price" val="284000" dis=false vis=true
+    #input-1062 ph="Enter bid decrement" val="2000" dis=false vis=true
+    #input-1070 ph="Enter ending price" val="299000" dis=false vis=true
+    #input-1072 ph="" val="241000" dis=true vis=true
+    #input-1150 ph="" val="1" dis=false vis=true
+    #input-1152 ph="" val="" dis=false vis=true
+    #input-1155 ph="" val="" dis=false vis=true
+    #input-1158 ph="" val="" dis=false vis=true
+    #input-1161 ph="" val="" dis=false vis=true
+    #input-1164 ph="" val="" dis=false vis=true
+    #input-1167 ph="" val="" dis=false vis=true
+  Line item: Banana Puree - 1M Pounds - Bradenton, FL
+  Unit: 1000 Lbs
+  Quantity: 1000
+  Empty ceiling inputs: 6, participants: 6
+    ceiling [ALCA]: 279 (#input-1152)
+    ceiling [ONE]: 279 (#input-1155)
+    ceiling [MERC]: 275 (#input-1158)
+    ceiling [CITRUS]: 279 (#input-1161)
+    ceiling [FERR]: 279 (#input-1164)
+    ceiling [ANTIGUA]: 279 (#input-1167)
+  Quill editors: 3
+    Awarding: OK
+    Commercial: OK
+    General: OK
+Lot 6 added: true
+
+========== Lot 6 - Banana Puree - 0,5M Pounds - Bradenton, FL ==========
+  Lot name: Lot 6 - Banana Puree - 0,5M Pounds - Bradenton, FL
+  Baseline: 1420000 OK
+  Round increment: 10000 OK
+  Competition duration: 15 min OK
+  Round duration: 30 sec OK
+  Ending price: 1495000 OK
+  Participants: ALCA, ONE, MERC, CITRUS, FERR, ANTIGUA
+  Checkbox dump:
+    [checkbox-1197] checked=false wrap="Alca Corp" row=""
+    [checkbox-1200] checked=false wrap="One Banana Ingredients" row=""
+    [checkbox-1203] checked=false wrap="Mercantum" row=""
+    [checkbox-1206] checked=false wrap="Citrus Products Inc - Chiquita Tropical Ingredients" row=""
+    [checkbox-1209] checked=false wrap="Ferreiro Company Corp" row=""
+    [checkbox-1212] checked=false wrap="Antigua Processors - Klaus Bocker gmbh" row=""
+    + ALCA
+    + ONE
+    + MERC
+    + CITRUS
+    + FERR
+    + ANTIGUA
+  All number inputs (59):
+    #input-609 ph="Enter baseline price" val="1355000" dis=false vis=false
+    #input-611 ph="Enter bid decrement" val="10000" dis=false vis=false
+    #input-619 ph="Enter ending price" val="1495000" dis=false vis=false
+    #input-621 ph="" val="1205000" dis=true vis=false
+    #input-699 ph="" val="5000" dis=false vis=false
+    #input-701 ph="" val="266" dis=false vis=false
+    #input-704 ph="" val="266" dis=false vis=false
+    #input-707 ph="" val="266" dis=false vis=false
+    #input-727 ph="Enter baseline price" val="542000" dis=false vis=false
+    #input-729 ph="Enter bid decrement" val="4000" dis=false vis=false
+    #input-737 ph="Enter ending price" val="598000" dis=false vis=false
+    #input-739 ph="" val="482000" dis=true vis=false
+    #input-817 ph="" val="2000" dis=false vis=false
+    #input-819 ph="" val="266" dis=false vis=false
+    #input-822 ph="" val="266" dis=false vis=false
+    #input-825 ph="" val="266" dis=false vis=false
+    #input-828 ph="" val="266" dis=false vis=false
+    #input-831 ph="" val="266" dis=false vis=false
+    #input-839 ph="Enter baseline price" val="271000" dis=false vis=false
+    #input-841 ph="Enter bid decrement" val="2000" dis=false vis=false
+    #input-849 ph="Enter ending price" val="299000" dis=false vis=false
+    #input-851 ph="" val="241000" dis=true vis=false
+    #input-929 ph="" val="1000" dis=false vis=false
+    #input-931 ph="" val="266" dis=false vis=false
+    #input-934 ph="" val="266" dis=false vis=false
+    #input-937 ph="" val="266" dis=false vis=false
+    #input-940 ph="" val="266" dis=false vis=false
+    #input-943 ph="" val="266" dis=false vis=false
+    #input-951 ph="Enter baseline price" val="1136000" dis=false vis=false
+    #input-953 ph="Enter bid decrement" val="8000" dis=false vis=false
+    #input-961 ph="Enter ending price" val="1196000" dis=false vis=false
+    #input-963 ph="" val="964000" dis=true vis=false
+    #input-1041 ph="" val="4000" dis=false vis=false
+    #input-1043 ph="" val="279" dis=false vis=false
+    #input-1046 ph="" val="279" dis=false vis=false
+    #input-1049 ph="" val="275" dis=false vis=false
+    #input-1052 ph="" val="279" dis=false vis=false
+    #input-1060 ph="Enter baseline price" val="284000" dis=false vis=false
+    #input-1062 ph="Enter bid decrement" val="2000" dis=false vis=false
+    #input-1070 ph="Enter ending price" val="299000" dis=false vis=false
+    #input-1072 ph="" val="241000" dis=true vis=false
+    #input-1150 ph="" val="1000" dis=false vis=false
+    #input-1152 ph="" val="279" dis=false vis=false
+    #input-1155 ph="" val="279" dis=false vis=false
+    #input-1158 ph="" val="275" dis=false vis=false
+    #input-1161 ph="" val="279" dis=false vis=false
+    #input-1164 ph="" val="279" dis=false vis=false
+    #input-1167 ph="" val="279" dis=false vis=false
+    #input-1175 ph="Enter baseline price" val="1420000" dis=false vis=true
+    #input-1177 ph="Enter bid decrement" val="10000" dis=false vis=true
+    #input-1185 ph="Enter ending price" val="1495000" dis=false vis=true
+    #input-1187 ph="" val="1205000" dis=true vis=true
+    #input-1265 ph="" val="1" dis=false vis=true
+    #input-1267 ph="" val="" dis=false vis=true
+    #input-1270 ph="" val="" dis=false vis=true
+    #input-1273 ph="" val="" dis=false vis=true
+    #input-1276 ph="" val="" dis=false vis=true
+    #input-1279 ph="" val="" dis=false vis=true
+    #input-1282 ph="" val="" dis=false vis=true
+  Line item: Banana Puree - 0,5M Pounds - Bradenton, FL
+  Unit: 1000 Lbs
+  Quantity: 5000
+  Empty ceiling inputs: 6, participants: 6
+    ceiling [ALCA]: 279 (#input-1267)
+    ceiling [ONE]: 279 (#input-1270)
+    ceiling [MERC]: 275 (#input-1273)
+    ceiling [CITRUS]: 279 (#input-1276)
+    ceiling [FERR]: 279 (#input-1279)
+    ceiling [ANTIGUA]: 279 (#input-1282)
+  Quill editors: 3
+    Awarding: OK
+    Commercial: OK
+    General: OK
+Lot 7 added: true
+
+========== Lot 7 - Banana Puree - 2M Pounds - Zeebrugge, EU ==========
+  Lot name: Lot 7 - Banana Puree - 2M Pounds - Zeebrugge, EU
+  Baseline: 610000 OK
+  Round increment: 4000 OK
+  Competition duration: 15 min OK
+  Round duration: 30 sec OK
+  Ending price: 598000 OK
+  Participants: ALCA, ONE, MERC
+  Checkbox dump:
+    [checkbox-1312] checked=false wrap="Alca Corp" row=""
+    [checkbox-1315] checked=false wrap="One Banana Ingredients" row=""
+    [checkbox-1318] checked=false wrap="Mercantum" row=""
+    [checkbox-1321] checked=false wrap="Citrus Products Inc - Chiquita Tropical Ingredients" row=""
+    [checkbox-1324] checked=false wrap="Ferreiro Company Corp" row=""
+    [checkbox-1327] checked=false wrap="Antigua Processors - Klaus Bocker gmbh" row=""
+    + ALCA
+    + ONE
+    + MERC
+  All number inputs (67):
+    #input-609 ph="Enter baseline price" val="1355000" dis=false vis=false
+    #input-611 ph="Enter bid decrement" val="10000" dis=false vis=false
+    #input-619 ph="Enter ending price" val="1495000" dis=false vis=false
+    #input-621 ph="" val="1205000" dis=true vis=false
+    #input-699 ph="" val="5000" dis=false vis=false
+    #input-701 ph="" val="266" dis=false vis=false
+    #input-704 ph="" val="266" dis=false vis=false
+    #input-707 ph="" val="266" dis=false vis=false
+    #input-727 ph="Enter baseline price" val="542000" dis=false vis=false
+    #input-729 ph="Enter bid decrement" val="4000" dis=false vis=false
+    #input-737 ph="Enter ending price" val="598000" dis=false vis=false
+    #input-739 ph="" val="482000" dis=true vis=false
+    #input-817 ph="" val="2000" dis=false vis=false
+    #input-819 ph="" val="266" dis=false vis=false
+    #input-822 ph="" val="266" dis=false vis=false
+    #input-825 ph="" val="266" dis=false vis=false
+    #input-828 ph="" val="266" dis=false vis=false
+    #input-831 ph="" val="266" dis=false vis=false
+    #input-839 ph="Enter baseline price" val="271000" dis=false vis=false
+    #input-841 ph="Enter bid decrement" val="2000" dis=false vis=false
+    #input-849 ph="Enter ending price" val="299000" dis=false vis=false
+    #input-851 ph="" val="241000" dis=true vis=false
+    #input-929 ph="" val="1000" dis=false vis=false
+    #input-931 ph="" val="266" dis=false vis=false
+    #input-934 ph="" val="266" dis=false vis=false
+    #input-937 ph="" val="266" dis=false vis=false
+    #input-940 ph="" val="266" dis=false vis=false
+    #input-943 ph="" val="266" dis=false vis=false
+    #input-951 ph="Enter baseline price" val="1136000" dis=false vis=false
+    #input-953 ph="Enter bid decrement" val="8000" dis=false vis=false
+    #input-961 ph="Enter ending price" val="1196000" dis=false vis=false
+    #input-963 ph="" val="964000" dis=true vis=false
+    #input-1041 ph="" val="4000" dis=false vis=false
+    #input-1043 ph="" val="279" dis=false vis=false
+    #input-1046 ph="" val="279" dis=false vis=false
+    #input-1049 ph="" val="275" dis=false vis=false
+    #input-1052 ph="" val="279" dis=false vis=false
+    #input-1060 ph="Enter baseline price" val="284000" dis=false vis=false
+    #input-1062 ph="Enter bid decrement" val="2000" dis=false vis=false
+    #input-1070 ph="Enter ending price" val="299000" dis=false vis=false
+    #input-1072 ph="" val="241000" dis=true vis=false
+    #input-1150 ph="" val="1000" dis=false vis=false
+    #input-1152 ph="" val="279" dis=false vis=false
+    #input-1155 ph="" val="279" dis=false vis=false
+    #input-1158 ph="" val="275" dis=false vis=false
+    #input-1161 ph="" val="279" dis=false vis=false
+    #input-1164 ph="" val="279" dis=false vis=false
+    #input-1167 ph="" val="279" dis=false vis=false
+    #input-1175 ph="Enter baseline price" val="1420000" dis=false vis=false
+    #input-1177 ph="Enter bid decrement" val="10000" dis=false vis=false
+    #input-1185 ph="Enter ending price" val="1495000" dis=false vis=false
+    #input-1187 ph="" val="1205000" dis=true vis=false
+    #input-1265 ph="" val="5000" dis=false vis=false
+    #input-1267 ph="" val="279" dis=false vis=false
+    #input-1270 ph="" val="279" dis=false vis=false
+    #input-1273 ph="" val="275" dis=false vis=false
+    #input-1276 ph="" val="279" dis=false vis=false
+    #input-1279 ph="" val="279" dis=false vis=false
+    #input-1282 ph="" val="279" dis=false vis=false
+    #input-1290 ph="Enter baseline price" val="610000" dis=false vis=true
+    #input-1292 ph="Enter bid decrement" val="4000" dis=false vis=true
+    #input-1300 ph="Enter ending price" val="598000" dis=false vis=true
+    #input-1302 ph="" val="482000" dis=true vis=true
+    #input-1380 ph="" val="1" dis=false vis=true
+    #input-1382 ph="" val="" dis=false vis=true
+    #input-1385 ph="" val="" dis=false vis=true
+    #input-1388 ph="" val="" dis=false vis=true
+  Line item: Banana Puree - 2M Pounds - Zeebrugge, EU
+  Unit: 1000 Lbs
+  Quantity: 2000
+  Empty ceiling inputs: 3, participants: 3
+    ceiling [ALCA]: 299 (#input-1382)
+    ceiling [ONE]: 287 (#input-1385)
+    ceiling [MERC]: 287 (#input-1388)
+  Quill editors: 3
+    Awarding: OK
+    Commercial: OK
+    General: OK
+Lot 8 added: true
+
+========== Lot 8 - Banana Puree - 1M Pounds - Zeebrugge, EU ==========
+  Lot name: Lot 8 - Banana Puree - 1M Pounds - Zeebrugge, EU
+  Baseline: 305000 OK
+  Round increment: 2000 OK
+  Competition duration: 15 min OK
+  Round duration: 30 sec OK
+  Ending price: 299000 OK
+  Participants: ALCA, ONE, MERC, CITRUS, ANTIGUA
+  Checkbox dump:
+    [checkbox-1418] checked=false wrap="Alca Corp" row=""
+    [checkbox-1421] checked=false wrap="One Banana Ingredients" row=""
+    [checkbox-1424] checked=false wrap="Mercantum" row=""
+    [checkbox-1427] checked=false wrap="Citrus Products Inc - Chiquita Tropical Ingredients" row=""
+    [checkbox-1430] checked=false wrap="Ferreiro Company Corp" row=""
+    [checkbox-1433] checked=false wrap="Antigua Processors - Klaus Bocker gmbh" row=""
+    + ALCA
+    + ONE
+    + MERC
+    + CITRUS
+    + ANTIGUA
+  All number inputs (77):
+    #input-609 ph="Enter baseline price" val="1355000" dis=false vis=false
+    #input-611 ph="Enter bid decrement" val="10000" dis=false vis=false
+    #input-619 ph="Enter ending price" val="1495000" dis=false vis=false
+    #input-621 ph="" val="1205000" dis=true vis=false
+    #input-699 ph="" val="5000" dis=false vis=false
+    #input-701 ph="" val="266" dis=false vis=false
+    #input-704 ph="" val="266" dis=false vis=false
+    #input-707 ph="" val="266" dis=false vis=false
+    #input-727 ph="Enter baseline price" val="542000" dis=false vis=false
+    #input-729 ph="Enter bid decrement" val="4000" dis=false vis=false
+    #input-737 ph="Enter ending price" val="598000" dis=false vis=false
+    #input-739 ph="" val="482000" dis=true vis=false
+    #input-817 ph="" val="2000" dis=false vis=false
+    #input-819 ph="" val="266" dis=false vis=false
+    #input-822 ph="" val="266" dis=false vis=false
+    #input-825 ph="" val="266" dis=false vis=false
+    #input-828 ph="" val="266" dis=false vis=false
+    #input-831 ph="" val="266" dis=false vis=false
+    #input-839 ph="Enter baseline price" val="271000" dis=false vis=false
+    #input-841 ph="Enter bid decrement" val="2000" dis=false vis=false
+    #input-849 ph="Enter ending price" val="299000" dis=false vis=false
+    #input-851 ph="" val="241000" dis=true vis=false
+    #input-929 ph="" val="1000" dis=false vis=false
+    #input-931 ph="" val="266" dis=false vis=false
+    #input-934 ph="" val="266" dis=false vis=false
+    #input-937 ph="" val="266" dis=false vis=false
+    #input-940 ph="" val="266" dis=false vis=false
+    #input-943 ph="" val="266" dis=false vis=false
+    #input-951 ph="Enter baseline price" val="1136000" dis=false vis=false
+    #input-953 ph="Enter bid decrement" val="8000" dis=false vis=false
+    #input-961 ph="Enter ending price" val="1196000" dis=false vis=false
+    #input-963 ph="" val="964000" dis=true vis=false
+    #input-1041 ph="" val="4000" dis=false vis=false
+    #input-1043 ph="" val="279" dis=false vis=false
+    #input-1046 ph="" val="279" dis=false vis=false
+    #input-1049 ph="" val="275" dis=false vis=false
+    #input-1052 ph="" val="279" dis=false vis=false
+    #input-1060 ph="Enter baseline price" val="284000" dis=false vis=false
+    #input-1062 ph="Enter bid decrement" val="2000" dis=false vis=false
+    #input-1070 ph="Enter ending price" val="299000" dis=false vis=false
+    #input-1072 ph="" val="241000" dis=true vis=false
+    #input-1150 ph="" val="1000" dis=false vis=false
+    #input-1152 ph="" val="279" dis=false vis=false
+    #input-1155 ph="" val="279" dis=false vis=false
+    #input-1158 ph="" val="275" dis=false vis=false
+    #input-1161 ph="" val="279" dis=false vis=false
+    #input-1164 ph="" val="279" dis=false vis=false
+    #input-1167 ph="" val="279" dis=false vis=false
+    #input-1175 ph="Enter baseline price" val="1420000" dis=false vis=false
+    #input-1177 ph="Enter bid decrement" val="10000" dis=false vis=false
+    #input-1185 ph="Enter ending price" val="1495000" dis=false vis=false
+    #input-1187 ph="" val="1205000" dis=true vis=false
+    #input-1265 ph="" val="5000" dis=false vis=false
+    #input-1267 ph="" val="279" dis=false vis=false
+    #input-1270 ph="" val="279" dis=false vis=false
+    #input-1273 ph="" val="275" dis=false vis=false
+    #input-1276 ph="" val="279" dis=false vis=false
+    #input-1279 ph="" val="279" dis=false vis=false
+    #input-1282 ph="" val="279" dis=false vis=false
+    #input-1290 ph="Enter baseline price" val="610000" dis=false vis=false
+    #input-1292 ph="Enter bid decrement" val="4000" dis=false vis=false
+    #input-1300 ph="Enter ending price" val="598000" dis=false vis=false
+    #input-1302 ph="" val="482000" dis=true vis=false
+    #input-1380 ph="" val="2000" dis=false vis=false
+    #input-1382 ph="" val="299" dis=false vis=false
+    #input-1385 ph="" val="287" dis=false vis=false
+    #input-1388 ph="" val="287" dis=false vis=false
+    #input-1396 ph="Enter baseline price" val="305000" dis=false vis=true
+    #input-1398 ph="Enter bid decrement" val="2000" dis=false vis=true
+    #input-1406 ph="Enter ending price" val="299000" dis=false vis=true
+    #input-1408 ph="" val="241000" dis=true vis=true
+    #input-1486 ph="" val="1" dis=false vis=true
+    #input-1488 ph="" val="" dis=false vis=true
+    #input-1491 ph="" val="" dis=false vis=true
+    #input-1494 ph="" val="" dis=false vis=true
+    #input-1497 ph="" val="" dis=false vis=true
+    #input-1500 ph="" val="" dis=false vis=true
+  Line item: Banana Puree - 1M Pounds - Zeebrugge, EU
+  Unit: 1000 Lbs
+  Quantity: 1000
+  Empty ceiling inputs: 5, participants: 5
+    ceiling [ALCA]: 299 (#input-1488)
+    ceiling [ONE]: 287 (#input-1491)
+    ceiling [MERC]: 287 (#input-1494)
+    ceiling [CITRUS]: 299 (#input-1497)
+    ceiling [ANTIGUA]: 293 (#input-1500)
+  Quill editors: 3
+    Awarding: OK
+    Commercial: OK
+    General: OK
+Lot 9 added: true
+
+========== Lot 9 - Banana Puree - 0,4M Pounds - Zeebrugge, EU ==========
+  Lot name: Lot 9 - Banana Puree - 0,4M Pounds - Zeebrugge, EU
+  Baseline: 1220000 OK
+  Round increment: 8000 OK
+  Competition duration: 15 min !!
+  Round duration: 30 sec OK
+  Ending price: 1196000 OK
+  Participants: ALCA, ONE, MERC, CITRUS, ANTIGUA
+  Checkbox dump:
+    [checkbox-1530] checked=false wrap="Alca Corp" row=""
+    [checkbox-1533] checked=false wrap="One Banana Ingredients" row=""
+    [checkbox-1536] checked=false wrap="Mercantum" row=""
+    [checkbox-1539] checked=false wrap="Citrus Products Inc - Chiquita Tropical Ingredients" row=""
+    [checkbox-1542] checked=false wrap="Ferreiro Company Corp" row=""
+    [checkbox-1545] checked=false wrap="Antigua Processors - Klaus Bocker gmbh" row=""
+    + ALCA
+    + ONE
+    + MERC
+    + CITRUS
+    + ANTIGUA
+  All number inputs (87):
+    #input-609 ph="Enter baseline price" val="1355000" dis=false vis=false
+    #input-611 ph="Enter bid decrement" val="10000" dis=false vis=false
+    #input-619 ph="Enter ending price" val="1495000" dis=false vis=false
+    #input-621 ph="" val="1205000" dis=true vis=false
+    #input-699 ph="" val="5000" dis=false vis=false
+    #input-701 ph="" val="266" dis=false vis=false
+    #input-704 ph="" val="266" dis=false vis=false
+    #input-707 ph="" val="266" dis=false vis=false
+    #input-727 ph="Enter baseline price" val="542000" dis=false vis=false
+    #input-729 ph="Enter bid decrement" val="4000" dis=false vis=false
+    #input-737 ph="Enter ending price" val="598000" dis=false vis=false
+    #input-739 ph="" val="482000" dis=true vis=false
+    #input-817 ph="" val="2000" dis=false vis=false
+    #input-819 ph="" val="266" dis=false vis=false
+    #input-822 ph="" val="266" dis=false vis=false
+    #input-825 ph="" val="266" dis=false vis=false
+    #input-828 ph="" val="266" dis=false vis=false
+    #input-831 ph="" val="266" dis=false vis=false
+    #input-839 ph="Enter baseline price" val="271000" dis=false vis=false
+    #input-841 ph="Enter bid decrement" val="2000" dis=false vis=false
+    #input-849 ph="Enter ending price" val="299000" dis=false vis=false
+    #input-851 ph="" val="241000" dis=true vis=false
+    #input-929 ph="" val="1000" dis=false vis=false
+    #input-931 ph="" val="266" dis=false vis=false
+    #input-934 ph="" val="266" dis=false vis=false
+    #input-937 ph="" val="266" dis=false vis=false
+    #input-940 ph="" val="266" dis=false vis=false
+    #input-943 ph="" val="266" dis=false vis=false
+    #input-951 ph="Enter baseline price" val="1136000" dis=false vis=false
+    #input-953 ph="Enter bid decrement" val="8000" dis=false vis=false
+    #input-961 ph="Enter ending price" val="1196000" dis=false vis=false
+    #input-963 ph="" val="964000" dis=true vis=false
+    #input-1041 ph="" val="4000" dis=false vis=false
+    #input-1043 ph="" val="279" dis=false vis=false
+    #input-1046 ph="" val="279" dis=false vis=false
+    #input-1049 ph="" val="275" dis=false vis=false
+    #input-1052 ph="" val="279" dis=false vis=false
+    #input-1060 ph="Enter baseline price" val="284000" dis=false vis=false
+    #input-1062 ph="Enter bid decrement" val="2000" dis=false vis=false
+    #input-1070 ph="Enter ending price" val="299000" dis=false vis=false
+    #input-1072 ph="" val="241000" dis=true vis=false
+    #input-1150 ph="" val="1000" dis=false vis=false
+    #input-1152 ph="" val="279" dis=false vis=false
+    #input-1155 ph="" val="279" dis=false vis=false
+    #input-1158 ph="" val="275" dis=false vis=false
+    #input-1161 ph="" val="279" dis=false vis=false
+    #input-1164 ph="" val="279" dis=false vis=false
+    #input-1167 ph="" val="279" dis=false vis=false
+    #input-1175 ph="Enter baseline price" val="1420000" dis=false vis=false
+    #input-1177 ph="Enter bid decrement" val="10000" dis=false vis=false
+    #input-1185 ph="Enter ending price" val="1495000" dis=false vis=false
+    #input-1187 ph="" val="1205000" dis=true vis=false
+    #input-1265 ph="" val="5000" dis=false vis=false
+    #input-1267 ph="" val="279" dis=false vis=false
+    #input-1270 ph="" val="279" dis=false vis=false
+    #input-1273 ph="" val="275" dis=false vis=false
+    #input-1276 ph="" val="279" dis=false vis=false
+    #input-1279 ph="" val="279" dis=false vis=false
+    #input-1282 ph="" val="279" dis=false vis=false
+    #input-1290 ph="Enter baseline price" val="610000" dis=false vis=false
+    #input-1292 ph="Enter bid decrement" val="4000" dis=false vis=false
+    #input-1300 ph="Enter ending price" val="598000" dis=false vis=false
+    #input-1302 ph="" val="482000" dis=true vis=false
+    #input-1380 ph="" val="2000" dis=false vis=false
+    #input-1382 ph="" val="299" dis=false vis=false
+    #input-1385 ph="" val="287" dis=false vis=false
+    #input-1388 ph="" val="287" dis=false vis=false
+    #input-1396 ph="Enter baseline price" val="305000" dis=false vis=false
+    #input-1398 ph="Enter bid decrement" val="2000" dis=false vis=false
+    #input-1406 ph="Enter ending price" val="299000" dis=false vis=false
+    #input-1408 ph="" val="241000" dis=true vis=false
+    #input-1486 ph="" val="1000" dis=false vis=false
+    #input-1488 ph="" val="299" dis=false vis=false
+    #input-1491 ph="" val="287" dis=false vis=false
+    #input-1494 ph="" val="287" dis=false vis=false
+    #input-1497 ph="" val="299" dis=false vis=false
+    #input-1500 ph="" val="293" dis=false vis=false
+    #input-1508 ph="Enter baseline price" val="1220000" dis=false vis=true
+    #input-1510 ph="Enter bid decrement" val="8000" dis=false vis=true
+    #input-1518 ph="Enter ending price" val="1196000" dis=false vis=true
+    #input-1520 ph="" val="1124000" dis=true vis=true
+    #input-1581 ph="" val="1" dis=false vis=true
+    #input-1583 ph="" val="" dis=false vis=true
+    #input-1586 ph="" val="" dis=false vis=true
+    #input-1589 ph="" val="" dis=false vis=true
+    #input-1592 ph="" val="" dis=false vis=true
+    #input-1595 ph="" val="" dis=false vis=true
+  Line item: Banana Puree - 0,4M Pounds - Zeebrugge, EU
+  Unit: 1000 Lbs
+  Quantity: 4000
+  Empty ceiling inputs: 5, participants: 5
+    ceiling [ALCA]: 299 (#input-1583)
+    ceiling [ONE]: 287 (#input-1586)
+    ceiling [MERC]: 287 (#input-1589)
+    ceiling [CITRUS]: 299 (#input-1592)
+    ceiling [ANTIGUA]: 293 (#input-1595)
+  Quill editors: 3
+    Awarding: OK
+    Commercial: OK
+    General: OK
+
+--- Create (DRAFT) ---
+Create button disabled: false
+
+SUCCESS (draft): https://app.crown-procurement.com/auctions/584afdce-26b5-4f1f-99de-a89057deb0a4/lots/90144378-d644-4cbc-9a63-0bae377c822a/buyer?status=upcoming&usage=test&type=dutch
