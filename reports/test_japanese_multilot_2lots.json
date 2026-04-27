@@ -1,0 +1,185 @@
+{
+  "runs": [
+    {
+      "platform": "https://dev.crown.ovh",
+      "date": "2026-04-27",
+      "auctionType": "Japanese",
+      "auctionUrl": "https://dev.crown.ovh/auctions/f4eead41-a393-4b38-a9c9-4c89e21f9be0",
+      "phase": "japanese-multilot-2lots",
+      "runLabel": "Japanese multilot 2 lots",
+      "runOrder": 51,
+      "reportFile": "test_japanese_multilot_2lots.json",
+      "summary": {
+        "total": 10,
+        "ok": 10,
+        "minor": 0,
+        "blocking": 0
+      },
+      "tests": [
+        {
+          "id": "PRE-S1-L1",
+          "status": "ok",
+          "description": "Lot 1: S1 pre-bid 95000",
+          "expected": 95000,
+          "observed": true,
+          "screenshot": null,
+          "timestamp": "2026-04-27T12:28:32.251Z"
+        },
+        {
+          "id": "PRE-S1-improve-L1",
+          "status": "ok",
+          "description": "Lot 1: S1 improve 93000",
+          "expected": 93000,
+          "observed": true,
+          "screenshot": null,
+          "timestamp": "2026-04-27T12:28:37.611Z"
+        },
+        {
+          "id": "ADMIN-DELETE-L1",
+          "status": "ok",
+          "description": "Lot 1: Admin delete S1 last bid",
+          "expected": "Deleted",
+          "observed": true,
+          "screenshot": null,
+          "timestamp": "2026-04-27T12:28:48.106Z"
+        },
+        {
+          "id": "PRE-S2-L1",
+          "status": "ok",
+          "description": "Lot 1: S2 pre-bid 95000 via admin",
+          "expected": 95000,
+          "observed": true,
+          "screenshot": null,
+          "timestamp": "2026-04-27T12:29:05.474Z"
+        },
+        {
+          "id": "PRE-S1-L2",
+          "status": "ok",
+          "description": "Lot 2: S1 pre-bid 95000",
+          "expected": 95000,
+          "observed": true,
+          "screenshot": null,
+          "timestamp": "2026-04-27T12:29:18.260Z"
+        },
+        {
+          "id": "PRE-S2-L2",
+          "status": "ok",
+          "description": "Lot 2: S2 pre-bid 98000 via admin",
+          "expected": 98000,
+          "observed": true,
+          "screenshot": null,
+          "timestamp": "2026-04-27T12:29:34.408Z"
+        },
+        {
+          "id": "MODAL-L1",
+          "status": "ok",
+          "description": "Lot 1: end modal detected",
+          "expected": "modal visible",
+          "observed": "rank=1, btn=",
+          "screenshot": null,
+          "timestamp": "2026-04-27T12:31:46.025Z"
+        },
+        {
+          "id": "RANK-L1",
+          "status": "ok",
+          "description": "Lot 1: expected rank 1 (win-tie)",
+          "expected": "rank=1",
+          "observed": "got rank=1",
+          "screenshot": null,
+          "timestamp": "2026-04-27T12:31:46.025Z"
+        },
+        {
+          "id": "MODAL-L2",
+          "status": "ok",
+          "description": "Lot 2: end modal detected",
+          "expected": "modal visible",
+          "observed": "rank=1, btn=Back to eAuction",
+          "screenshot": null,
+          "timestamp": "2026-04-27T12:36:46.221Z"
+        },
+        {
+          "id": "RANK-L2",
+          "status": "ok",
+          "description": "Lot 2: expected rank 1 (win-live)",
+          "expected": "rank=1",
+          "observed": "got rank=1",
+          "screenshot": null,
+          "timestamp": "2026-04-27T12:36:46.221Z"
+        }
+      ]
+    },
+    {
+      "platform": "https://dev.crown.ovh",
+      "date": "2026-04-27",
+      "ranAt": "2026-04-27T13:57:51.241Z",
+      "auctionType": "Japanese",
+      "auctionUrl": "https://dev.crown.ovh/auctions/e1fa3f01-78ba-4ba8-886c-3d86ca5d01b8",
+      "phase": "japanese-multilot-2lots",
+      "runLabel": "Japanese multilot 2 lots — 2026-04-27T13-57-51",
+      "runOrder": 51,
+      "reportFile": "test_japanese_multilot_2lots.json",
+      "summary": {
+        "total": 6,
+        "ok": 6,
+        "minor": 0,
+        "blocking": 0
+      },
+      "tests": [
+        {
+          "id": "PRE-S1-L1",
+          "status": "ok",
+          "description": "Lot 1: S1 pre-bid 99000",
+          "expected": 99000,
+          "observed": true,
+          "screenshot": null,
+          "timestamp": "2026-04-27T13:53:02.726Z"
+        },
+        {
+          "id": "PRE-S1-L2",
+          "status": "ok",
+          "description": "Lot 2: S1 pre-bid 95000",
+          "expected": 95000,
+          "observed": true,
+          "screenshot": null,
+          "timestamp": "2026-04-27T13:53:11.166Z"
+        },
+        {
+          "id": "MODAL-L1",
+          "status": "ok",
+          "description": "Lot 1: end modal detected",
+          "expected": "modal visible",
+          "observed": "rank=2, btn=Back to eAuction",
+          "screenshot": null,
+          "timestamp": "2026-04-27T13:54:50.704Z"
+        },
+        {
+          "id": "RANK-L1",
+          "status": "ok",
+          "description": "Lot 1: expected rank 2 (lose-prebid)",
+          "expected": "rank=2",
+          "observed": "got rank=2",
+          "screenshot": null,
+          "timestamp": "2026-04-27T13:54:50.704Z"
+        },
+        {
+          "id": "MODAL-L2",
+          "status": "ok",
+          "description": "Lot 2: end modal detected",
+          "expected": "modal visible",
+          "observed": "rank=2, btn=Back to eAuction",
+          "screenshot": null,
+          "timestamp": "2026-04-27T13:57:36.765Z"
+        },
+        {
+          "id": "RANK-L2",
+          "status": "ok",
+          "description": "Lot 2: expected rank 2 (lose-live)",
+          "expected": "rank=2",
+          "observed": "got rank=2",
+          "screenshot": null,
+          "timestamp": "2026-04-27T13:57:36.765Z"
+        }
+      ]
+    }
+  ]
+}
