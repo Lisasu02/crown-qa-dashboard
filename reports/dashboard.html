@@ -156,8 +156,8 @@
     <div class="meta" id="header-meta"></div>
   </div>
 
-  <!-- Bugs Panel -->
-  <div class="bugs-panel" id="bugs-panel">
+  <!-- Bugs Panel — collapsed by default (click header to expand) -->
+  <div class="bugs-panel collapsed" id="bugs-panel">
     <div class="bugs-panel-header" onclick="toggleBugsPanel()">
       <h2>
         <span>🐛</span>
@@ -173,7 +173,7 @@
   <div class="filters">
     <div class="filter-group"><span class="filter-label">Type</span><div class="filter-chips" id="filter-type"></div></div>
     <div class="filter-sep"></div>
-    <div class="filter-group"><span class="filter-label">Date</span><div class="filter-chips" id="filter-date"></div></div>
+    <div class="filter-group"><span class="filter-label">Date</span><select class="filter-select" id="filter-date"><option value="">All dates</option></select></div>
     <div class="filter-sep"></div>
     <div class="filter-group"><span class="filter-label">Test</span><select class="filter-select" id="filter-test"><option value="">All tests</option></select></div>
     <label class="toggle-bugs"><input type="checkbox" id="bugs-only" onchange="toggleBugsOnly(this)"> Show bugs only</label>
@@ -214,14 +214,16 @@ const allTestIds = [...new Set(reports.flatMap(r => r.tests.map(t => t.id)))].so
 // Build filter chips
 document.getElementById('filter-type').innerHTML = '<div class="chip active" data-val="" onclick="setType(this)">All</div>' +
   types.map(t => '<div class="chip" data-val="' + t + '" onclick="setType(this)">' + t + '</div>').join('');
-document.getElementById('filter-date').innerHTML = '<div class="chip active" data-val="" onclick="setDate(this)">All</div>' +
-  dates.map(d => '<div class="chip" data-val="' + d + '" onclick="setDate(this)">' + d + '</div>').join('');
+// Date filter: dropdown (was chips — got too crowded with many test days)
+const dateSel = document.getElementById('filter-date');
+dates.forEach(d => { const o = document.createElement('option'); o.value = d; o.textContent = d; dateSel.appendChild(o); });
+dateSel.addEventListener('change', () => { activeDate = dateSel.value; render(); });
+
 const testSel = document.getElementById('filter-test');
 allTestIds.forEach(id => { const o = document.createElement('option'); o.value = id; o.textContent = id; testSel.appendChild(o); });
 testSel.addEventListener('change', () => { activeTest = testSel.value; render(); });
 
 function setType(el) { activeType = el.dataset.val; el.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('active')); el.classList.add('active'); render(); }
-function setDate(el) { activeDate = el.dataset.val; el.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('active')); el.classList.add('active'); render(); }
 function toggleBugsOnly(cb) { bugsOnly = cb.checked; render(); }
 function toggleBugsPanel() { document.getElementById('bugs-panel').classList.toggle('collapsed'); }
 
