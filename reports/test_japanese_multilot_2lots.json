@@ -201,7 +201,7 @@
         {
           "id": "PRE-S1-L1",
           "status": "blocking_bug",
-          "description": "Lot 1: S1 pre-bid 95000",
+          "description": "Lot 1: S1 pre-bid 99000 (round 2)",
           "expected": "99000 (round 2 price)",
           "observed": false,
           "screenshot": "screenshots/jp_ml_L1_supplier_detected.png",
@@ -210,7 +210,7 @@
         {
           "id": "PRE-S1-improve-L1",
           "status": "minor_bug",
-          "description": "Lot 1: S1 improve 93000",
+          "description": "Lot 1: S1 improve 98000",
           "expected": "98000",
           "observed": false,
           "screenshot": null,
@@ -228,7 +228,7 @@
         {
           "id": "PRE-S2-L1",
           "status": "blocking_bug",
-          "description": "Lot 1: S2 pre-bid 95000 via admin",
+          "description": "Lot 1: S2 pre-bid 99000 via admin (same as S1 \u2192 tie)",
           "expected": "99000 (same as S1 final, for tie)",
           "observed": false,
           "screenshot": "screenshots/jp_ml_L1_admin_detected.png",
@@ -237,7 +237,7 @@
         {
           "id": "PRE-S1-L2",
           "status": "blocking_bug",
-          "description": "Lot 2: S1 pre-bid 95000",
+          "description": "Lot 2: S1 pre-bid 99000 (round 2)",
           "expected": "99000 (round 2 price)",
           "observed": false,
           "screenshot": "screenshots/jp_ml_L2_supplier_detected.png",
@@ -246,7 +246,7 @@
         {
           "id": "PRE-S2-L2",
           "status": "blocking_bug",
-          "description": "Lot 2: S2 pre-bid 98000 via admin",
+          "description": "Lot 2: S2 pre-bid 99000 via admin (same as S1)",
           "expected": "99000 (same as S1, for live-bid scenario)",
           "observed": false,
           "screenshot": "screenshots/jp_ml_L2_admin_detected.png",
