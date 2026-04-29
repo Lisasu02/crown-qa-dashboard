@@ -184,7 +184,7 @@
     {
       "platform": "https://dev.crown.ovh",
       "date": "2026-04-29",
-      "ranAt": "2026-04-29T10:30:21.436Z",
+      "ranAt": "2026-04-29T12:37:57.774Z",
       "auctionType": "Japanese",
       "auctionUrl": "https://dev.crown.ovh/auctions/f4eead41-a393-4b38-a9c9-4c89e21f9be0",
       "phase": "japanese-multilot-2lots",
@@ -193,28 +193,28 @@
       "reportFile": "test_japanese_multilot_2lots.json",
       "summary": {
         "total": 12,
-        "ok": 5,
-        "minor": 2,
-        "blocking": 5
+        "ok": 12,
+        "minor": 0,
+        "blocking": 0
       },
       "tests": [
         {
           "id": "PRE-S1-L1",
-          "status": "blocking_bug",
-          "description": "Lot 1: S1 pre-bid 99000 (round 2)",
-          "expected": "99000 (round 2 price)",
-          "observed": false,
-          "screenshot": "screenshots/jp_ml_L1_supplier_detected.png",
-          "timestamp": "2026-04-29T10:23:34.194Z"
+          "status": "ok",
+          "description": "Lot 1: S1 pre-bid 99000",
+          "expected": 99000,
+          "observed": true,
+          "screenshot": null,
+          "timestamp": "2026-04-29T12:32:38.947Z"
         },
         {
           "id": "PRE-S1-improve-L1",
-          "status": "minor_bug",
+          "status": "ok",
           "description": "Lot 1: S1 improve 98000",
-          "expected": "98000",
-          "observed": false,
+          "expected": 98000,
+          "observed": true,
           "screenshot": null,
-          "timestamp": "2026-04-29T10:23:34.201Z"
+          "timestamp": "2026-04-29T12:32:44.330Z"
         },
         {
           "id": "ADMIN-DELETE-L1",
@@ -223,52 +223,52 @@
           "expected": "Deleted",
           "observed": true,
           "screenshot": null,
-          "timestamp": "2026-04-29T10:23:44.644Z"
+          "timestamp": "2026-04-29T12:32:54.820Z"
         },
         {
           "id": "PRE-S2-L1",
-          "status": "blocking_bug",
-          "description": "Lot 1: S2 pre-bid 99000 via admin (same as S1 \u2192 tie)",
-          "expected": "99000 (same as S1 final, for tie)",
-          "observed": false,
-          "screenshot": "screenshots/jp_ml_L1_admin_detected.png",
-          "timestamp": "2026-04-29T10:23:57.018Z"
+          "status": "ok",
+          "description": "Lot 1: S2 pre-bid 99000 via admin",
+          "expected": 99000,
+          "observed": true,
+          "screenshot": null,
+          "timestamp": "2026-04-29T12:33:12.241Z"
         },
         {
           "id": "PRE-S1-L2",
-          "status": "blocking_bug",
-          "description": "Lot 2: S1 pre-bid 99000 (round 2)",
-          "expected": "99000 (round 2 price)",
-          "observed": false,
-          "screenshot": "screenshots/jp_ml_L2_supplier_detected.png",
-          "timestamp": "2026-04-29T10:24:05.826Z"
+          "status": "ok",
+          "description": "Lot 2: S1 pre-bid 99000",
+          "expected": 99000,
+          "observed": true,
+          "screenshot": null,
+          "timestamp": "2026-04-29T12:33:25.669Z"
         },
         {
           "id": "PRE-S2-L2",
-          "status": "blocking_bug",
-          "description": "Lot 2: S2 pre-bid 99000 via admin (same as S1)",
-          "expected": "99000 (same as S1, for live-bid scenario)",
-          "observed": false,
-          "screenshot": "screenshots/jp_ml_L2_admin_detected.png",
-          "timestamp": "2026-04-29T10:24:17.176Z"
+          "status": "ok",
+          "description": "Lot 2: S2 pre-bid 99000 via admin",
+          "expected": 99000,
+          "observed": true,
+          "screenshot": null,
+          "timestamp": "2026-04-29T12:33:41.890Z"
         },
         {
           "id": "MODAL-L1",
           "status": "ok",
           "description": "Lot 1: end modal detected",
           "expected": "modal visible",
-          "observed": "rank=null, btn=",
-          "screenshot": "screenshots/jp_ml_L1_supplier_detected.png",
-          "timestamp": "2026-04-29T10:25:53.889Z"
+          "observed": "rank=1, btn=",
+          "screenshot": null,
+          "timestamp": "2026-04-29T12:34:53.127Z"
         },
         {
           "id": "RANK-L1",
-          "status": "blocking_bug",
+          "status": "ok",
           "description": "Lot 1: expected rank 1 (win-tie)",
           "expected": "rank=1",
-          "observed": "got rank=null",
-          "screenshot": "screenshots/jp_ml_L1_supplier_detected.png",
-          "timestamp": "2026-04-29T10:25:53.889Z"
+          "observed": "got rank=1",
+          "screenshot": null,
+          "timestamp": "2026-04-29T12:34:53.127Z"
         },
         {
           "id": "MODAL-L2",
@@ -276,8 +276,8 @@
           "description": "Lot 2: end modal detected",
           "expected": "modal visible",
           "observed": "rank=1, btn=Back to eAuction",
-          "screenshot": "screenshots/jp_ml_L2_supplier_detected.png",
-          "timestamp": "2026-04-29T10:29:39.720Z"
+          "screenshot": null,
+          "timestamp": "2026-04-29T12:37:16.894Z"
         },
         {
           "id": "RANK-L2",
@@ -285,17 +285,17 @@
           "description": "Lot 2: expected rank 1 (win-live)",
           "expected": "rank=1",
           "observed": "got rank=1",
-          "screenshot": "screenshots/jp_ml_L2_supplier_detected.png",
-          "timestamp": "2026-04-29T10:29:39.720Z"
+          "screenshot": null,
+          "timestamp": "2026-04-29T12:37:16.894Z"
         },
         {
           "id": "XV-L1",
-          "status": "minor_bug",
+          "status": "ok",
           "description": "Lot 1: cross-view coherence (win-tie)",
           "expected": "Supplier rank=1, Admin winner IS Supplier 1",
-          "observed": "Supplier rank=12 (noRank=false); Admin log winner=Supplier 2",
+          "observed": "Supplier rank=1 (noRank=false); Admin log winner=Supplier 1",
           "screenshot": "screenshots/jp_xv_Lot_1_admin.png",
-          "timestamp": "2026-04-29T10:30:11.068Z"
+          "timestamp": "2026-04-29T12:37:47.473Z"
         },
         {
           "id": "XV-L2",
@@ -304,7 +304,7 @@
           "expected": "Supplier rank=1, Admin winner IS Supplier 1",
           "observed": "Supplier rank=1 (noRank=false); Admin log winner=Supplier 1",
           "screenshot": "screenshots/jp_xv_Lot_2_admin.png",
-          "timestamp": "2026-04-29T10:30:21.436Z"
+          "timestamp": "2026-04-29T12:37:57.774Z"
         }
       ]
     },
