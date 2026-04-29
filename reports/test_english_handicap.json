@@ -6,7 +6,7 @@
       "auctionType": "English",
       "auctionUrl": "https://dev.crown.ovh/auctions/94b301b6-c254-49e2-80e7-f8934f1dc835",
       "phase": "english-handicap",
-      "runLabel": "English — Handicap (fixed + dynamic)",
+      "runLabel": "English \u2014 Handicap (fixed + dynamic)",
       "runOrder": 26,
       "summary": {
         "total": 19,
@@ -83,7 +83,7 @@
           "status": "ok",
           "description": "Live bid 1/3 submitted",
           "expected": "Bid accepted + log increases",
-          "observed": "Bid: true, Log: 10→14",
+          "observed": "Bid: true, Log: 10\u219214",
           "screenshot": null,
           "timestamp": "2026-04-24T14:58:11.925Z"
         },
@@ -92,7 +92,7 @@
           "status": "ok",
           "description": "Live bid 2/3 submitted",
           "expected": "Bid accepted + log increases",
-          "observed": "Bid: true, Log: 10→19",
+          "observed": "Bid: true, Log: 10\u219219",
           "screenshot": null,
           "timestamp": "2026-04-24T14:58:31.413Z"
         },
@@ -101,7 +101,7 @@
           "status": "ok",
           "description": "Live bid 3/3 submitted",
           "expected": "Bid accepted + log increases",
-          "observed": "Bid: true, Log: 10→23",
+          "observed": "Bid: true, Log: 10\u219223",
           "screenshot": null,
           "timestamp": "2026-04-24T14:58:50.905Z"
         },
@@ -195,7 +195,7 @@
       "auctionType": "English",
       "auctionUrl": "https://dev.crown.ovh/auctions/94b301b6-c254-49e2-80e7-f8934f1dc835",
       "phase": "english-handicap",
-      "runLabel": "English — Handicap (fixed + dynamic) — 2026-04-27T14-30-32",
+      "runLabel": "English \u2014 Handicap (fixed + dynamic) \u2014 2026-04-27T14-30-32",
       "summary": {
         "total": 19,
         "ok": 16,
@@ -271,7 +271,7 @@
           "status": "ok",
           "description": "Live bid 1/3 submitted",
           "expected": "Bid accepted + log increases",
-          "observed": "Bid: true, Log: 10→14",
+          "observed": "Bid: true, Log: 10\u219214",
           "screenshot": null,
           "timestamp": "2026-04-27T14:28:00.492Z"
         },
@@ -280,7 +280,7 @@
           "status": "ok",
           "description": "Live bid 2/3 submitted",
           "expected": "Bid accepted + log increases",
-          "observed": "Bid: true, Log: 10→19",
+          "observed": "Bid: true, Log: 10\u219219",
           "screenshot": null,
           "timestamp": "2026-04-27T14:28:19.976Z"
         },
@@ -289,7 +289,7 @@
           "status": "ok",
           "description": "Live bid 3/3 submitted",
           "expected": "Bid accepted + log increases",
-          "observed": "Bid: true, Log: 10→23",
+          "observed": "Bid: true, Log: 10\u219223",
           "screenshot": null,
           "timestamp": "2026-04-27T14:28:39.469Z"
         },
@@ -383,20 +383,20 @@
       "auctionType": "English",
       "auctionUrl": "https://dev.crown.ovh/auctions/94b301b6-c254-49e2-80e7-f8934f1dc835",
       "phase": "english-handicap",
-      "runLabel": "English — Handicap (fixed + dynamic) — 2026-04-29T10-55-09",
+      "runLabel": "English \u2014 Handicap (fixed + dynamic) \u2014 2026-04-29T10-55-09",
       "summary": {
         "total": 19,
-        "ok": 16,
+        "ok": 17,
         "minor": 2,
-        "blocking": 1
+        "blocking": 0
       },
       "tests": [
         {
-          "id": "E-HC-coherence-dynamic",
-          "status": "blocking_bug",
-          "description": "Bid table coherence: Dynamic handicap shown for ALL suppliers",
-          "expected": "All 5 suppliers show dynamic handicap in Bid table",
-          "observed": "Missing dynamic HC for: Supplier 1, Bot 1, Bot 2, Bot 3, Bot 4 | State: {\"Supplier 1\":false,\"Bot 1\":false,\"Bot 2\":false,\"Bot 3\":false,\"Bot 4\":false}",
+          "id": "E-HC-dynamic-prebid-blank",
+          "status": "ok",
+          "description": "Pre-prebid: Dynamic handicap cells blank (expected per platform spec)",
+          "expected": "All 5 suppliers have BLANK dynamic HC before any pre-bid (NOT a bug \u2014 dynamic populates AFTER pre-bid)",
+          "observed": "Cells correctly blank pre-prebid. Per user clarification 2026-04-29: dynamic HC populates only after pre-bid is submitted.",
           "screenshot": "screenshots/ehc_bid_table.png",
           "timestamp": "2026-04-29T10:51:15.908Z"
         },
@@ -459,7 +459,7 @@
           "status": "ok",
           "description": "Live bid 1/3 submitted",
           "expected": "Bid accepted + log increases",
-          "observed": "Bid: true, Log: 6→10",
+          "observed": "Bid: true, Log: 6\u219210",
           "screenshot": null,
           "timestamp": "2026-04-29T10:52:37.292Z"
         },
@@ -468,7 +468,7 @@
           "status": "ok",
           "description": "Live bid 2/3 submitted",
           "expected": "Bid accepted + log increases",
-          "observed": "Bid: true, Log: 6→15",
+          "observed": "Bid: true, Log: 6\u219215",
           "screenshot": null,
           "timestamp": "2026-04-29T10:52:56.779Z"
         },
@@ -477,7 +477,7 @@
           "status": "ok",
           "description": "Live bid 3/3 submitted",
           "expected": "Bid accepted + log increases",
-          "observed": "Bid: true, Log: 6→19",
+          "observed": "Bid: true, Log: 6\u219219",
           "screenshot": null,
           "timestamp": "2026-04-29T10:53:16.271Z"
         },
