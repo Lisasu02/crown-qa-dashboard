@@ -1,6 +1,6 @@
 {
   "platform": "https://dev.crown.ovh",
-  "date": "2026-04-27",
+  "date": "2026-04-29",
   "auctionType": "Dutch",
   "auctionUrl": "https://dev.crown.ovh/auctions/b0dfe665-ee43-4632-badc-ea60444aa966",
   "phase": "dutch-2lots",
@@ -8,8 +8,8 @@
   "runOrder": 14,
   "summary": {
     "total": 8,
-    "ok": 7,
-    "minor": 1,
+    "ok": 8,
+    "minor": 0,
     "blocking": 0
   },
   "tests": [
@@ -20,7 +20,7 @@
       "expected": "Pre-bid 90000",
       "observed": "Submitted at 90000",
       "screenshot": "screenshots/dutch2_lot1_s1_initial_prebid.png",
-      "timestamp": "2026-04-27T14:53:12.612Z"
+      "timestamp": "2026-04-29T10:12:13.269Z"
     },
     {
       "id": "D-prebid-change",
@@ -29,7 +29,7 @@
       "expected": "Changed to 85000",
       "observed": "Changed from 90000 to 85000",
       "screenshot": "screenshots/dutch2_lot1_s1_changed_prebid.png",
-      "timestamp": "2026-04-27T14:53:17.549Z"
+      "timestamp": "2026-04-29T10:12:18.139Z"
     },
     {
       "id": "D-prebids",
@@ -38,16 +38,16 @@
       "expected": "4 pre-bids (incl. 1 change)",
       "observed": "Configured",
       "screenshot": null,
-      "timestamp": "2026-04-27T14:53:53.658Z"
+      "timestamp": "2026-04-29T10:12:54.316Z"
     },
     {
       "id": "D-UC1-rank",
-      "status": "minor_bug",
+      "status": "ok",
       "description": "Lot 1: S1 rank #1 (tie, first submitted)",
       "expected": "S1 rank #1",
-      "observed": "rank=null, modal={\"rank\":null,\"noRank\":true}",
+      "observed": "rank=1, modal={\"rank\":1,\"price\":\"85,000\",\"lot\":\"\"}",
       "screenshot": "screenshots/dutch2_lot1_supplier_end.png",
-      "timestamp": "2026-04-27T14:55:31.581Z"
+      "timestamp": "2026-04-29T10:14:33.477Z"
     },
     {
       "id": "D-UC2-rank",
@@ -56,7 +56,7 @@
       "expected": "S1 rank #1",
       "observed": "rank=1, modal={\"rank\":1,\"price\":\"82,000\",\"lot\":\"\"}",
       "screenshot": "screenshots/dutch2_lot2_supplier_end.png",
-      "timestamp": "2026-04-27T14:59:51.688Z"
+      "timestamp": "2026-04-29T10:18:52.023Z"
     },
     {
       "id": "D-XV-Lot1",
@@ -65,7 +65,7 @@
       "expected": "Supplier: rank #1 + log confirms | Admin: Supplier 1 rank 1",
       "observed": "Supplier: rank=1, logRank=true | Admin winner: Supplier 1",
       "screenshot": "screenshots/dutch2_verify_Lot_1_supplier.png",
-      "timestamp": "2026-04-27T15:00:21.944Z"
+      "timestamp": "2026-04-29T10:19:22.475Z"
     },
     {
       "id": "D-XV-Lot2",
@@ -74,7 +74,7 @@
       "expected": "Supplier: rank #1 + log confirms | Admin: Supplier 1 rank 1",
       "observed": "Supplier: rank=1, logRank=true | Admin winner: Supplier 1",
       "screenshot": "screenshots/dutch2_verify_Lot_2_supplier.png",
-      "timestamp": "2026-04-27T15:00:32.197Z"
+      "timestamp": "2026-04-29T10:19:32.792Z"
     },
     {
       "id": "D-final",
@@ -83,7 +83,7 @@
       "expected": "2x Closed",
       "observed": "Closed count: 3",
       "screenshot": "screenshots/dutch2_admin_final.png",
-      "timestamp": "2026-04-27T15:00:32.246Z"
+      "timestamp": "2026-04-29T10:19:32.841Z"
     }
   ]
 }
