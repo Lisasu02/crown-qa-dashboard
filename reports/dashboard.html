@@ -47,8 +47,12 @@
   .toggle-arrow { font-size: 12px; color: #6c757d; transition: transform 0.2s; }
   .bugs-panel.collapsed .toggle-arrow { transform: rotate(-90deg); }
 
-  /* Filters */
-  .filters { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; align-items: center; }
+  /* Filters — sticky at top while scrolling */
+  .filters { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; align-items: center;
+             position: sticky; top: 0; background: #f8f9fa; padding: 12px 0; z-index: 10;
+             border-bottom: 1px solid #e9ecef; }
+  .filter-search { padding: 6px 12px; border-radius: 8px; border: 1px solid #dee2e6; background: #fff;
+                   font-size: 13px; min-width: 180px; }
   .filter-group { display: flex; align-items: center; gap: 6px; }
   .filter-label { font-size: 12px; font-weight: 600; color: #6c757d; text-transform: uppercase; letter-spacing: 0.5px; }
   .filter-chips { display: flex; gap: 4px; }
@@ -84,7 +88,9 @@
   .runs-table tbody tr.selected { background: #fff8e1; }
   .badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
   .badge-english { background: #e3f2fd; color: #1565c0; }
-  .badge-dutch { background: #fce4ec; color: #c62828; }
+  .badge-dutch { background: #e8f5e9; color: #2e7d32; }
+  .badge-japanese { background: #f3e5f5; color: #6a1b9a; }
+  .badge-sealed { background: #fff3e0; color: #e65100; }
   .score { font-weight: 700; font-size: 14px; }
   .score-perfect { color: #2e7d32; }
   .score-partial { color: #f57f17; }
@@ -175,7 +181,11 @@
     <div class="filter-sep"></div>
     <div class="filter-group"><span class="filter-label">Date</span><select class="filter-select" id="filter-date"><option value="">All dates</option></select></div>
     <div class="filter-sep"></div>
+    <div class="filter-group"><span class="filter-label">Auction</span><select class="filter-select" id="filter-auction"><option value="">All auctions</option></select></div>
+    <div class="filter-sep"></div>
     <div class="filter-group"><span class="filter-label">Test</span><select class="filter-select" id="filter-test"><option value="">All tests</option></select></div>
+    <input type="text" class="filter-search" id="filter-search" placeholder="Search runs / observations..." oninput="setSearch(this.value)">
+    <label class="toggle-bugs"><input type="checkbox" id="latest-only" onchange="toggleLatestOnly(this)"> Latest run only (per test)</label>
     <label class="toggle-bugs"><input type="checkbox" id="bugs-only" onchange="toggleBugsOnly(this)"> Show bugs only</label>
   </div>
 
@@ -204,12 +214,16 @@ const reports = [{"platform":"https://dev.crown.ovh","date":"2026-04-29","auctio
 // Sort by actual run time DESC — latest first
 reports.sort((a, b) => (b._sortTime || 0) - (a._sortTime || 0));
 
-let activeType = '', activeDate = '', activeTest = '', selectedRun = -1, bugsOnly = false;
+let activeType = '', activeDate = '', activeTest = '', activeAuction = '', searchText = '', selectedRun = -1, bugsOnly = false, latestOnly = false;
 
-// Collect all unique types, dates, test IDs
+// Collect all unique types, dates, test IDs, auctions
 const types = [...new Set(reports.map(r => r.auctionType))].sort();
 const dates = [...new Set(reports.map(r => r.date))].sort().reverse();
 const allTestIds = [...new Set(reports.flatMap(r => r.tests.map(t => t.id)))].sort();
+const auctions = [...new Set(reports.map(r => {
+  const id = r.auctionUrl ? (r.auctionUrl.split('/auctions/')[1] || '').substring(0, 8) : '';
+  return id ? id + '... (' + r.auctionType + ')' : null;
+}).filter(Boolean))].sort();
 
 // Build filter chips
 document.getElementById('filter-type').innerHTML = '<div class="chip active" data-val="" onclick="setType(this)">All</div>' +
@@ -219,12 +233,18 @@ const dateSel = document.getElementById('filter-date');
 dates.forEach(d => { const o = document.createElement('option'); o.value = d; o.textContent = d; dateSel.appendChild(o); });
 dateSel.addEventListener('change', () => { activeDate = dateSel.value; render(); });
 
+const auctionSel = document.getElementById('filter-auction');
+auctions.forEach(a => { const o = document.createElement('option'); o.value = a; o.textContent = a; auctionSel.appendChild(o); });
+auctionSel.addEventListener('change', () => { activeAuction = auctionSel.value; render(); });
+
 const testSel = document.getElementById('filter-test');
 allTestIds.forEach(id => { const o = document.createElement('option'); o.value = id; o.textContent = id; testSel.appendChild(o); });
 testSel.addEventListener('change', () => { activeTest = testSel.value; render(); });
 
 function setType(el) { activeType = el.dataset.val; el.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('active')); el.classList.add('active'); render(); }
 function toggleBugsOnly(cb) { bugsOnly = cb.checked; render(); }
+function toggleLatestOnly(cb) { latestOnly = cb.checked; render(); }
+function setSearch(v) { searchText = (v || '').toLowerCase().trim(); render(); }
 function toggleBugsPanel() { document.getElementById('bugs-panel').classList.toggle('collapsed'); }
 
 function openModal(src) {
@@ -303,8 +323,27 @@ function render() {
   let filtered = reports;
   if (activeType) filtered = filtered.filter(r => r.auctionType === activeType);
   if (activeDate) filtered = filtered.filter(r => r.date === activeDate);
+  if (activeAuction) filtered = filtered.filter(r => {
+    const id = r.auctionUrl ? (r.auctionUrl.split('/auctions/')[1] || '').substring(0, 8) : '';
+    return (id + '... (' + r.auctionType + ')') === activeAuction;
+  });
   if (activeTest) filtered = filtered.filter(r => r.tests.some(t => t.id === activeTest));
   if (bugsOnly) filtered = filtered.filter(r => r.summary.minor > 0 || r.summary.blocking > 0);
+  if (searchText) filtered = filtered.filter(r => {
+    const hay = (r.runLabel || '') + ' ' + (r.auctionUrl || '') + ' ' +
+                (r.tests || []).map(t => (t.description || '') + ' ' + (t.observed || '')).join(' ');
+    return hay.toLowerCase().includes(searchText);
+  });
+  if (latestOnly) {
+    // Keep only the most recent run per (auctionType + phase) combination
+    const seen = new Set();
+    filtered = filtered.filter(r => {
+      const key = (r.auctionType || '') + '|' + (r.phase || r.runLabel || '');
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }
 
   // Summary
   let tot = 0, ok = 0, minor = 0, block = 0;
@@ -326,7 +365,8 @@ function render() {
   tbody.innerHTML = filtered.map(r => {
     const origIdx = reports.indexOf(r);
     const scoreClass = r.summary.ok === r.summary.total ? 'score-perfect' : r.summary.blocking > 0 ? 'score-fail' : 'score-partial';
-    const typeBadge = r.auctionType === 'Dutch' ? 'badge-dutch' : 'badge-english';
+    const typeBadgeMap = { 'Dutch': 'badge-dutch', 'Japanese': 'badge-japanese', 'English': 'badge-english', 'Sealed': 'badge-sealed', 'Sealed Bid': 'badge-sealed' };
+    const typeBadge = typeBadgeMap[r.auctionType] || 'badge-english';
     const platform = (r.platform || '').replace('https://','').replace('http://','');
     const auctionId = r.auctionUrl ? (r.auctionUrl.split('/auctions/')[1] || '-').substring(0,8) : '-';
     const auctionCell = r.auctionUrl ? '<a href="' + r.auctionUrl + '" target="_blank" style="color:#1565c0;text-decoration:none;font-size:12px" onclick="event.stopPropagation()">' + auctionId + '...</a>' : '-';
