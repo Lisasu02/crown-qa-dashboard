@@ -115,7 +115,7 @@
       "auctionType": "Japanese",
       "auctionUrl": "https://dev.crown.ovh/auctions/e1fa3f01-78ba-4ba8-886c-3d86ca5d01b8",
       "phase": "japanese-multilot-2lots",
-      "runLabel": "Japanese multilot 2 lots — 2026-04-27T13-57-51",
+      "runLabel": "Japanese multilot 2 lots \u2014 2026-04-27T13-57-51",
       "runOrder": 51,
       "reportFile": "test_japanese_multilot_2lots.json",
       "summary": {
@@ -188,7 +188,7 @@
       "auctionType": "Japanese",
       "auctionUrl": "https://dev.crown.ovh/auctions/f4eead41-a393-4b38-a9c9-4c89e21f9be0",
       "phase": "japanese-multilot-2lots",
-      "runLabel": "Japanese multilot 2 lots — 2026-04-29T10-30-21",
+      "runLabel": "Japanese multilot 2 lots \u2014 2026-04-29T10-30-21",
       "runOrder": 51,
       "reportFile": "test_japanese_multilot_2lots.json",
       "summary": {
@@ -204,7 +204,7 @@
           "description": "Lot 1: S1 pre-bid 95000",
           "expected": 95000,
           "observed": false,
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L1_supplier_detected.png",
           "timestamp": "2026-04-29T10:23:34.194Z"
         },
         {
@@ -231,7 +231,7 @@
           "description": "Lot 1: S2 pre-bid 95000 via admin",
           "expected": 95000,
           "observed": false,
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L1_admin_detected.png",
           "timestamp": "2026-04-29T10:23:57.018Z"
         },
         {
@@ -240,7 +240,7 @@
           "description": "Lot 2: S1 pre-bid 95000",
           "expected": 95000,
           "observed": false,
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L2_supplier_detected.png",
           "timestamp": "2026-04-29T10:24:05.826Z"
         },
         {
@@ -249,7 +249,7 @@
           "description": "Lot 2: S2 pre-bid 98000 via admin",
           "expected": 98000,
           "observed": false,
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L2_admin_detected.png",
           "timestamp": "2026-04-29T10:24:17.176Z"
         },
         {
@@ -258,7 +258,7 @@
           "description": "Lot 1: end modal detected",
           "expected": "modal visible",
           "observed": "rank=null, btn=",
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L1_supplier_detected.png",
           "timestamp": "2026-04-29T10:25:53.889Z"
         },
         {
@@ -267,7 +267,7 @@
           "description": "Lot 1: expected rank 1 (win-tie)",
           "expected": "rank=1",
           "observed": "got rank=null",
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L1_supplier_detected.png",
           "timestamp": "2026-04-29T10:25:53.889Z"
         },
         {
@@ -276,7 +276,7 @@
           "description": "Lot 2: end modal detected",
           "expected": "modal visible",
           "observed": "rank=1, btn=Back to eAuction",
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L2_supplier_detected.png",
           "timestamp": "2026-04-29T10:29:39.720Z"
         },
         {
@@ -285,7 +285,7 @@
           "description": "Lot 2: expected rank 1 (win-live)",
           "expected": "rank=1",
           "observed": "got rank=1",
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L2_supplier_detected.png",
           "timestamp": "2026-04-29T10:29:39.720Z"
         },
         {
@@ -315,7 +315,7 @@
       "auctionType": "Japanese",
       "auctionUrl": "https://dev.crown.ovh/auctions/e1fa3f01-78ba-4ba8-886c-3d86ca5d01b8",
       "phase": "japanese-multilot-2lots",
-      "runLabel": "Japanese multilot 2 lots — 2026-04-29T10-40-21",
+      "runLabel": "Japanese multilot 2 lots \u2014 2026-04-29T10-40-21",
       "runOrder": 51,
       "reportFile": "test_japanese_multilot_2lots.json",
       "summary": {
