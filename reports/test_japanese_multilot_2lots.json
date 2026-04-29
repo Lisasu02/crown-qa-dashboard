@@ -22,7 +22,7 @@
           "description": "Lot 1: S1 pre-bid 95000",
           "expected": 95000,
           "observed": true,
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L1_supplier_detected.png",
           "timestamp": "2026-04-27T12:28:32.251Z"
         },
         {
@@ -31,7 +31,7 @@
           "description": "Lot 1: S1 improve 93000",
           "expected": 93000,
           "observed": true,
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L1_supplier_detected.png",
           "timestamp": "2026-04-27T12:28:37.611Z"
         },
         {
@@ -40,7 +40,7 @@
           "description": "Lot 1: Admin delete S1 last bid",
           "expected": "Deleted",
           "observed": true,
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L1_admin_detected.png",
           "timestamp": "2026-04-27T12:28:48.106Z"
         },
         {
@@ -49,7 +49,7 @@
           "description": "Lot 1: S2 pre-bid 95000 via admin",
           "expected": 95000,
           "observed": true,
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L1_admin_detected.png",
           "timestamp": "2026-04-27T12:29:05.474Z"
         },
         {
@@ -58,7 +58,7 @@
           "description": "Lot 2: S1 pre-bid 95000",
           "expected": 95000,
           "observed": true,
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L2_supplier_detected.png",
           "timestamp": "2026-04-27T12:29:18.260Z"
         },
         {
@@ -67,7 +67,7 @@
           "description": "Lot 2: S2 pre-bid 98000 via admin",
           "expected": 98000,
           "observed": true,
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L2_admin_detected.png",
           "timestamp": "2026-04-27T12:29:34.408Z"
         },
         {
@@ -76,7 +76,7 @@
           "description": "Lot 1: end modal detected",
           "expected": "modal visible",
           "observed": "rank=1, btn=",
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L1_supplier_detected.png",
           "timestamp": "2026-04-27T12:31:46.025Z"
         },
         {
@@ -85,7 +85,7 @@
           "description": "Lot 1: expected rank 1 (win-tie)",
           "expected": "rank=1",
           "observed": "got rank=1",
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L1_supplier_detected.png",
           "timestamp": "2026-04-27T12:31:46.025Z"
         },
         {
@@ -94,7 +94,7 @@
           "description": "Lot 2: end modal detected",
           "expected": "modal visible",
           "observed": "rank=1, btn=Back to eAuction",
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L2_supplier_detected.png",
           "timestamp": "2026-04-27T12:36:46.221Z"
         },
         {
@@ -103,7 +103,7 @@
           "description": "Lot 2: expected rank 1 (win-live)",
           "expected": "rank=1",
           "observed": "got rank=1",
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L2_supplier_detected.png",
           "timestamp": "2026-04-27T12:36:46.221Z"
         }
       ]
@@ -131,7 +131,7 @@
           "description": "Lot 1: S1 pre-bid 99000",
           "expected": 99000,
           "observed": true,
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L1_supplier_detected.png",
           "timestamp": "2026-04-27T13:53:02.726Z"
         },
         {
@@ -140,7 +140,7 @@
           "description": "Lot 2: S1 pre-bid 95000",
           "expected": 95000,
           "observed": true,
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L2_supplier_detected.png",
           "timestamp": "2026-04-27T13:53:11.166Z"
         },
         {
@@ -149,7 +149,7 @@
           "description": "Lot 1: end modal detected",
           "expected": "modal visible",
           "observed": "rank=2, btn=Back to eAuction",
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L1_supplier_detected.png",
           "timestamp": "2026-04-27T13:54:50.704Z"
         },
         {
@@ -158,7 +158,7 @@
           "description": "Lot 1: expected rank 2 (lose-prebid)",
           "expected": "rank=2",
           "observed": "got rank=2",
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L1_supplier_detected.png",
           "timestamp": "2026-04-27T13:54:50.704Z"
         },
         {
@@ -167,7 +167,7 @@
           "description": "Lot 2: end modal detected",
           "expected": "modal visible",
           "observed": "rank=2, btn=Back to eAuction",
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L2_supplier_detected.png",
           "timestamp": "2026-04-27T13:57:36.765Z"
         },
         {
@@ -176,7 +176,7 @@
           "description": "Lot 2: expected rank 2 (lose-live)",
           "expected": "rank=2",
           "observed": "got rank=2",
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L2_supplier_detected.png",
           "timestamp": "2026-04-27T13:57:36.765Z"
         }
       ]
@@ -204,7 +204,7 @@
           "description": "Lot 1: S1 pre-bid 99000",
           "expected": 99000,
           "observed": true,
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L1_supplier_detected.png",
           "timestamp": "2026-04-29T12:32:38.947Z"
         },
         {
@@ -213,7 +213,7 @@
           "description": "Lot 1: S1 improve 98000",
           "expected": 98000,
           "observed": true,
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L1_supplier_detected.png",
           "timestamp": "2026-04-29T12:32:44.330Z"
         },
         {
@@ -222,7 +222,7 @@
           "description": "Lot 1: Admin delete S1 last bid",
           "expected": "Deleted",
           "observed": true,
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L1_admin_detected.png",
           "timestamp": "2026-04-29T12:32:54.820Z"
         },
         {
@@ -231,7 +231,7 @@
           "description": "Lot 1: S2 pre-bid 99000 via admin",
           "expected": 99000,
           "observed": true,
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L1_admin_detected.png",
           "timestamp": "2026-04-29T12:33:12.241Z"
         },
         {
@@ -240,7 +240,7 @@
           "description": "Lot 2: S1 pre-bid 99000",
           "expected": 99000,
           "observed": true,
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L2_supplier_detected.png",
           "timestamp": "2026-04-29T12:33:25.669Z"
         },
         {
@@ -249,7 +249,7 @@
           "description": "Lot 2: S2 pre-bid 99000 via admin",
           "expected": 99000,
           "observed": true,
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L2_admin_detected.png",
           "timestamp": "2026-04-29T12:33:41.890Z"
         },
         {
@@ -258,7 +258,7 @@
           "description": "Lot 1: end modal detected",
           "expected": "modal visible",
           "observed": "rank=1, btn=",
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L1_supplier_detected.png",
           "timestamp": "2026-04-29T12:34:53.127Z"
         },
         {
@@ -267,7 +267,7 @@
           "description": "Lot 1: expected rank 1 (win-tie)",
           "expected": "rank=1",
           "observed": "got rank=1",
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L1_supplier_detected.png",
           "timestamp": "2026-04-29T12:34:53.127Z"
         },
         {
@@ -276,7 +276,7 @@
           "description": "Lot 2: end modal detected",
           "expected": "modal visible",
           "observed": "rank=1, btn=Back to eAuction",
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L2_supplier_detected.png",
           "timestamp": "2026-04-29T12:37:16.894Z"
         },
         {
@@ -285,7 +285,7 @@
           "description": "Lot 2: expected rank 1 (win-live)",
           "expected": "rank=1",
           "observed": "got rank=1",
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L2_supplier_detected.png",
           "timestamp": "2026-04-29T12:37:16.894Z"
         },
         {
@@ -331,7 +331,7 @@
           "description": "Lot 1: S1 pre-bid 99000",
           "expected": 99000,
           "observed": true,
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L1_supplier_detected.png",
           "timestamp": "2026-04-29T10:31:52.859Z"
         },
         {
@@ -340,7 +340,7 @@
           "description": "Lot 2: S1 pre-bid 95000",
           "expected": 95000,
           "observed": true,
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L2_supplier_detected.png",
           "timestamp": "2026-04-29T10:32:01.274Z"
         },
         {
@@ -349,7 +349,7 @@
           "description": "Lot 1: end modal detected",
           "expected": "modal visible",
           "observed": "rank=2, btn=Back to eAuction",
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L1_supplier_detected.png",
           "timestamp": "2026-04-29T10:33:40.281Z"
         },
         {
@@ -358,7 +358,7 @@
           "description": "Lot 1: expected rank 2 (lose-prebid)",
           "expected": "rank=2",
           "observed": "got rank=2",
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L1_supplier_detected.png",
           "timestamp": "2026-04-29T10:33:40.283Z"
         },
         {
@@ -367,7 +367,7 @@
           "description": "Lot 2: end modal detected",
           "expected": "modal visible",
           "observed": "rank=null, btn=Back to eAuction",
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L2_supplier_detected.png",
           "timestamp": "2026-04-29T10:39:40.886Z"
         },
         {
@@ -376,7 +376,7 @@
           "description": "Lot 2: expected rank 2 (lose-live)",
           "expected": "rank=2",
           "observed": "got rank=null",
-          "screenshot": null,
+          "screenshot": "screenshots/jp_ml_L2_supplier_detected.png",
           "timestamp": "2026-04-29T10:39:40.890Z"
         },
         {

@@ -298,7 +298,7 @@
           "description": "Admin update after improve",
           "expected": "Activity log increases",
           "observed": "Log: 10 \u2192 11",
-          "screenshot": null,
+          "screenshot": "screenshots/full_E3.png",
           "timestamp": "2026-04-29T10:41:34.221Z"
         },
         {
@@ -307,7 +307,7 @@
           "description": "Pre-bid submitted on Lot 2 (multi-items)",
           "expected": "Pre-bid registered for all cells",
           "observed": "Pre-bid 100000 submitted on 2 cell(s) of Lot 2",
-          "screenshot": null,
+          "screenshot": "screenshots/full_on_lot2.png",
           "timestamp": "2026-04-29T10:41:41.859Z"
         },
         {
@@ -343,7 +343,7 @@
           "description": "Normal bid #2",
           "expected": "Bid accepted",
           "observed": "Decrement 1000 submitted (bid #2)",
-          "screenshot": null,
+          "screenshot": "screenshots/full_E4.png",
           "timestamp": "2026-04-29T10:42:43.740Z"
         },
         {
@@ -352,7 +352,7 @@
           "description": "Normal bid #3",
           "expected": "Bid accepted",
           "observed": "Decrement 1000 submitted (bid #3)",
-          "screenshot": null,
+          "screenshot": "screenshots/full_E4.png",
           "timestamp": "2026-04-29T10:43:05.848Z"
         },
         {
@@ -379,7 +379,7 @@
           "description": "Observe auction flow",
           "expected": "Timer counts down",
           "observed": "Timer: 01:02 \u2192 00:59 (decreasing: true)",
-          "screenshot": null,
+          "screenshot": "screenshots/full_E7_supplier.png",
           "timestamp": "2026-04-29T10:43:13.058Z"
         },
         {
@@ -388,7 +388,7 @@
           "description": "Overtime bid #1 (supplier) + timer reset (timing-aware)",
           "expected": "Timer resets on overtime bid (or close to overtime window)",
           "observed": "Before: 29s, After: 27s \u2014 Note: timer DOES reset, but resets+counts back so fast that the post-bid read often catches it already counting down. Real platform behavior is correct.",
-          "screenshot": null,
+          "screenshot": "screenshots/full_E7_supplier.png",
           "timestamp": "2026-04-29T10:43:47.705Z"
         },
         {
@@ -397,7 +397,7 @@
           "description": "Admin places bid for S1 (overtime)",
           "expected": "Bid submitted from admin panel for Supplier 1",
           "observed": "Admin decrement 1000 submitted in overtime for S1",
-          "screenshot": null,
+          "screenshot": "screenshots/full_E12_admin.png",
           "timestamp": "2026-04-29T10:43:56.559Z"
         },
         {
@@ -442,7 +442,7 @@
           "description": "Lot 2 live bid #1",
           "expected": "Bid accepted",
           "observed": "Decrement 1000 on Lot 2 (bid #1)",
-          "screenshot": null,
+          "screenshot": "screenshots/full_lot2_start_supplier.png",
           "timestamp": "2026-04-29T10:45:14.377Z"
         },
         {
@@ -451,7 +451,7 @@
           "description": "Lot 2 live bid #2",
           "expected": "Bid accepted",
           "observed": "Decrement 1000 on Lot 2 (bid #2)",
-          "screenshot": null,
+          "screenshot": "screenshots/full_lot2_start_supplier.png",
           "timestamp": "2026-04-29T10:45:36.495Z"
         },
         {
@@ -460,7 +460,7 @@
           "description": "Lot 2 live bid #3",
           "expected": "Bid accepted",
           "observed": "Decrement 1000 on Lot 2 (bid #3)",
-          "screenshot": null,
+          "screenshot": "screenshots/full_lot2_start_supplier.png",
           "timestamp": "2026-04-29T10:45:58.615Z"
         },
         {
@@ -469,7 +469,7 @@
           "description": "Lot 2 overtime bids",
           "expected": "Reach overtime",
           "observed": "Never observed timer \u2264 35s on Lot 2",
-          "screenshot": null,
+          "screenshot": "screenshots/full_lot2_start_supplier.png",
           "timestamp": "2026-04-29T10:46:58.667Z"
         },
         {
@@ -478,7 +478,7 @@
           "description": "Lot 2 ended",
           "expected": "Lot 2 end state reached",
           "observed": "Closed: true",
-          "screenshot": null,
+          "screenshot": "screenshots/full_E12_admin.png",
           "timestamp": "2026-04-29T10:49:48.677Z"
         },
         {

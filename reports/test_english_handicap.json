@@ -406,7 +406,7 @@
           "description": "Supplier does NOT see Fixed handicap",
           "expected": "Fixed handicap hidden from supplier",
           "observed": "supplierSeesFixed=false",
-          "screenshot": null,
+          "screenshot": "screenshots/ehc_supplier_initial.png",
           "timestamp": "2026-04-29T10:51:16.002Z"
         },
         {
@@ -415,7 +415,7 @@
           "description": "Supplier DOES see Dynamic handicap",
           "expected": "Dynamic handicap visible to supplier",
           "observed": "supplierSeesDynamic=false",
-          "screenshot": null,
+          "screenshot": "screenshots/ehc_supplier_initial.png",
           "timestamp": "2026-04-29T10:51:16.003Z"
         },
         {
@@ -442,7 +442,7 @@
           "description": "Admin sees Fixed handicap info",
           "expected": "Fixed handicap visible to admin",
           "observed": "adminSeesFixed=true",
-          "screenshot": null,
+          "screenshot": "screenshots/ehc_bid_table.png",
           "timestamp": "2026-04-29T10:51:31.911Z"
         },
         {
@@ -460,7 +460,7 @@
           "description": "Live bid 1/3 submitted",
           "expected": "Bid accepted + log increases",
           "observed": "Bid: true, Log: 6\u219210",
-          "screenshot": null,
+          "screenshot": "screenshots/ehc_after_3bids.png",
           "timestamp": "2026-04-29T10:52:37.292Z"
         },
         {
@@ -469,7 +469,7 @@
           "description": "Live bid 2/3 submitted",
           "expected": "Bid accepted + log increases",
           "observed": "Bid: true, Log: 6\u219215",
-          "screenshot": null,
+          "screenshot": "screenshots/ehc_after_3bids.png",
           "timestamp": "2026-04-29T10:52:56.779Z"
         },
         {
@@ -478,7 +478,7 @@
           "description": "Live bid 3/3 submitted",
           "expected": "Bid accepted + log increases",
           "observed": "Bid: true, Log: 6\u219219",
-          "screenshot": null,
+          "screenshot": "screenshots/ehc_after_3bids.png",
           "timestamp": "2026-04-29T10:53:16.271Z"
         },
         {
@@ -487,7 +487,7 @@
           "description": "Graph visible on admin side",
           "expected": "Graph updates after bids",
           "observed": "graphPresent=true",
-          "screenshot": null,
+          "screenshot": "screenshots/ehc_admin_final.png",
           "timestamp": "2026-04-29T10:53:16.350Z"
         },
         {
@@ -496,7 +496,7 @@
           "description": "Overtime reset on bid",
           "expected": "Timer resets",
           "observed": "Before: 00:30, After: 00:24",
-          "screenshot": null,
+          "screenshot": "screenshots/ehc_admin_final.png",
           "timestamp": "2026-04-29T10:53:49.844Z"
         },
         {
