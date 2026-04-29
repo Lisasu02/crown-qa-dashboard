@@ -188,7 +188,7 @@
       "auctionType": "Japanese",
       "auctionUrl": "https://dev.crown.ovh/auctions/f4eead41-a393-4b38-a9c9-4c89e21f9be0",
       "phase": "japanese-multilot-2lots",
-      "runLabel": "Japanese multilot 2 lots \u2014 2026-04-29T10-30-21",
+      "runLabel": "Japanese Win \u2014 2 Lots (UC3 tie + UC2 win-live) \u2014 2026-04-29T10-30-21",
       "runOrder": 51,
       "reportFile": "test_japanese_multilot_2lots.json",
       "summary": {
@@ -202,7 +202,7 @@
           "id": "PRE-S1-L1",
           "status": "blocking_bug",
           "description": "Lot 1: S1 pre-bid 95000",
-          "expected": 95000,
+          "expected": "99000 (round 2 price)",
           "observed": false,
           "screenshot": "screenshots/jp_ml_L1_supplier_detected.png",
           "timestamp": "2026-04-29T10:23:34.194Z"
@@ -211,7 +211,7 @@
           "id": "PRE-S1-improve-L1",
           "status": "minor_bug",
           "description": "Lot 1: S1 improve 93000",
-          "expected": 93000,
+          "expected": "98000",
           "observed": false,
           "screenshot": null,
           "timestamp": "2026-04-29T10:23:34.201Z"
@@ -229,7 +229,7 @@
           "id": "PRE-S2-L1",
           "status": "blocking_bug",
           "description": "Lot 1: S2 pre-bid 95000 via admin",
-          "expected": 95000,
+          "expected": "99000 (same as S1 final, for tie)",
           "observed": false,
           "screenshot": "screenshots/jp_ml_L1_admin_detected.png",
           "timestamp": "2026-04-29T10:23:57.018Z"
@@ -238,7 +238,7 @@
           "id": "PRE-S1-L2",
           "status": "blocking_bug",
           "description": "Lot 2: S1 pre-bid 95000",
-          "expected": 95000,
+          "expected": "99000 (round 2 price)",
           "observed": false,
           "screenshot": "screenshots/jp_ml_L2_supplier_detected.png",
           "timestamp": "2026-04-29T10:24:05.826Z"
@@ -247,7 +247,7 @@
           "id": "PRE-S2-L2",
           "status": "blocking_bug",
           "description": "Lot 2: S2 pre-bid 98000 via admin",
-          "expected": 98000,
+          "expected": "99000 (same as S1, for live-bid scenario)",
           "observed": false,
           "screenshot": "screenshots/jp_ml_L2_admin_detected.png",
           "timestamp": "2026-04-29T10:24:17.176Z"
