@@ -1,6 +1,6 @@
 {
   "platform": "https://dev.crown.ovh",
-  "date": "2026-04-27",
+  "date": "2026-04-29",
   "auctionType": "Dutch",
   "auctionUrl": "https://dev.crown.ovh/auctions/d715d437-4a87-4b22-ac6b-065a4747dbc4",
   "phase": "dutch-2lots",
@@ -20,7 +20,7 @@
       "expected": "Pre-bid 95000",
       "observed": "Submitted at 95000",
       "screenshot": "screenshots/dutch2lw_lot1_s1_prebid.png",
-      "timestamp": "2026-04-27T15:01:52.959Z"
+      "timestamp": "2026-04-29T12:07:13.666Z"
     },
     {
       "id": "D-prebids",
@@ -29,7 +29,7 @@
       "expected": "4 pre-bids (incl. 1 change)",
       "observed": "Configured",
       "screenshot": null,
-      "timestamp": "2026-04-27T15:02:29.019Z"
+      "timestamp": "2026-04-29T12:07:49.735Z"
     },
     {
       "id": "D-UC1-rank",
@@ -38,7 +38,7 @@
       "expected": "S1 rank != 1 or no rank displayed",
       "observed": "rank=null, noRank=true, modal={\"rank\":null,\"noRank\":true}",
       "screenshot": "screenshots/dutch2_lot1_supplier_end.png",
-      "timestamp": "2026-04-27T15:04:06.793Z"
+      "timestamp": "2026-04-29T12:09:27.580Z"
     },
     {
       "id": "D-UC2-rank",
@@ -47,7 +47,7 @@
       "expected": "S1 rank #1",
       "observed": "rank=1, modal={\"rank\":1,\"price\":\"85,000\",\"lot\":\"\"}",
       "screenshot": "screenshots/dutch2_lot2_supplier_end.png",
-      "timestamp": "2026-04-27T15:07:05.716Z"
+      "timestamp": "2026-04-29T12:12:29.296Z"
     },
     {
       "id": "D-XV-Lot1",
@@ -56,7 +56,7 @@
       "expected": "Supplier: \"rank not displayed\" + no rank in log | Admin: different supplier wins",
       "observed": "Supplier: rankNotDisplayed=true, logRank=false | Admin winner: Supplier 2",
       "screenshot": "screenshots/dutch2_verify_Lot_1_admin.png",
-      "timestamp": "2026-04-27T15:07:35.105Z"
+      "timestamp": "2026-04-29T12:12:58.642Z"
     },
     {
       "id": "D-XV-Lot2",
@@ -65,7 +65,7 @@
       "expected": "Supplier: rank #1 + log confirms | Admin: Supplier 1 rank 1",
       "observed": "Supplier: rank=1, logRank=true | Admin winner: Supplier 1",
       "screenshot": "screenshots/dutch2_verify_Lot_2_supplier.png",
-      "timestamp": "2026-04-27T15:07:45.356Z"
+      "timestamp": "2026-04-29T12:13:08.995Z"
     },
     {
       "id": "D-final",
@@ -74,7 +74,7 @@
       "expected": "2x Closed",
       "observed": "Closed count: 3",
       "screenshot": "screenshots/dutch2_admin_final.png",
-      "timestamp": "2026-04-27T15:07:45.405Z"
+      "timestamp": "2026-04-29T12:13:09.062Z"
     }
   ]
 }
