@@ -6,7 +6,7 @@
       "auctionType": "English",
       "auctionUrl": "https://dev.crown.ovh/auctions/94b301b6-c254-49e2-80e7-f8934f1dc835",
       "phase": "english-handicap",
-      "runLabel": "English \u2014 Handicap (fixed + dynamic)",
+      "runLabel": "English — Handicap (fixed + dynamic)",
       "runOrder": 26,
       "summary": {
         "total": 19,
@@ -83,7 +83,7 @@
           "status": "ok",
           "description": "Live bid 1/3 submitted",
           "expected": "Bid accepted + log increases",
-          "observed": "Bid: true, Log: 10\u219214",
+          "observed": "Bid: true, Log: 10→14",
           "screenshot": null,
           "timestamp": "2026-04-24T14:58:11.925Z"
         },
@@ -92,7 +92,7 @@
           "status": "ok",
           "description": "Live bid 2/3 submitted",
           "expected": "Bid accepted + log increases",
-          "observed": "Bid: true, Log: 10\u219219",
+          "observed": "Bid: true, Log: 10→19",
           "screenshot": null,
           "timestamp": "2026-04-24T14:58:31.413Z"
         },
@@ -101,7 +101,7 @@
           "status": "ok",
           "description": "Live bid 3/3 submitted",
           "expected": "Bid accepted + log increases",
-          "observed": "Bid: true, Log: 10\u219223",
+          "observed": "Bid: true, Log: 10→23",
           "screenshot": null,
           "timestamp": "2026-04-24T14:58:50.905Z"
         },
@@ -195,7 +195,7 @@
       "auctionType": "English",
       "auctionUrl": "https://dev.crown.ovh/auctions/94b301b6-c254-49e2-80e7-f8934f1dc835",
       "phase": "english-handicap",
-      "runLabel": "English \u2014 Handicap (fixed + dynamic) \u2014 2026-04-27T14-30-32",
+      "runLabel": "English — Handicap (fixed + dynamic) — 2026-04-27T14-30-32",
       "summary": {
         "total": 19,
         "ok": 16,
@@ -271,7 +271,7 @@
           "status": "ok",
           "description": "Live bid 1/3 submitted",
           "expected": "Bid accepted + log increases",
-          "observed": "Bid: true, Log: 10\u219214",
+          "observed": "Bid: true, Log: 10→14",
           "screenshot": null,
           "timestamp": "2026-04-27T14:28:00.492Z"
         },
@@ -280,7 +280,7 @@
           "status": "ok",
           "description": "Live bid 2/3 submitted",
           "expected": "Bid accepted + log increases",
-          "observed": "Bid: true, Log: 10\u219219",
+          "observed": "Bid: true, Log: 10→19",
           "screenshot": null,
           "timestamp": "2026-04-27T14:28:19.976Z"
         },
@@ -289,7 +289,7 @@
           "status": "ok",
           "description": "Live bid 3/3 submitted",
           "expected": "Bid accepted + log increases",
-          "observed": "Bid: true, Log: 10\u219223",
+          "observed": "Bid: true, Log: 10→23",
           "screenshot": null,
           "timestamp": "2026-04-27T14:28:39.469Z"
         },
@@ -383,7 +383,7 @@
       "auctionType": "English",
       "auctionUrl": "https://dev.crown.ovh/auctions/94b301b6-c254-49e2-80e7-f8934f1dc835",
       "phase": "english-handicap",
-      "runLabel": "English \u2014 Handicap (fixed + dynamic) \u2014 2026-04-29T10-55-09",
+      "runLabel": "English — Handicap (fixed + dynamic) — 2026-04-29T10-55-09",
       "summary": {
         "total": 19,
         "ok": 18,
@@ -395,7 +395,7 @@
           "id": "E-HC-dynamic-prebid-blank",
           "status": "ok",
           "description": "Pre-prebid: Dynamic handicap cells blank (expected per platform spec)",
-          "expected": "All 5 suppliers have BLANK dynamic HC before any pre-bid (NOT a bug \u2014 dynamic populates AFTER pre-bid)",
+          "expected": "All 5 suppliers have BLANK dynamic HC before any pre-bid (NOT a bug — dynamic populates AFTER pre-bid)",
           "observed": "Cells correctly blank pre-prebid. Per user clarification 2026-04-29: dynamic HC populates only after pre-bid is submitted.",
           "screenshot": "screenshots/ehc_bid_table.png",
           "timestamp": "2026-04-29T10:51:15.908Z"
@@ -459,7 +459,7 @@
           "status": "ok",
           "description": "Live bid 1/3 submitted",
           "expected": "Bid accepted + log increases",
-          "observed": "Bid: true, Log: 6\u219210",
+          "observed": "Bid: true, Log: 6→10",
           "screenshot": "screenshots/ehc_after_3bids.png",
           "timestamp": "2026-04-29T10:52:37.292Z"
         },
@@ -468,7 +468,7 @@
           "status": "ok",
           "description": "Live bid 2/3 submitted",
           "expected": "Bid accepted + log increases",
-          "observed": "Bid: true, Log: 6\u219215",
+          "observed": "Bid: true, Log: 6→15",
           "screenshot": "screenshots/ehc_after_3bids.png",
           "timestamp": "2026-04-29T10:52:56.779Z"
         },
@@ -477,7 +477,7 @@
           "status": "ok",
           "description": "Live bid 3/3 submitted",
           "expected": "Bid accepted + log increases",
-          "observed": "Bid: true, Log: 6\u219219",
+          "observed": "Bid: true, Log: 6→19",
           "screenshot": "screenshots/ehc_after_3bids.png",
           "timestamp": "2026-04-29T10:53:16.271Z"
         },
@@ -495,7 +495,7 @@
           "status": "ok",
           "description": "Overtime reset on bid (timing-aware, same as E9)",
           "expected": "Timer resets to overtime window (or close to it)",
-          "observed": "Before: 00:30, After: 00:24 \u2014 Note: timer DOES reset, but resets+counts back so fast that the post-bid read often catches it already counting down. Real platform behavior is correct (same as E9 multilot).",
+          "observed": "Before: 00:30, After: 00:24 — Note: timer DOES reset, but resets+counts back so fast that the post-bid read often catches it already counting down. Real platform behavior is correct (same as E9 multilot).",
           "screenshot": "screenshots/ehc_admin_final.png",
           "timestamp": "2026-04-29T10:53:49.844Z"
         },
@@ -561,6 +561,212 @@
           "observed": "hasGraph=true (SVG=2, Canvas=1)",
           "screenshot": "screenshots/ehc_coherence.png",
           "timestamp": "2026-04-29T10:55:09.927Z"
+        }
+      ]
+    },
+    {
+      "platform": "https://app.crown-procurement.com",
+      "date": "2026-04-30",
+      "ranAt": "2026-04-30T09:08:26.953Z",
+      "auctionType": "English",
+      "auctionUrl": "https://app.crown-procurement.com/auctions/1701c176-5142-4b38-b5c5-b73f81e08fa0",
+      "phase": "english-handicap",
+      "runLabel": "English — Handicap (fixed + dynamic) — 2026-04-30T09-08-26",
+      "summary": {
+        "total": 21,
+        "ok": 16,
+        "minor": 5,
+        "blocking": 0
+      },
+      "tests": [
+        {
+          "id": "E-HC-dynamic-prebid-blank",
+          "status": "ok",
+          "description": "Pre-prebid: Dynamic handicap cells blank (expected)",
+          "expected": "All 5 suppliers have BLANK dynamic HC before any pre-bid (per platform spec)",
+          "observed": "Dynamic HC visible at this phase: {\"Supplier 1\":false,\"Bot 1\":null,\"Bot 2\":null,\"Bot 3\":null,\"Bot 4\":null} (blank is expected pre-prebid)",
+          "screenshot": "screenshots/ehc_bid_table.png",
+          "timestamp": "2026-04-30T09:04:33.045Z"
+        },
+        {
+          "id": "E-HC-fixed-hidden",
+          "status": "ok",
+          "description": "Supplier does NOT see Fixed handicap",
+          "expected": "Fixed handicap hidden from supplier",
+          "observed": "supplierSeesFixed=false",
+          "screenshot": null,
+          "timestamp": "2026-04-30T09:04:33.135Z"
+        },
+        {
+          "id": "E-HC-dynamic-visible-supplier",
+          "status": "minor_bug",
+          "description": "Supplier DOES see Dynamic handicap",
+          "expected": "Dynamic handicap visible to supplier",
+          "observed": "supplierSeesDynamic=false",
+          "screenshot": null,
+          "timestamp": "2026-04-30T09:04:33.136Z"
+        },
+        {
+          "id": "E-HC-prebid-submit",
+          "status": "ok",
+          "description": "S1 submits pre-bid",
+          "expected": "90000 submitted",
+          "observed": "Submit: true",
+          "screenshot": "screenshots/ehc_s1_prebid.png",
+          "timestamp": "2026-04-30T09:04:37.724Z"
+        },
+        {
+          "id": "E-HC-prebid-change",
+          "status": "ok",
+          "description": "S1 changes pre-bid",
+          "expected": "85000 changed",
+          "observed": "Changed: true",
+          "screenshot": "screenshots/ehc_s1_prebid_changed.png",
+          "timestamp": "2026-04-30T09:04:42.279Z"
+        },
+        {
+          "id": "E-HC-admin-sees-fixed",
+          "status": "ok",
+          "description": "Admin sees Fixed handicap info",
+          "expected": "Fixed handicap visible to admin",
+          "observed": "adminSeesFixed=true",
+          "screenshot": null,
+          "timestamp": "2026-04-30T09:04:49.064Z"
+        },
+        {
+          "id": "E-HC-admin-delete",
+          "status": "ok",
+          "description": "Admin deletes S1 last pre-bid",
+          "expected": "Pre-bid deleted",
+          "observed": "Deleted: true",
+          "screenshot": "screenshots/ehc_admin_deleted.png",
+          "timestamp": "2026-04-30T09:04:52.735Z"
+        },
+        {
+          "id": "E-HC-live-bid-1",
+          "status": "ok",
+          "description": "Live bid 1/3 submitted",
+          "expected": "Bid accepted + log increases",
+          "observed": "Bid: true, Log: 6→10",
+          "screenshot": null,
+          "timestamp": "2026-04-30T09:05:54.760Z"
+        },
+        {
+          "id": "E-HC-live-bid-2",
+          "status": "ok",
+          "description": "Live bid 2/3 submitted",
+          "expected": "Bid accepted + log increases",
+          "observed": "Bid: true, Log: 6→15",
+          "screenshot": null,
+          "timestamp": "2026-04-30T09:06:14.261Z"
+        },
+        {
+          "id": "E-HC-live-bid-3",
+          "status": "ok",
+          "description": "Live bid 3/3 submitted",
+          "expected": "Bid accepted + log increases",
+          "observed": "Bid: true, Log: 6→19",
+          "screenshot": null,
+          "timestamp": "2026-04-30T09:06:33.760Z"
+        },
+        {
+          "id": "E-HC-graph-updates",
+          "status": "ok",
+          "description": "Graph visible on admin side",
+          "expected": "Graph updates after bids",
+          "observed": "graphPresent=true",
+          "screenshot": null,
+          "timestamp": "2026-04-30T09:06:33.829Z"
+        },
+        {
+          "id": "E-HC-overtime-reset",
+          "status": "minor_bug",
+          "description": "Overtime reset on bid (timing-aware)",
+          "expected": "Timer resets to overtime window (or close to it)",
+          "observed": "Before: 00:30, After: 00:24 — Timer reset assumed (measurement timing — counted back down before re-read)",
+          "screenshot": "screenshots/ehc_admin_final.png",
+          "timestamp": "2026-04-30T09:07:07.300Z"
+        },
+        {
+          "id": "E-HC-admin-bid",
+          "status": "ok",
+          "description": "Admin improves S1 bid during overtime",
+          "expected": "Admin bid via panel",
+          "observed": "Submitted: true",
+          "screenshot": "screenshots/ehc_admin_bid.png",
+          "timestamp": "2026-04-30T09:07:18.512Z"
+        },
+        {
+          "id": "E-HC-supplier-rank",
+          "status": "ok",
+          "description": "Supplier sees final rank",
+          "expected": "Rank visible",
+          "observed": "rank=1, closed=true, modal={\"rank\":1,\"price\":\"83,010\",\"lot\":\"\"}",
+          "screenshot": "screenshots/ehc_supplier_final.png",
+          "timestamp": "2026-04-30T09:08:15.604Z"
+        },
+        {
+          "id": "E-HC-supplier-no-fixed",
+          "status": "ok",
+          "description": "Supplier still NO see Fixed handicap at end",
+          "expected": "Hidden",
+          "observed": "hasFixed=false",
+          "screenshot": "screenshots/ehc_supplier_final.png",
+          "timestamp": "2026-04-30T09:08:15.604Z"
+        },
+        {
+          "id": "E-HC-admin-leaderboard",
+          "status": "ok",
+          "description": "Admin sees leaderboard",
+          "expected": "Leaderboard visible",
+          "observed": "11 entries",
+          "screenshot": "screenshots/ehc_admin_final.png",
+          "timestamp": "2026-04-30T09:08:26.899Z"
+        },
+        {
+          "id": "E-HC-coherence-bid-table",
+          "status": "minor_bug",
+          "description": "Coherence: All suppliers in Bid table",
+          "expected": "All 5 suppliers have rows in bid table",
+          "observed": "bidTable: [\"Supplier 1=true\",\"Bot 1=false\",\"Bot 2=false\",\"Bot 3=false\",\"Bot 4=false\"]",
+          "screenshot": "screenshots/ehc_coherence.png",
+          "timestamp": "2026-04-30T09:08:26.952Z"
+        },
+        {
+          "id": "E-HC-fixed-applied-end",
+          "status": "minor_bug",
+          "description": "End-of-auction: Fixed handicap visible per spec for configured suppliers",
+          "expected": "S1 (+100), Bot 1 (*1.1), Bot 2 (*1.3) show fixed handicap marker in bid table",
+          "observed": "Fixed seen for: NONE | Full state: {\"Supplier 1\":{\"found\":true,\"fixedSeen\":false,\"fixedValue\":null,\"dynamicSeen\":false},\"Bot 1\":{\"found\":false},\"Bot 2\":{\"found\":false},\"Bot 3\":{\"found\":false},\"Bot 4\":{\"found\":false}}",
+          "screenshot": "screenshots/ehc_coherence.png",
+          "timestamp": "2026-04-30T09:08:26.953Z"
+        },
+        {
+          "id": "E-HC-dynamic-applied-end",
+          "status": "minor_bug",
+          "description": "End-of-auction: Dynamic handicap populated for suppliers who pre-bid",
+          "expected": "All suppliers with submitted pre-bids show dynamic HC value (e.g. +10)",
+          "observed": "Dynamic seen for: NONE | Full state: {\"Supplier 1\":{\"found\":true,\"fixedSeen\":false,\"fixedValue\":null,\"dynamicSeen\":false},\"Bot 1\":{\"found\":false},\"Bot 2\":{\"found\":false},\"Bot 3\":{\"found\":false},\"Bot 4\":{\"found\":false}}",
+          "screenshot": "screenshots/ehc_coherence.png",
+          "timestamp": "2026-04-30T09:08:26.953Z"
+        },
+        {
+          "id": "E-HC-coherence-leaderboard",
+          "status": "ok",
+          "description": "Coherence: Leaderboard has all 5 participants",
+          "expected": "Leaderboard shows S1 + 4 bots",
+          "observed": "11 entries, winner=Supplier 1\tOnline",
+          "screenshot": "screenshots/ehc_coherence.png",
+          "timestamp": "2026-04-30T09:08:26.953Z"
+        },
+        {
+          "id": "E-HC-coherence-graph",
+          "status": "ok",
+          "description": "Coherence: Graph is present",
+          "expected": "Graph visualizes bids",
+          "observed": "hasGraph=true (SVG=2, Canvas=1)",
+          "screenshot": "screenshots/ehc_coherence.png",
+          "timestamp": "2026-04-30T09:08:26.953Z"
         }
       ]
     }

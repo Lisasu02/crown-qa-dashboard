@@ -5,7 +5,7 @@
       "date": "2026-04-24",
       "auctionType": "English",
       "auctionUrl": "https://dev.crown.ovh/auctions/d7fff716-4e38-4dbe-bd0a-8a23a6f438af",
-      "runLabel": "English \u2014 2 Lots (Default + Multi-items)",
+      "runLabel": "English — 2 Lots (Default + Multi-items)",
       "phase": "english-multilot-full",
       "summary": {
         "total": 26,
@@ -28,7 +28,7 @@
           "status": "ok",
           "description": "Admin update after pre-bid",
           "expected": "Activity log increases",
-          "observed": "Log: 1 \u2192 6",
+          "observed": "Log: 1 → 6",
           "screenshot": "screenshots/full_E2b.png",
           "timestamp": "2026-04-24T15:55:20.327Z"
         },
@@ -37,7 +37,7 @@
           "status": "ok",
           "description": "Improve pre-bid",
           "expected": "Old pre-bid replaced",
-          "observed": "Pre-bid improved: 100000 \u2192 95000",
+          "observed": "Pre-bid improved: 100000 → 95000",
           "screenshot": "screenshots/full_E3.png",
           "timestamp": "2026-04-24T15:55:24.583Z"
         },
@@ -46,7 +46,7 @@
           "status": "ok",
           "description": "Admin update after improve",
           "expected": "Activity log increases",
-          "observed": "Log: 6 \u2192 7",
+          "observed": "Log: 6 → 7",
           "screenshot": null,
           "timestamp": "2026-04-24T15:55:33.991Z"
         },
@@ -82,7 +82,7 @@
           "status": "ok",
           "description": "Admin activity log during live",
           "expected": "Log increases after bid",
-          "observed": "Log: 8 \u2192 10",
+          "observed": "Log: 8 → 10",
           "screenshot": "screenshots/full_E4b.png",
           "timestamp": "2026-04-24T15:56:21.664Z"
         },
@@ -127,7 +127,7 @@
           "status": "ok",
           "description": "Observe auction flow",
           "expected": "Timer counts down",
-          "observed": "Timer: 01:01 \u2192 00:58 (decreasing: true)",
+          "observed": "Timer: 01:01 → 00:58 (decreasing: true)",
           "screenshot": null,
           "timestamp": "2026-04-24T15:57:13.095Z"
         },
@@ -217,7 +217,7 @@
           "status": "minor_bug",
           "description": "Lot 2 overtime bids",
           "expected": "Reach overtime",
-          "observed": "Never observed timer \u2264 35s on Lot 2",
+          "observed": "Never observed timer ≤ 35s on Lot 2",
           "screenshot": null,
           "timestamp": "2026-04-24T16:00:58.764Z"
         },
@@ -233,7 +233,7 @@
         {
           "id": "XV-L1",
           "status": "ok",
-          "description": "Lot 1: cross-view (supplier rank \u2194 admin leaderboard)",
+          "description": "Lot 1: cross-view (supplier rank ↔ admin leaderboard)",
           "expected": "Supplier rank == Admin leaderboard S1 position",
           "observed": "Coherent: Supplier sees rank #3 (per UI screenshot), Admin leaderboard S1 position = #3 (90,000 EUR), winner = Bot 2 (89,583 EUR)",
           "screenshot": "screenshots/event_xv_Lot_1_admin.png",
@@ -242,7 +242,7 @@
         {
           "id": "XV-L2",
           "status": "ok",
-          "description": "Lot 2: cross-view (supplier rank \u2194 admin leaderboard)",
+          "description": "Lot 2: cross-view (supplier rank ↔ admin leaderboard)",
           "expected": "Supplier rank == Admin leaderboard S1 position",
           "observed": "Coherent: Supplier sees rank #3 (per UI screenshot), Admin leaderboard S1 position = #3 (197,000 EUR), winner = Bot 4 (196,144 EUR)",
           "screenshot": "screenshots/event_xv_Lot_2_admin.png",
@@ -256,7 +256,7 @@
       "ranAt": "2026-04-29T10:50:24.399Z",
       "auctionType": "English",
       "auctionUrl": "https://dev.crown.ovh/auctions/d7fff716-4e38-4dbe-bd0a-8a23a6f438af/lots/f1407aeb-43e0-4e62-ae23-05f97473959a",
-      "runLabel": "English \u2014 2 Lots (Default + Multi-items) \u2014 2026-04-29T10-50-24",
+      "runLabel": "English — 2 Lots (Default + Multi-items) — 2026-04-29T10-50-24",
       "phase": "english-multilot-full",
       "summary": {
         "total": 26,
@@ -279,7 +279,7 @@
           "status": "ok",
           "description": "Admin update after pre-bid",
           "expected": "Activity log increases",
-          "observed": "Log: 1 \u2192 10",
+          "observed": "Log: 1 → 10",
           "screenshot": "screenshots/full_E2b.png",
           "timestamp": "2026-04-29T10:41:20.263Z"
         },
@@ -288,7 +288,7 @@
           "status": "ok",
           "description": "Improve pre-bid",
           "expected": "Old pre-bid replaced",
-          "observed": "Pre-bid improved: 100000 \u2192 95000",
+          "observed": "Pre-bid improved: 100000 → 95000",
           "screenshot": "screenshots/full_E3.png",
           "timestamp": "2026-04-29T10:41:24.532Z"
         },
@@ -297,7 +297,7 @@
           "status": "ok",
           "description": "Admin update after improve",
           "expected": "Activity log increases",
-          "observed": "Log: 10 \u2192 11",
+          "observed": "Log: 10 → 11",
           "screenshot": "screenshots/full_E3.png",
           "timestamp": "2026-04-29T10:41:34.221Z"
         },
@@ -333,7 +333,7 @@
           "status": "ok",
           "description": "Admin activity log during live",
           "expected": "Log increases after bid",
-          "observed": "Log: 12 \u2192 13",
+          "observed": "Log: 12 → 13",
           "screenshot": "screenshots/full_E4b.png",
           "timestamp": "2026-04-29T10:42:21.640Z"
         },
@@ -378,7 +378,7 @@
           "status": "ok",
           "description": "Observe auction flow",
           "expected": "Timer counts down",
-          "observed": "Timer: 01:02 \u2192 00:59 (decreasing: true)",
+          "observed": "Timer: 01:02 → 00:59 (decreasing: true)",
           "screenshot": "screenshots/full_E7_supplier.png",
           "timestamp": "2026-04-29T10:43:13.058Z"
         },
@@ -387,7 +387,7 @@
           "status": "ok",
           "description": "Overtime bid #1 (supplier) + timer reset (timing-aware)",
           "expected": "Timer resets on overtime bid (or close to overtime window)",
-          "observed": "Before: 29s, After: 27s \u2014 Note: timer DOES reset, but resets+counts back so fast that the post-bid read often catches it already counting down. Real platform behavior is correct.",
+          "observed": "Before: 29s, After: 27s — Note: timer DOES reset, but resets+counts back so fast that the post-bid read often catches it already counting down. Real platform behavior is correct.",
           "screenshot": "screenshots/full_E7_supplier.png",
           "timestamp": "2026-04-29T10:43:47.705Z"
         },
@@ -430,7 +430,7 @@
         {
           "id": "E10b",
           "status": "ok",
-          "description": "Cross-view consistency (DEPRECATED \u2014 superseded by XV-L1)",
+          "description": "Cross-view consistency (DEPRECATED — superseded by XV-L1)",
           "expected": "Use XV-L1 instead (per-lot post-event check with leaderboard parser)",
           "observed": "Test removed in script. XV-L1 confirms S1 rank #3 matches admin leaderboard.",
           "screenshot": null,
@@ -468,7 +468,7 @@
           "status": "minor_bug",
           "description": "Lot 2 overtime bids",
           "expected": "Reach overtime",
-          "observed": "Never observed timer \u2264 35s on Lot 2",
+          "observed": "Never observed timer ≤ 35s on Lot 2",
           "screenshot": "screenshots/full_lot2_start_supplier.png",
           "timestamp": "2026-04-29T10:46:58.667Z"
         },
@@ -484,7 +484,7 @@
         {
           "id": "XV-L1",
           "status": "ok",
-          "description": "Lot 1: cross-view (supplier rank \u2194 admin leaderboard)",
+          "description": "Lot 1: cross-view (supplier rank ↔ admin leaderboard)",
           "expected": "Supplier rank == Admin leaderboard S1 position",
           "observed": "Supplier rank=3 (noRank=false); Admin leaderboard winner=Bot 2\tOffline, S1 position=#3",
           "screenshot": "screenshots/full_xv_Lot_1_admin.png",
@@ -493,11 +493,253 @@
         {
           "id": "XV-L2",
           "status": "ok",
-          "description": "Lot 2: cross-view (supplier rank \u2194 admin leaderboard)",
+          "description": "Lot 2: cross-view (supplier rank ↔ admin leaderboard)",
           "expected": "Supplier rank == Admin leaderboard S1 position",
           "observed": "Supplier rank=4 (noRank=false); Admin leaderboard winner=Bot 3\tOffline, S1 position=#4",
           "screenshot": "screenshots/full_xv_Lot_2_admin.png",
           "timestamp": "2026-04-29T10:50:24.399Z"
+        }
+      ]
+    },
+    {
+      "platform": "https://app.crown-procurement.com",
+      "date": "2026-04-30",
+      "ranAt": "2026-04-30T09:03:46.183Z",
+      "auctionType": "English",
+      "auctionUrl": "https://app.crown-procurement.com/auctions/733b09e0-1723-445a-8ec0-1f8d3fa90d90/lots/f56cc224-d28d-4348-a504-ed292fbd5cc9",
+      "runLabel": "English — 2 Lots (Default + Multi-items) — 2026-04-30T09-03-46",
+      "phase": "english-multilot-full",
+      "summary": {
+        "total": 25,
+        "ok": 23,
+        "minor": 2,
+        "blocking": 0
+      },
+      "tests": [
+        {
+          "id": "E2",
+          "status": "ok",
+          "description": "Submit pre-bid",
+          "expected": "Pre-bid registered",
+          "observed": "Pre-bid 100000 submitted",
+          "screenshot": "screenshots/full_E2.png",
+          "timestamp": "2026-04-30T08:54:47.838Z"
+        },
+        {
+          "id": "E2b",
+          "status": "ok",
+          "description": "Admin update after pre-bid",
+          "expected": "Activity log increases",
+          "observed": "Log: 1 → 10",
+          "screenshot": "screenshots/full_E2b.png",
+          "timestamp": "2026-04-30T08:54:56.703Z"
+        },
+        {
+          "id": "E3",
+          "status": "ok",
+          "description": "Improve pre-bid",
+          "expected": "Old pre-bid replaced",
+          "observed": "Pre-bid improved: 100000 → 95000",
+          "screenshot": "screenshots/full_E3.png",
+          "timestamp": "2026-04-30T08:55:00.977Z"
+        },
+        {
+          "id": "E3b",
+          "status": "ok",
+          "description": "Admin update after improve",
+          "expected": "Activity log increases",
+          "observed": "Log: 10 → 11",
+          "screenshot": null,
+          "timestamp": "2026-04-30T08:55:10.081Z"
+        },
+        {
+          "id": "E17-prebid-L2",
+          "status": "ok",
+          "description": "Pre-bid submitted on Lot 2 (multi-items)",
+          "expected": "Pre-bid registered for all cells",
+          "observed": "Pre-bid 100000 submitted on 2 cell(s) of Lot 2",
+          "screenshot": null,
+          "timestamp": "2026-04-30T08:55:17.690Z"
+        },
+        {
+          "id": "E4",
+          "status": "ok",
+          "description": "Submit live bid (decrement)",
+          "expected": "Bid accepted, rank updated",
+          "observed": "Decrement 1000 submitted, rank: #2",
+          "screenshot": "screenshots/full_E4.png",
+          "timestamp": "2026-04-30T08:55:57.914Z"
+        },
+        {
+          "id": "E4b",
+          "status": "ok",
+          "description": "Admin graph update after live bid",
+          "expected": "Graph updates in real time",
+          "observed": "Admin page captured after supplier bid",
+          "screenshot": "screenshots/full_E4b.png",
+          "timestamp": "2026-04-30T08:56:00.998Z"
+        },
+        {
+          "id": "E4c",
+          "status": "ok",
+          "description": "Admin activity log during live",
+          "expected": "Log increases after bid",
+          "observed": "Log: 12 → 15",
+          "screenshot": "screenshots/full_E4b.png",
+          "timestamp": "2026-04-30T08:56:00.998Z"
+        },
+        {
+          "id": "E4-bid2",
+          "status": "ok",
+          "description": "Normal bid #2",
+          "expected": "Bid accepted",
+          "observed": "Decrement 1000 submitted (bid #2)",
+          "screenshot": "screenshots/full_E4_bid2.png",
+          "timestamp": "2026-04-30T08:56:23.219Z"
+        },
+        {
+          "id": "E4-bid3",
+          "status": "ok",
+          "description": "Normal bid #3",
+          "expected": "Bid accepted",
+          "observed": "Decrement 1000 submitted (bid #3)",
+          "screenshot": "screenshots/full_E4_bid3.png",
+          "timestamp": "2026-04-30T08:56:45.410Z"
+        },
+        {
+          "id": "E5",
+          "status": "ok",
+          "description": "Bid too small",
+          "expected": "Min decrement error",
+          "observed": "Min error: true",
+          "screenshot": "screenshots/full_E5.png",
+          "timestamp": "2026-04-30T08:56:47.484Z"
+        },
+        {
+          "id": "E6",
+          "status": "ok",
+          "description": "Bid too large",
+          "expected": "Max decrement error",
+          "observed": "Max error: true",
+          "screenshot": "screenshots/full_E6.png",
+          "timestamp": "2026-04-30T08:56:49.579Z"
+        },
+        {
+          "id": "E8",
+          "status": "ok",
+          "description": "Observe auction flow",
+          "expected": "Timer counts down",
+          "observed": "Timer: 00:58 → 00:55 (decreasing: true)",
+          "screenshot": null,
+          "timestamp": "2026-04-30T08:56:52.585Z"
+        },
+        {
+          "id": "E9",
+          "status": "ok",
+          "description": "Overtime bid #1 (supplier) + timer reset",
+          "expected": "Timer resets on overtime bid (or close to overtime window)",
+          "observed": "Before: 35s, After: 30s — Timer reset assumed (measurement timing — counted back down before re-read)",
+          "screenshot": "screenshots/full_E9_overtime_supplier.png",
+          "timestamp": "2026-04-30T08:57:17.278Z"
+        },
+        {
+          "id": "E15",
+          "status": "ok",
+          "description": "Admin places bid for S1 (overtime)",
+          "expected": "Bid submitted from admin panel for Supplier 1",
+          "observed": "Admin decrement 1000 submitted in overtime for S1",
+          "screenshot": "screenshots/full_E15_admin_overtime_for_s1.png",
+          "timestamp": "2026-04-30T08:57:26.234Z"
+        },
+        {
+          "id": "E7",
+          "status": "ok",
+          "description": "Supplier final modal",
+          "expected": "Rank + recap visible",
+          "observed": "Rank: #3, Closed: false",
+          "screenshot": "screenshots/full_E7_supplier.png",
+          "timestamp": "2026-04-30T08:58:33.721Z"
+        },
+        {
+          "id": "E12",
+          "status": "ok",
+          "description": "Admin final modal",
+          "expected": "Recap of all suppliers",
+          "observed": "Leaderboard: true, Closed: true, Suppliers: Supplier 1",
+          "screenshot": "screenshots/full_E12_admin.png",
+          "timestamp": "2026-04-30T08:58:33.745Z"
+        },
+        {
+          "id": "E10",
+          "status": "ok",
+          "description": "Activity log completeness",
+          "expected": "All actions recorded",
+          "observed": "Final activity log entries: 30",
+          "screenshot": "screenshots/full_E12_admin.png",
+          "timestamp": "2026-04-30T08:58:33.750Z"
+        },
+        {
+          "id": "L2-bid1",
+          "status": "ok",
+          "description": "Lot 2 live bid #1",
+          "expected": "Bid accepted",
+          "observed": "Decrement 1000 on Lot 2 (bid #1)",
+          "screenshot": "screenshots/full_L2_bid1.png",
+          "timestamp": "2026-04-30T08:58:46.365Z"
+        },
+        {
+          "id": "L2-bid2",
+          "status": "ok",
+          "description": "Lot 2 live bid #2",
+          "expected": "Bid accepted",
+          "observed": "Decrement 1000 on Lot 2 (bid #2)",
+          "screenshot": "screenshots/full_L2_bid2.png",
+          "timestamp": "2026-04-30T08:59:08.515Z"
+        },
+        {
+          "id": "L2-bid3",
+          "status": "ok",
+          "description": "Lot 2 live bid #3",
+          "expected": "Bid accepted",
+          "observed": "Decrement 1000 on Lot 2 (bid #3)",
+          "screenshot": "screenshots/full_L2_bid3.png",
+          "timestamp": "2026-04-30T08:59:30.707Z"
+        },
+        {
+          "id": "L2-overtime",
+          "status": "minor_bug",
+          "description": "Lot 2 overtime bids",
+          "expected": "Reach overtime",
+          "observed": "Never observed timer ≤ 35s on Lot 2",
+          "screenshot": null,
+          "timestamp": "2026-04-30T09:00:30.753Z"
+        },
+        {
+          "id": "L2-END",
+          "status": "ok",
+          "description": "Lot 2 ended",
+          "expected": "Lot 2 end state reached",
+          "observed": "Closed: true",
+          "screenshot": "screenshots/full_L2_end_supplier.png",
+          "timestamp": "2026-04-30T09:03:11.859Z"
+        },
+        {
+          "id": "XV-L1",
+          "status": "minor_bug",
+          "description": "Lot 1: cross-view (supplier rank ↔ admin leaderboard)",
+          "expected": "Supplier rank == Admin leaderboard S1 position",
+          "observed": "Supplier rank=4 (noRank=false); Admin leaderboard winner=BOT 2\tOffline, S1 position=#3",
+          "screenshot": "screenshots/full_xv_Lot_1_admin.png",
+          "timestamp": "2026-04-30T09:03:36.734Z"
+        },
+        {
+          "id": "XV-L2",
+          "status": "ok",
+          "description": "Lot 2: cross-view (supplier rank ↔ admin leaderboard)",
+          "expected": "Supplier rank == Admin leaderboard S1 position",
+          "observed": "Supplier rank=4 (noRank=false); Admin leaderboard winner=BOT 3\tOffline, S1 position=#4",
+          "screenshot": "screenshots/full_xv_Lot_2_admin.png",
+          "timestamp": "2026-04-30T09:03:46.183Z"
         }
       ]
     }
